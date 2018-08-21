@@ -2,20 +2,27 @@ import { Injectable } from "@angular/core";
 import { IUsuarios } from "./usuarios";
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs'; 
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, tap, map } from 'rxjs/operators';
  
 @Injectable({
     providedIn: 'root'
 })
 export class UsuariosService{
 
-    private usuarioUrl = 'http://localhost/encuestas/api/usuario/read.php';
+    private usuarioUrl = 'https://devencuestas.000webhostapp.com/api/usuario/read.php';
+    //private usuarioUrl = 'api/products/usuarios.json';
     constructor(private http: HttpClient) {}
 
     getUsuarios(): Observable<IUsuarios[]> {
         return this.http.get<IUsuarios[]>(this.usuarioUrl).pipe(
           tap(data => console.log('All: ' + JSON.stringify(data))),
           catchError(this.handleError)  
+        );
+    }
+
+    getUsuario(id: number): Observable<IUsuarios | undefined >{
+        return this.getUsuarios().pipe(
+            map((usuarios: IUsuarios[]) => usuarios.find(p => +p.id === id))
         );
     }
 

@@ -1,0 +1,16 @@
+[
+    {
+      "id": 1,
+      "usuario": "MAREVALO",
+      "contrasena": "GDN-0011",
+      "fecha_creacion": "March 19, 2016",
+      "perfil_id": "0"
+    },
+    {
+        "id": 2,
+        "usuario": "AGARCIA",
+        "contrasena": "GDN-0011",
+        "fecha_creacion": "March 19, 2016",
+        "perfil_id": "0"
+      }
+]  

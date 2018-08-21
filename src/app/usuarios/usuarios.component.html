@@ -34,8 +34,14 @@
                 <tbody>
                     <tr *ngFor='let usuario of usuarios'>
                         <td></td>
-                        <td>{{ usuario.id}}</td>
-                        <td>{{ usuario.usuario}}</td>
+                        <td>
+                            <a [routerLink]="['/usuarios', usuario.id]">
+                                {{ usuario.id }}
+                            </a>
+                        </td>
+                        <td>
+                            {{ usuario.usuario}}   
+                        </td>
                         <td>{{ usuario.contrasena}}</td>
                         <td>{{ usuario.fecha_creacion}}</td>
                         <td>{{ usuario.perfil_id}}</td>    
