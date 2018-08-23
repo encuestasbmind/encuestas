@@ -1,0 +1,148 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        {{pageTitle}}
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal"
+              [formGroup]="eventoForm"
+                    novalidate
+                    (ngSubmit)="saveEvento()" 
+                     >
+            <fieldset>
+
+                <div class="form-group" 
+                     *ngIf='evento'>
+                    <label class="col-md-2 control-label" for="id">ID</label>
+                    <div class="col-md-8">
+                        <input class="form-control" 
+                            id="id" 
+                            type="number" 
+                            placeholder="ID (requerido)" 
+                            formControlName="id" />
+                    </div>
+                </div>
+                
+                <div class="form-group" >
+                    <label class="col-md-2 control-label" for="fecha_inicio">Fecha Inicio</label>
+                    <div class="col-md-8">
+                        <input class="form-control" 
+                            id="fecha_inicio" 
+                            type="text" 
+                            placeholder="Fecha Inicio (requerido)" 
+                            formControlName="fecha_inicio" />
+                    </div>
+                </div>
+
+                <div class="form-group" >
+                    <label class="col-md-2 control-label" for="fecha_final">Fecha Final</label>
+                    <div class="col-md-8">
+                        <input class="form-control" 
+                            id="fecha_final" 
+                            type="text" 
+                            placeholder="Fecha Final (requerido)" 
+                            formControlName="fecha_final" />
+                    </div>
+                </div>
+
+                <div class="form-group" >
+                        <label class="col-md-2 control-label" for="ev_obs">EV OBS</label>
+                        <div class="col-md-8">
+                            <input class="form-control" 
+                                id="ev_obs" 
+                                type="text" 
+                                placeholder="EV OBS (requerido)" 
+                                formControlName="ev_obs" />
+                        </div>
+                    </div>      
+
+                    <div class="form-group" >
+                            <label class="col-md-2 control-label" for="cursos_id">Cursos Id</label>
+                            <div class="col-md-8">
+                                <input class="form-control" 
+                                    id="cursos_id" 
+                                    type="text" 
+                                    placeholder="Cursos Id (requerido)" 
+                                    formControlName="cursos_id" />
+                            </div>
+                    </div>                               
+
+                    <div class="form-group" >
+                            <label class="col-md-2 control-label" for="instructor_id">Instructor Id</label>
+                            <div class="col-md-8">
+                                <input class="form-control" 
+                                    id="instructor_id" 
+                                    type="text" 
+                                    placeholder="Instructor Id(requerido)" 
+                                    formControlName="instructor_id" />
+                            </div>
+                    </div>  
+
+                    <div class="form-group" >
+                            <label class="col-md-2 control-label" for="tipo_delivery_id">Tipo Delivery Id</label>
+                            <div class="col-md-8">
+                                <input class="form-control" 
+                                    id="tipo_delivery_id" 
+                                    type="text" 
+                                    placeholder="Tipo Delivery Id(requerido)" 
+                                    formControlName="tipo_delivery_id" />
+                            </div>
+                    </div>  
+                    
+                    
+                    <div class="form-group" >
+                            <label class="col-md-2 control-label" for="estado_id">Estado Id</label>
+                            <div class="col-md-8">
+                                <input class="form-control" 
+                                    id="estado_id" 
+                                    type="text" 
+                                    placeholder="Estado Id (requerido)" 
+                                    formControlName="estado_id" />
+                            </div>
+                    </div>  
+
+                    <div class="form-group" >
+                            <label class="col-md-2 control-label" for="ciudad_id">Ciudad Id</label>
+                            <div class="col-md-8">
+                                <input class="form-control" 
+                                    id="Ciudad Id" 
+                                    type="text" 
+                                    placeholder="Cursos Id (requerido)" 
+                                    formControlName="ciudad_id" />
+                            </div>
+                    </div>  
+
+                    <div class="form-group" >
+                            <label class="col-md-2 control-label" for="pais_id">Pais Id</label>
+                            <div class="col-md-8">
+                                <input class="form-control" 
+                                    id="pais_id" 
+                                    type="text" 
+                                    placeholder="Pais Id (requerido)" 
+                                    formControlName="pais_id" />
+                            </div>
+                    </div>  
+
+                    <div class="form-group">
+                        <div class="col-md-4 col-md-offset-2">
+                            <span>
+                                <button class="btn btn-primary"
+                                    type="submit"
+                                    style="width:80px;margin-right:10px"
+                                    >
+                                    Guardar
+                                </button>                                
+                            </span>
+                            <span>
+                                <a class="btn btn-default"
+                                   style="width:80px" 
+                                   [routerLink]="['/eventos']">
+                                    Cancelar
+                                </a>
+                            </span>
+                        </div>
+                    </div>                    
+            </fieldset>
+        </form>
+        <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { IEvento} from "./eventos";
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse , HttpHeaders} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs'; 
 import { catchError, tap, map } from 'rxjs/operators';
  
@@ -9,8 +9,8 @@ import { catchError, tap, map } from 'rxjs/operators';
 })
 export class EventosService{
 
-   // private usuarioUrl = 'https://devencuestas.000webhostapp.com/api/usuario/read.php';
-    private eventoUrl = 'api/products/eventos.json';
+   //private usuarioUrl = 'https://devencuestas.000webhostapp.com/api/eventos/read.php';
+    private eventoUrl = 'http://localhost/encuestas/api/evento/read.php';
     constructor(private http: HttpClient) {}
 
     getEventos(): Observable<IEvento[]> {
@@ -35,5 +35,37 @@ export class EventosService{
         }
         console.error(errorMessage);
         return throwError(errorMessage);
+    }
+
+    salvarEventos(evento: IEvento): Observable<IEvento> {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        
+        if(+evento.id === 0){
+            return this.createEvento(evento);
+        }
+        return this.actualizarEvento(evento); 
+    }
+
+    private createEvento(evento: IEvento): Observable<IEvento>{
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
+        evento.id = null; 
+        return this.http.post<IEvento>(this.eventoUrl, evento, { headers: headers })
+            .pipe(
+                tap(data => console.log('Crear Evento: ' + JSON.stringify(data) )),
+                catchError(this.handleError)
+            );
+
+    }
+
+    private actualizarEvento(evento: IEvento): Observable<IEvento>{
+        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const url = 'http://localhost/encuestas/api/evento/update.php';
+        console.log('Enviando ' + JSON.stringify(evento));
+        return this.http.post<IEvento>(url, JSON.stringify(evento), { headers: headers })
+                    .pipe(
+                        tap(() => console.log('Actualizar producto ' + evento.id )),
+                        map(() => evento), 
+                        catchError(this.handleError)
+                    );
     }
 }

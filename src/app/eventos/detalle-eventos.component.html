@@ -4,6 +4,7 @@
     </div>
     <div class='card-body'>
         <div class='row'>
+
           <div class='col-md-8'>
             <div class='row'>
               <div class='col-md-4'><h4>Eventos:</h4></div>
@@ -30,26 +31,26 @@
 
 
           
-          <div class='row'>
+           <div class='row'>
             <div class='col-md-4'>Cursos Id:</div>
             <div class='col-md-8'>{{evento.cursos_id}}</div>
-          </div>
+            </div>
 
      
-      <div class='row'>
-        <div class='col-md-4'>Instructor Id:</div>
-        <div class='col-md-8'>{{evento.instructor_id}}</div>
-      </div>
+             <div class='row'>
+             <div class='col-md-4'>Instructor Id:</div>
+             <div class='col-md-8'>{{evento.instructor_id}}</div>
+             </div>
 
-      <div class='row'>
-        <div class='col-md-4'>Instructor Tipo Delivery Id:</div>
-        <div class='col-md-8'>{{evento.tipo_delivery_id}}</div>
-      </div>
+             <div class='row'>
+             <div class='col-md-4'>Instructor Tipo Delivery Id:</div>
+             <div class='col-md-8'>{{evento.tipo_delivery_id}}</div>
+             </div>
 
-      <div class='row'>
-        <div class='col-md-4'>Estado Id:</div>
-        <div class='col-md-8'>{{evento.estado_id}}</div>
-      </div>
+             <div class='row'>
+             <div class='col-md-4'>Estado Id:</div>
+             <div class='col-md-8'>{{evento.estado_id}}</div>
+             </div>
 
       <div class='row'>
         <div class='col-md-4'>Ciudad Id:</div>
@@ -71,5 +72,10 @@
               style='width:80px' >
         <i class='fa fa-chevron-left'></i> Atrás      
       </button>
+
+      <a class="btn btn-primary" style="width:80px;margin-left:10px" 
+      [routerLink]="['/editarEvento', evento.id]">
+       Editar
+      </a>
     </div>
   </div>

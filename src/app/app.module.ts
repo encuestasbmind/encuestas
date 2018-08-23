@@ -12,6 +12,7 @@ import { EditarUsuarioComponent } from './usuarios/usuario-editar.component';
 
 import { EventosComponent} from './eventos/eventos.component';
 import { DetalleEventosComponent } from './eventos/detalle-eventos.component';
+import { EditareventoComponent } from './eventos/evento-editar.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { DetalleEventosComponent } from './eventos/detalle-eventos.component';
     WelcomeComponent,
     EditarUsuarioComponent,
     EventosComponent,
-    DetalleEventosComponent
+    DetalleEventosComponent,
+    EditareventoComponent
 
   ],
   imports: [
@@ -36,6 +38,7 @@ import { DetalleEventosComponent } from './eventos/detalle-eventos.component';
       { path: 'usuarios/:id', component: DetalleUsuarioComponent },
       { path: 'eventos/:id', component: DetalleEventosComponent },
       { path: 'editarUsuario/:id', component: EditarUsuarioComponent }, 
+      { path: 'editarEvento/:id', component: EditareventoComponent }, 
       { path: 'welcome', component: WelcomeComponent },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
