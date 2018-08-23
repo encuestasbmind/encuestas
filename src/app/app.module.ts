@@ -12,7 +12,11 @@ import { EditarUsuarioComponent } from './usuarios/usuario-editar.component';
 
 import { EventosComponent} from './eventos/eventos.component';
 import { DetalleEventosComponent } from './eventos/detalle-eventos.component';
+
 import { EditareventoComponent } from './eventos/evento-editar.component';
+
+import { EncuestaParcialComponent } from './encuesta-parcial/encuesta-parcial.component';
+
 
 
 @NgModule({
@@ -23,8 +27,13 @@ import { EditareventoComponent } from './eventos/evento-editar.component';
     WelcomeComponent,
     EditarUsuarioComponent,
     EventosComponent,
+
     DetalleEventosComponent,
     EditareventoComponent
+
+    DetalleEventosComponent, 
+    EncuestaParcialComponent
+
 
   ],
   imports: [
@@ -35,6 +44,7 @@ import { EditareventoComponent } from './eventos/evento-editar.component';
 
       { path: 'usuarios', component: UsuariosComponent }, 
       { path: 'eventos', component: EventosComponent},
+      { path: 'EncuestaParcial', component: EncuestaParcialComponent},
       { path: 'usuarios/:id', component: DetalleUsuarioComponent },
       { path: 'eventos/:id', component: DetalleEventosComponent },
       { path: 'editarUsuario/:id', component: EditarUsuarioComponent }, 
