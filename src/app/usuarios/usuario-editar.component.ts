@@ -52,6 +52,7 @@ export class EditarUsuarioComponent implements OnInit{
     }
 
     getUsuario(id: number): void{
+        console.log('Id Recibido ' + id );
         this.usuariosService.getUsuario(id)
             .subscribe(
                 (usuario: IUsuarios) => this.onUsuarioRetrieved(usuario), 
@@ -61,20 +62,22 @@ export class EditarUsuarioComponent implements OnInit{
 
     onUsuarioRetrieved(usuario: IUsuarios): void{
         this.usuario = usuario; 
-
-        if(+this.usuario.id === 0){
+        console.log('Usuario Recibido ' + this.usuario );
+        if(!usuario){
             this.pageTitle = 'Agregar usuario';
         }else{
             this.pageTitle = `Editar usuario: ${this.usuario.usuario}`;
+
+            this.usuarioForm.patchValue({
+                id: this.usuario.id,
+                usuario: this.usuario.usuario, 
+                contrasena: this.usuario.contrasena, 
+                fecha_creacion: this.usuario.fecha_creacion, 
+                perfil_id: this.usuario.perfil_id
+            });
         }
 
-        this.usuarioForm.patchValue({
-            id: this.usuario.id,
-            usuario: this.usuario.usuario, 
-            contrasena: this.usuario.contrasena, 
-            fecha_creacion: this.usuario.fecha_creacion, 
-            perfil_id: this.usuario.perfil_id
-        });
+
     }
 
     saveUsuario(): void{

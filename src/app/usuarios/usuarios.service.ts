@@ -42,8 +42,10 @@ export class UsuariosService{
 
     private createUsuario(usuario: IUsuarios): Observable<IUsuarios>{
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
+        const url = 'http://localhost/encuestas/api/usuario/create.php';
         usuario.id = null; 
-        return this.http.post<IUsuarios>(this.usuarioUrl, usuario, { headers: headers })
+        console.log('Crear: ' + JSON.stringify(usuario));
+        return this.http.post<IUsuarios>(url, JSON.stringify(usuario), { headers: headers })
             .pipe(
                 tap(data => console.log('Crear Usuario: ' + JSON.stringify(data) )),
                 catchError(this.handleError)
