@@ -24,11 +24,6 @@
                    *ngIf='usuarios && usuarios.length'>
                 <thead>
                     <tr>
-                        <th>
-                            <button class='btn btn-primary'>
-                                Mostrar Opciones
-                            </button>
-                        </th>
                         <th>ID</th>
                         <th>Usuario</th>
                         <th>Contraseña</th>
@@ -38,7 +33,6 @@
                 </thead>
                 <tbody>
                     <tr *ngFor='let usuario of usuarios'>
-                        <td></td>
                         <td>
                             <a [routerLink]="['/usuarios', usuario.id]">
                                 {{ usuario.id }}
