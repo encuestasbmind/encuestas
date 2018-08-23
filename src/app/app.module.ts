@@ -27,11 +27,8 @@ import { EncuestaParcialComponent } from './encuesta-parcial/encuesta-parcial.co
     WelcomeComponent,
     EditarUsuarioComponent,
     EventosComponent,
-
     DetalleEventosComponent,
-    EditareventoComponent
-
-    DetalleEventosComponent, 
+    EditareventoComponent, 
     EncuestaParcialComponent
 
 
