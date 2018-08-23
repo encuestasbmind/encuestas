@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -7,6 +8,7 @@ import { AppComponent } from './app.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { DetalleUsuarioComponent } from './usuarios/detalle-usuario.component';
 import { WelcomeComponent } from './home/welcome.component';
+import { EditarUsuarioComponent } from './usuarios/usuario-editar.component';
 
 import { EventosComponent} from './eventos/eventos.component';
 import { DetalleEventosComponent } from './eventos/detalle-eventos.component';
@@ -18,13 +20,15 @@ import { DetalleEventosComponent } from './eventos/detalle-eventos.component';
     UsuariosComponent,
     DetalleUsuarioComponent, 
     WelcomeComponent,
+    EditarUsuarioComponent,
     EventosComponent,
     DetalleEventosComponent
 
   ],
   imports: [
     BrowserModule, 
-    HttpClientModule, 
+    HttpClientModule,
+    ReactiveFormsModule, 
     RouterModule.forRoot([
 
       { path: 'usuarios', component: UsuariosComponent }, 
