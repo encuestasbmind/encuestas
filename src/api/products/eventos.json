@@ -1,0 +1,28 @@
+[
+    {
+      "id": 1,
+      "fecha_inicio": "2018-2-2",
+      "fecha_final": "2018-3-2",
+      "ev_obs": "K.O",
+      "cursos_id": "1",
+      "instructor_id": "Alvr",
+      "tipo_delivery_id":"1",
+      "estado_id": "1",
+      "ciudad_id": "1",
+      "pais_id": "1"
+
+    },
+    {
+        
+      "id": 2,
+      "fecha_inicio": "2017-2-2",
+      "fecha_final": "2017-3-2",
+      "ev_obs": "OK",
+      "cursos_id": "2",
+      "instructor_id": "Mar",
+      "tipo_delivery_id":"2",
+      "estado_id": "2",
+      "ciudad_id": "2",
+      "pais_id": "2"
+      }
+] 

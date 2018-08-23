@@ -8,19 +8,29 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { DetalleUsuarioComponent } from './usuarios/detalle-usuario.component';
 import { WelcomeComponent } from './home/welcome.component';
 
+import { EventosComponent} from './eventos/eventos.component';
+import { DetalleEventosComponent } from './eventos/detalle-eventos.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     UsuariosComponent,
     DetalleUsuarioComponent, 
-    WelcomeComponent
+    WelcomeComponent,
+    EventosComponent,
+    DetalleEventosComponent
+
   ],
   imports: [
     BrowserModule, 
     HttpClientModule, 
     RouterModule.forRoot([
+
       { path: 'usuarios', component: UsuariosComponent }, 
-      { path: 'usuarios/:id', component: DetalleUsuarioComponent }, 
+      { path: 'eventos', component: EventosComponent},
+      { path: 'usuarios/:id', component: DetalleUsuarioComponent },
+      { path: 'eventos/:id', component: DetalleEventosComponent },
       { path: 'welcome', component: WelcomeComponent },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
@@ -28,4 +38,4 @@ import { WelcomeComponent } from './home/welcome.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

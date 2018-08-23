@@ -1,0 +1,74 @@
+<div class='card'>
+    <div class='card-header'>
+        {{pageTitle}}
+    </div>
+    <div class='card-body'>
+        <div class='row'>
+            <div class='col-md-2'><h4>Filtrar:</h4></div>
+            <div class='col-md-4'>
+                <input type='text' />
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-md-6'>
+                Filtrado por: 
+            </div>
+        </div>
+        <div class='table-responsive'>
+            <table class='table' *ngIf='eventos && eventos.length'>
+                <thead>
+                    <tr>
+                        <th>
+                            <button class='btn btn-primary'>
+                                Mostrar Opciones
+                            </button>
+                        </th>
+                        <th>ID</th>
+                        <th>Fecha Inicio</th>
+                        <th>Fecha Final</th>
+                        <th>EV OBS</th>
+                        <th>Cursos Id</th>
+                        <th>Instructor Id</th>
+                        <th>Tipo Delivery Id</th>
+                        <th>Estado Id</th>
+                        <th>Ciudad Id</th>
+                        <th>Pais Id</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let eventos of eventos'>
+                        <td></td>
+                        <td>
+                            <a [routerLink]="['/eventos', eventos.id]">
+                                {{ eventos.id }}
+                            </a>
+                        </td>
+                        <td>
+                            {{ eventos.eventos}}   
+                        </td>
+                        <td>{{ eventos.fecha_inicio}}</td>
+
+                        <td>{{ eventos.fecha_final}}</td>
+
+                        <td>{{ eventos.ev_obs}}</td>
+
+                        <td>{{ eventos.cursos_id}}</td>
+
+                        <td>{{ eventos.instructor_id}}</td>
+
+                        <td>{{ eventos.tipo_delivery_id}}</td>
+
+                        <td>{{ eventos.estado_id}}</td>
+
+                        <td>{{ eventos.ciudad_id}}</td>
+
+                        <td>{{ eventos.pais_id}}</td> 
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
