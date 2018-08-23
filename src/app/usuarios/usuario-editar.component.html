@@ -1,0 +1,91 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        {{pageTitle}}
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal"
+              [formGroup]="usuarioForm"
+                    novalidate
+                    (ngSubmit)="saveUsuario()" 
+                     >
+            <fieldset>
+
+                <div class="form-group" >
+                    <label class="col-md-2 control-label" for="id">ID</label>
+                    <div class="col-md-8">
+                        <input class="form-control" 
+                            id="id" 
+                            type="text" 
+                            placeholder="ID (requerido)" 
+                            formControlName="id" />
+                    </div>
+                </div>
+                
+                <div class="form-group" >
+                    <label class="col-md-2 control-label" for="nombreUsuario">Usuario</label>
+                    <div class="col-md-8">
+                        <input class="form-control" 
+                            id="nombreUsuario" 
+                            type="text" 
+                            placeholder="Usuario (requerido)" 
+                            formControlName="usuario" />
+                    </div>
+                </div>
+
+                <div class="form-group" >
+                    <label class="col-md-2 control-label" for="contrasena">Contraseña</label>
+                    <div class="col-md-8">
+                        <input class="form-control" 
+                            id="contrasena" 
+                            type="text" 
+                            placeholder="Contraseña (requerido)" 
+                            formControlName="contrasena" />
+                    </div>
+                </div>
+
+                <div class="form-group" >
+                        <label class="col-md-2 control-label" for="fecha_creacion">Fecha Creación</label>
+                        <div class="col-md-8">
+                            <input class="form-control" 
+                                id="fecha_creacion" 
+                                type="text" 
+                                placeholder="Fecha creación (requerido)" 
+                                formControlName="fecha_creacion" />
+                        </div>
+                    </div>      
+
+                    <div class="form-group" >
+                            <label class="col-md-2 control-label" for="perfil_id">Perfil</label>
+                            <div class="col-md-8">
+                                <input class="form-control" 
+                                    id="perfil_id" 
+                                    type="text" 
+                                    placeholder="Perfil (requerido)" 
+                                    formControlName="perfil_id" />
+                            </div>
+                    </div>                               
+
+                    <div class="form-group">
+                        <div class="col-md-4 col-md-offset-2">
+                            <span>
+                                <button class="btn btn-primary"
+                                    type="submit"
+                                    style="width:80px;margin-right:10px"
+                                    >
+                                    Guardar
+                                </button>                                
+                            </span>
+                            <span>
+                                <a class="btn btn-default"
+                                   style="width:80px" 
+                                   [routerLink]="['/usuarios']">
+                                    Cancelar
+                                </a>
+                            </span>
+                        </div>
+                    </div>                    
+            </fieldset>
+        </form>
+        <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
+    </div>
+</div>
