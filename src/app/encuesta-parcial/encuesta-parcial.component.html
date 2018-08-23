@@ -1,3 +1,24 @@
-<div>
-    Encuesta parcial
+<div class='card'>
+        <div class='card-header'>
+                Encuesta parcial
+        </div>
+        <div class='card-body'>
+                <div class='row'>
+                        <div class='col-md-2'><h4>Evento:</h4></div>
+                        <div class='col-md-4'>
+                            <input type='text' [(ngModel)]='eventoId' />
+                        </div>
+                </div>
+                <div class='row'>
+                        <div class='col-md-2'><h4>Documento:</h4></div>
+                        <div class='col-md-4'>
+                            <input type='text' [(ngModel)]='identificacion'/>
+                        </div>
+                </div>       
+                <button class='btn btn-primary' 
+                        (click)='validarRealizarEncuesta()'
+                        style='width:150px' >
+                    Realizar Encuesta      
+                </button>      
+        </div>
 </div>
