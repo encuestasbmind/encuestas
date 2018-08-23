@@ -35,6 +35,7 @@ import { DetalleEventosComponent } from './eventos/detalle-eventos.component';
       { path: 'eventos', component: EventosComponent},
       { path: 'usuarios/:id', component: DetalleUsuarioComponent },
       { path: 'eventos/:id', component: DetalleEventosComponent },
+      { path: 'editarUsuario/:id', component: EditarUsuarioComponent }, 
       { path: 'welcome', component: WelcomeComponent },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
