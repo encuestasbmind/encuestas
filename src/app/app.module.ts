@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
@@ -36,7 +37,8 @@ import { EncuestaParcialComponent } from './encuesta-parcial/encuesta-parcial.co
   imports: [
     BrowserModule, 
     HttpClientModule,
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
+    FormsModule, 
     RouterModule.forRoot([
 
       { path: 'usuarios', component: UsuariosComponent }, 
