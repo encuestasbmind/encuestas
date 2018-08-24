@@ -26,6 +26,15 @@ export class EventosService{
         );
     }
 
+    getOneEvento(id: number): Observable<IEvento>{
+        const url = 'http://localhost/encuestas/api/evento/read_one.php?id=' + id;
+        return this.http.get<IEvento>(url)
+            .pipe(
+                tap(data => console.log('OneEvento: ' + JSON.stringify(data))),
+                catchError(this.handleError)
+            );
+    }
+
     private handleError(err: HttpErrorResponse){
         let errorMessage = '';
         if(err.error instanceof ErrorEvent){

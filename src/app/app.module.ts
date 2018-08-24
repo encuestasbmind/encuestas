@@ -10,14 +10,11 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { DetalleUsuarioComponent } from './usuarios/detalle-usuario.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { EditarUsuarioComponent } from './usuarios/usuario-editar.component';
-
 import { EventosComponent} from './eventos/eventos.component';
 import { DetalleEventosComponent } from './eventos/detalle-eventos.component';
-
 import { EditareventoComponent } from './eventos/evento-editar.component';
-
 import { EncuestaParcialComponent } from './encuesta-parcial/encuesta-parcial.component';
-
+import { DiligenciarEncuestaParcialComponent } from './encuesta-parcial/diligenciar-encuesta-parcial.component';
 
 
 @NgModule({
@@ -30,8 +27,8 @@ import { EncuestaParcialComponent } from './encuesta-parcial/encuesta-parcial.co
     EventosComponent,
     DetalleEventosComponent,
     EditareventoComponent, 
-    EncuestaParcialComponent
-
+    EncuestaParcialComponent,
+    DiligenciarEncuestaParcialComponent
 
   ],
   imports: [
@@ -44,6 +41,7 @@ import { EncuestaParcialComponent } from './encuesta-parcial/encuesta-parcial.co
       { path: 'usuarios', component: UsuariosComponent }, 
       { path: 'eventos', component: EventosComponent},
       { path: 'EncuestaParcial', component: EncuestaParcialComponent},
+      { path: 'detalleencuestaparcial/:eventoid', component: DiligenciarEncuestaParcialComponent },
       { path: 'usuarios/:id', component: DetalleUsuarioComponent },
       { path: 'eventos/:id', component: DetalleEventosComponent },
       { path: 'editarUsuario/:id', component: EditarUsuarioComponent }, 
