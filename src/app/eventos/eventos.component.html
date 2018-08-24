@@ -1,6 +1,11 @@
 <div class='card'>
     <div class='card-header'>
         {{pageTitle}}
+
+        <a class="btn btn-primary" style="width:120px;margin-left:10px" 
+        [routerLink]="['/editarEvento', 0]">
+         Crear Eventos
+        </a>
     </div>
     <div class='card-body'>
         <div class='row'>
@@ -14,15 +19,12 @@
                 Filtrado por: 
             </div>
         </div>
+
+        
         <div class='table-responsive'>
             <table class='table' *ngIf='eventos && eventos.length'>
                 <thead>
                     <tr>
-                        <th>
-                            <button class='btn btn-primary'>
-                                Mostrar Opciones
-                            </button>
-                        </th>
                         <th>ID</th>
                         <th>Fecha Inicio</th>
                         <th>Fecha Final</th>

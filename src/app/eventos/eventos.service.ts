@@ -37,7 +37,7 @@ export class EventosService{
         return throwError(errorMessage);
     }
 
-    salvarEventos(evento: IEvento): Observable<IEvento> {
+    salvarEvento(evento: IEvento): Observable<IEvento> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         
         if(+evento.id === 0){

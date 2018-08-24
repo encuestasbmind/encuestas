@@ -37,12 +37,13 @@ export class EditareventoComponent implements OnInit{
             fecha_inicio:'',
             fecha_final: '', 
             ev_obs: '', 
-            cursos_id: '',
+            curso_id: '',
             instructor_id: '',
             tipo_delivery_id: '',
             estado_id: '',
             ciudad_id:'',
-            pais_id: '',
+            pais_id: ''
+
         });
 
         // Read the product Id from the route parameter
@@ -55,6 +56,7 @@ export class EditareventoComponent implements OnInit{
         );
     }
     getEvento(id: number): void{
+        console.log('Id Recibido ' + id );
         this.eventosService.getEvento(id)
             .subscribe(
                 (evento: IEvento) => this.onEventoRetrieved(evento), 
@@ -73,14 +75,23 @@ export class EditareventoComponent implements OnInit{
 
         this.eventoForm.patchValue({
             id: this.evento.id , 
+
             fecha_inicio: this.evento.fecha_inicio ,
+
             fecha_final: this.evento.fecha_final , 
+
             ev_obs: this.evento.ev_obs , 
+
             cursos_id: this.evento.cursos_id ,
+
             instructor_id: this.evento.instructor_id ,
+
             tipo_delivery_id: this.evento.tipo_delivery_id ,
+
             estado_id:this.evento.estado_id ,
+
             ciudad_id:this.evento.ciudad_id ,
+            
             pais_id: this.evento.pais_id ,
             
         });
@@ -90,7 +101,7 @@ export class EditareventoComponent implements OnInit{
         let p = Object.assign({}, this.evento, this.eventoForm.value);
         console.log(JSON.stringify(this.evento));
         console.log(JSON.stringify(p));
-        this.eventosService.salvarEventos(p)
+        this.eventosService.salvarEvento(p)
             .subscribe(
                 () => this.onSaveComplete(),
                 (error: any) => this.errorMessage = <any>error

@@ -1,5 +1,5 @@
 export interface IEvento  {
-    id: number; 
+    id: string; 
     fecha_inicio: string; 
     fecha_final: string; 
     ev_obs: string; 
