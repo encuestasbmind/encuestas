@@ -28,25 +28,21 @@
                         <th>ID</th>
                         <th>Fecha Inicio</th>
                         <th>Fecha Final</th>
-                        <th>EV OBS</th>
-                        <th>Cursos Id</th>
-                        <th>Instructor Id</th>
-                        <th>Tipo Delivery Id</th>
-                        <th>Estado Id</th>
-                        <th>Ciudad Id</th>
-                        <th>Pais Id</th>
+                        <th>Observación</th>
+                        <th>Cursos</th>
+                        <th>Instructor</th>
+                        <th>Tipo Delivery</th>
+                        <th>Departamento</th>
+                        <th>Ciudad</th>
+                        <th>Pais</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor='let eventos of eventos'>
-                        <td></td>
                         <td>
                             <a [routerLink]="['/eventos', eventos.id]">
                                 {{ eventos.id }}
                             </a>
-                        </td>
-                        <td>
-                            {{ eventos.eventos}}   
                         </td>
                         <td>{{ eventos.fecha_inicio}}</td>
 
