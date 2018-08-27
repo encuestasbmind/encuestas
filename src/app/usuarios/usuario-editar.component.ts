@@ -82,8 +82,8 @@ export class EditarUsuarioComponent implements OnInit{
 
     saveUsuario(): void{
         let p = Object.assign({}, this.usuario, this.usuarioForm.value);
-        console.log(JSON.stringify(this.usuario));
-        console.log(JSON.stringify(p));
+        console.log('save usuario this.usuario ' + JSON.stringify(this.usuario));
+        console.log('save usuario p ' + JSON.stringify(p));
         this.usuariosService.salvarUsuario(p)
             .subscribe(
                 () => this.onSaveComplete(),

@@ -46,10 +46,11 @@ export class EventosService{
         return throwError(errorMessage);
     }
 
-    salvarEvento(evento: IEvento): Observable<IEvento> {
+    salvarEvento(evento: IEvento, idRecibido: number): Observable<IEvento> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
-        
-        if(+evento.id === 0){
+        console.log('idRecibido ' + idRecibido);
+        console.log('evento en salvar evento ' + JSON.stringify(evento))
+        if(idRecibido === 0){
             return this.createEvento(evento);
         }
         return this.actualizarEvento(evento); 
@@ -57,8 +58,9 @@ export class EventosService{
 
     private createEvento(evento: IEvento): Observable<IEvento>{
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
-        evento.id = null; 
-        return this.http.post<IEvento>(this.eventoUrl, evento, { headers: headers })
+        const url = 'http://localhost/encuestas/api/evento/create.php';
+        console.log('Crear: ' + JSON.stringify(evento));
+        return this.http.post<IEvento>(url, JSON.stringify(evento), { headers: headers })
             .pipe(
                 tap(data => console.log('Crear Evento: ' + JSON.stringify(data) )),
                 catchError(this.handleError)
