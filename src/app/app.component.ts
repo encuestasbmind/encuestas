@@ -10,6 +10,8 @@ import { Component } from '@angular/core';
           <li><a class='nav-link' [routerLink]="['/usuarios']">Usuarios</a></li>
           <li><a class='nav-link' [routerLink]="['/eventos']">Eventos</a></li>
           <li><a class='nav-link' [routerLink]="['/EncuestaParcial']">Encuesta Parcial</a></li>
+          <li><a class='nav-link' [routerLink]="['/curso']">Cursos</a></li>
+
         </ul>
       </nav>
       <div class='container'>

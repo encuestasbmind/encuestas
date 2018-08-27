@@ -1,0 +1,57 @@
+<div class='card'>
+    <div class='card-header'>
+        {{pageTitle}}
+
+        <a class="btn btn-primary" style="width:120px;margin-left:10px" 
+        [routerLink]="['/editarCursos', 0]">
+         Crear Cursos
+        </a>
+    </div>
+    <div class='card-body'>
+        <div class='row'>
+            <div class='col-md-2'><h4>Filtrar:</h4></div>
+            <div class='col-md-4'>
+                <input type='text' />
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-md-6'>
+                Filtrado por: 
+            </div>
+        </div>
+
+        
+        <div class='table-responsive'>
+            <table class='table' *ngIf='cursos && cursos.length'>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NOMBRE CUR</th>
+                        <th>HORAS</th>
+                        <th>FABRICANTE ID</th>
+                        <th>CATEGORIAS ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let cursos of cursos'>
+                      
+                        <td>
+                            <a [routerLink]="['/cursos', cursos.id]">
+                                {{ cursos.id }}
+                            </a>
+                        </td>
+                        <td>
+                            {{ cursos.nombre_cur}}   
+                        </td>
+                        <td>{{ cursos.horas}}</td>
+
+                        <td>{{ cursos.fabricante_id}}</td>
+
+                        <td>{{ cursos.categorias_id}}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
