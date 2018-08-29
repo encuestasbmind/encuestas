@@ -93,6 +93,6 @@ export class EditarCursosComponent implements OnInit {
 
     onSaveComplete(): void {
         this.cursosForm.reset();
-        this.router.navigate(['/cursos']);
+        this.router.navigate(['/curso']);
     }
 }
