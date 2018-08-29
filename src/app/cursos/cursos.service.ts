@@ -8,8 +8,6 @@ import { catchError, tap, map } from 'rxjs/operators';
     providedIn: 'root'
 })
 export class CursosService{
-
-   
     private cursosUrl = 'http://localhost/encuestas/api/curso/read.php';
     constructor(private http: HttpClient) {}
 
@@ -28,6 +26,7 @@ export class CursosService{
 
     getOneCurso(id: number): Observable<ICursos>{
         const url = 'http://localhost/encuestas/api/curso/read_one.php?id='+id;
+        
         return this.http.get<ICursos>(url)
             .pipe(
                 tap(data => console.log('OneCurso: ' + JSON.stringify(data))),
@@ -44,10 +43,39 @@ export class CursosService{
         }
         console.error(errorMessage);
         return throwError(errorMessage);
-    }
+    }  
 
     
-   
+    salvarCurso(cursos: ICursos, idRecibido: number): Observable<ICursos> {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        console.log('idRecibido ' + idRecibido);
+        console.log('cursos en salvar cursos' + JSON.stringify(cursos))
+        if(idRecibido === 0){
+            return this.createCursos(cursos);
+        }
+        return this.actualizarCursos(cursos); 
+    }
 
+    private createCursos(cursos: ICursos): Observable<ICursos>{
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
+        const url = 'http://localhost/encuestas/api/curso/create.php';
+        console.log('Crear: ' + JSON.stringify(cursos));
+        return this.http.post<ICursos>(url, JSON.stringify(cursos), { headers: headers })
+            .pipe(
+                tap(data => console.log('Crear cursos: ' + JSON.stringify(data) )),
+                catchError(this.handleError)
+            );
+    }
 
+    private actualizarCursos(cursos: ICursos): Observable<ICursos>{
+        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const url = 'http://localhost/encuestas/api/curso/update.php';
+        console.log('Enviando ' + JSON.stringify(cursos));
+        return this.http.post<ICursos>(url, JSON.stringify(cursos), { headers: headers })
+                    .pipe(
+                        tap(() => console.log('Actualizar Cursos ' + cursos.id )),
+                        map(() => cursos), 
+                        catchError(this.handleError)
+                    );
+    }
 }

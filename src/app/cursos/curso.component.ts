@@ -3,7 +3,6 @@ import { ICursos } from './cursos';
 import { CursosService } from './cursos.service';
 
 @Component({
-    
     templateUrl: './curso.component.html'
 }) 
 
@@ -12,12 +11,10 @@ export class CursosComponent implements OnInit{
     cursos : ICursos[] = [];
     errorMessage: string; 
 
-    constructor(private CursosService: CursosService){
-        
+    constructor(private cursosService: CursosService){
     }
-
     ngOnInit(): void {
-        this.CursosService.getCursos().subscribe(
+        this.cursosService.getCursos().subscribe(
             cursos => {
                 this.cursos = cursos;
                 console.log(this.cursos);

@@ -4,11 +4,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-
 import { AppComponent } from './app.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { DetalleUsuarioComponent } from './usuarios/detalle-usuario.component';
 import { WelcomeComponent } from './home/welcome.component';
+import { EditarCursosComponent } from './cursos/cursos-editar.component';
 import { EditarUsuarioComponent } from './usuarios/usuario-editar.component';
 import { EventosComponent} from './eventos/eventos.component';
 import { DetalleEventosComponent } from './eventos/detalle-eventos.component';
@@ -28,6 +28,7 @@ import { DiligenciarEncuestaParcialComponent } from './encuesta-parcial/diligenc
     EditarUsuarioComponent,
     EventosComponent,
     CursosComponent,
+    EditarCursosComponent,
     DetalleEventosComponent,
     EditareventoComponent, 
     EncuestaParcialComponent,
@@ -51,6 +52,7 @@ import { DiligenciarEncuestaParcialComponent } from './encuesta-parcial/diligenc
       { path: 'cursos/:id', component: DetalleCursosComponent },
       { path: 'editarUsuario/:id', component: EditarUsuarioComponent }, 
       { path: 'editarEvento/:id', component: EditareventoComponent }, 
+      { path: 'editarCursos/:id', component: EditarCursosComponent },
       { path: 'welcome', component: WelcomeComponent },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' }

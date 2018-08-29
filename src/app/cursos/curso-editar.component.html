@@ -1,0 +1,90 @@
+<div class="panel panel-primary">
+        <div class="panel-heading">
+            {{pageTitle}}
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal"
+                  [formGroup]="cursoForm"
+                        novalidate
+                        (ngSubmit)="saveCurso()" 
+                         >
+                <fieldset>
+    
+                    <div class="form-group"  >
+                        <label class="col-md-2 control-label" for="id">ID</label>
+                        <div class="col-md-8">
+                            <input class="form-control" 
+                                id="id" 
+                                type="text" 
+                                placeholder="ID (requerido)" 
+                                formControlName="id" />
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" >
+                        <label class="col-md-2 control-label" for="nombre_cur">Nombre Cur</label>
+                        <div class="col-md-8">
+                            <input class="form-control" 
+                                id="nombre_cur" 
+                                type="text" 
+                                placeholder="Nombre Cur (requerido)" 
+                                formControlName="nombre_cur" />
+                        </div>
+                    </div>
+    
+                    <div class="form-group" >
+                        <label class="col-md-2 control-label" for="horas">Horas</label>
+                        <div class="col-md-8">
+                            <input class="form-control" 
+                                id="horas" 
+                                type="text" 
+                                placeholder="Horas(requerido)" 
+                                formControlName="horas" />
+                        </div>
+                    </div>
+    
+                    <div class="form-group" >
+                            <label class="col-md-2 control-label" for="fabricante_id">Fabricante Id</label>
+                            <div class="col-md-8">
+                                <input class="form-control" 
+                                    id="fabricante_id" 
+                                    type="text" 
+                                    placeholder="Fabricante Id (requerido)" 
+                                    formControlName="fabricante_id" />
+                            </div>
+                        </div>      
+    
+                        <div class="form-group" >
+                                <label class="col-md-2 control-label" for="Categorias_id">Categorias Id</label>
+                                <div class="col-md-8">
+                                    <input class="form-control" 
+                                        id="Categorias_id" 
+                                        type="text" 
+                                        placeholder="Categorias Id(requerido)" 
+                                        formControlName="Categorias_id" />
+                                </div>
+                        </div>                               
+                        <div class="form-group">
+                            <div class="col-md-4 col-md-offset-2">
+                                <span>
+                                    <button class="btn btn-primary"
+                                        type="submit"
+                                        style="width:80px;margin-right:10px"
+                                        >
+                                        Guardar
+                                    </button>                                
+                                </span>
+                                <span>
+                                    <a class="btn btn-default"
+                                       style="width:80px" 
+                                       [routerLink]="['/curso']">
+                                        Cancelar
+                                    </a>
+                                </span>
+                            </div>
+                        </div>                    
+                </fieldset>
+            </form>
+            <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
+        </div>
+    </div> 

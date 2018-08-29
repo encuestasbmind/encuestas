@@ -12,8 +12,7 @@ export class EventosComponent implements OnInit{
     eventos : IEvento[] = [];
     errorMessage: string; 
 
-    constructor(private eventosService: EventosService){
-        
+    constructor(private eventosService: EventosService){   
     }
 
     ngOnInit(): void {

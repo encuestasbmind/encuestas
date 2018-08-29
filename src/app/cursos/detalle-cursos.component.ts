@@ -11,7 +11,7 @@ import { CursosService } from './cursos.service';
 export class DetalleCursosComponent implements OnInit {
   pageTitle: string = 'Detalle de eventos';
   errorMessage = '';
-  curso: ICursos
+  cursos: ICursos
 
   constructor(private route: ActivatedRoute, 
               private router: Router, 
@@ -25,7 +25,7 @@ export class DetalleCursosComponent implements OnInit {
 
   getCurso(id: number) {
     this.cursosService.getCurso(id).subscribe(
-      curso => this.curso = curso, 
+      curso => this.cursos = curso, 
       error => this.errorMessage = <any>error);
   }
 

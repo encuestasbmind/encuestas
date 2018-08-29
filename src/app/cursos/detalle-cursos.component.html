@@ -1,10 +1,11 @@
 <div class='card'
      *ngIf='cursos'>
     <div>
-        {{pageTitle + ': ' + curso.curso}}
+        {{pageTitle + ': ' + cursos.curso}}
     </div>
 
     <div class='card-body'>
+
         <div class='row'>
 
             <div class='col-md-8'>
@@ -14,35 +15,35 @@
                     <div class='col-md-4'>
                         <h4>Curso:</h4>
                     </div>
-                    <div class='col-md-8'>{{curso.cursos}}</div>
+
+                    <div class='col-md-8'>{{cursos.curso}}</div>
+
                 </div>
 
 
                 <div class='row'>
                     <div class='col-md-4'>Nombre Cur:</div>
-                    <div class='col-md-8'>{{curso.nombre_cur}}</div>
+                    <div class='col-md-8'>{{cursos.nombre_cur}}</div>
                 </div>
 
 
                 <div class='row'>
                     <div class='col-md-4'>Horas:</div>
-                    <div class='col-md-8'>{{curso.horas}}</div>
+                    <div class='col-md-8'>{{cursos.horas}}</div>
                 </div>
 
 
                 <div class='row'>
                     <div class='col-md-4'>Fabricante ID:</div>
-                    <div class='col-md-8'>{{curso.fabricante_id}}</div>
+                    <div class='col-md-8'>{{cursos.fabricante_id}}</div>
                 </div>
 
 
 
                 <div class='row'>
                     <div class='col-md-4'>Categorias ID:</div>
-                    <div class='col-md-8'>{{curso.categorias_id}}</div>
+                    <div class='col-md-8'>{{cursos.categorias_id}}</div>
                 </div>
-
-
 
             </div>
         </div>
@@ -54,5 +55,12 @@
                 style='width:80px'>
             <i class='fa fa-chevron-left'></i> Atrás
         </button>
+
+        <a class="btn btn-primary"
+           style="width:80px;margin-left:10px"
+           [routerLink]="['/editarCursos', cursos.id]">
+            Editar
+        </a>
+        
     </div>
 </div>
