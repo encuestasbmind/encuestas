@@ -22,9 +22,20 @@ export class EncuestaParcialService{
                 );
     }
 
+    crearEncuestaParcial(p: any): Observable<any>{
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
+        const url = 'http://localhost/encuestas/api/respuestas/createparcial.php';
+        console.log('Crear: ' + JSON.stringify(p));
+        return this.http.post(url, JSON.stringify(p), { headers: headers })
+            .pipe(
+                tap(data => console.log('Crear Encuesta Parcial: ' + JSON.stringify(data) )),
+                catchError(this.handleError)
+            );
+
+    }
+
     private handleError(err) {
-        // in a real world app, we may send the server to some remote logging infrastructure
-        // instead of just logging it to the console
+
         let errorMessage: string;
         if (err.error instanceof ErrorEvent) {
           // A client-side or network error occurred. Handle it accordingly.
