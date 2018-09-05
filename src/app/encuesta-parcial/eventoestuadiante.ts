@@ -1,4 +1,4 @@
-export interface IEventoEstudiante  {
+export interface IEventoEstudiante{
     id: string; 
     eveestud: string; 
     eventoid: string; 

@@ -19,6 +19,7 @@ import { CursosComponent } from './cursos/curso.component';
 import { InstructorComponent } from './instructor/instructor.component';
 import { DetalleCursosComponent } from './cursos/detalle-cursos.component';
 import { EncuestaParcialComponent } from './encuesta-parcial/encuesta-parcial.component';
+import { EncuestaFinalComponent } from './encuesta-final/encuesta-final.component';
 import { DiligenciarEncuestaParcialComponent } from './encuesta-parcial/diligenciar-encuesta-parcial.component';
 
 
@@ -37,6 +38,7 @@ import { DiligenciarEncuestaParcialComponent } from './encuesta-parcial/diligenc
     InstructorComponent,
     EditarInstructorComponent,
     DetalleInstructorComponent, 
+    EncuestaFinalComponent,
     EncuestaParcialComponent,
     DetalleCursosComponent,
     DiligenciarEncuestaParcialComponent
@@ -52,6 +54,7 @@ import { DiligenciarEncuestaParcialComponent } from './encuesta-parcial/diligenc
       { path: 'usuarios', component: UsuariosComponent }, 
       { path: 'eventos', component: EventosComponent},
       { path: 'EncuestaParcial', component: EncuestaParcialComponent},
+      { path: 'EncuestaFinal', component: EncuestaFinalComponent},
       { path: 'instructor', component: InstructorComponent },
       { path: 'detalleencuestaparcial/:eventoid', component: DiligenciarEncuestaParcialComponent },
       { path: 'usuarios/:id', component: DetalleUsuarioComponent },
