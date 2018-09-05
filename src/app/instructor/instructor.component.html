@@ -1,0 +1,62 @@
+<div class='card'>
+    <div class='card-header'>
+        {{pageTitle}}
+
+        <a class="btn btn-primary" style="width:120px;margin-left:10px" 
+        [routerLink]="['/editarInstructor', 0]">
+         Crear Instructor
+        </a>
+    </div>
+    <div class='card-body'>
+        <div class='row'>
+            <div class='col-md-2'><h4>Filtrar:</h4></div>
+            <div class='col-md-4'>
+                <input type='text' />
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-md-6'>
+                Filtrado por: 
+            </div>
+        </div>
+
+        
+        <div class='table-responsive'>
+            <table class='table' *ngIf='instructor && instructor.length'>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre Inst</th>
+                        <th>Apellidos Inst</th>
+                        <th>Celular Int</th>
+                        <th>Fijo Inst</th>
+                        <th>Email 1</th>
+                        <th>Email 2</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let instructor of instructor'>
+                        <td>
+                            <a [routerLink]="['/instructor', instructor.id]">
+                                {{ instructor.id }}
+                            </a>
+                        </td>
+                        <td>{{ instructor.nombre_inst}}</td>
+
+                        <td>{{ instructor.apellidos_inst}}</td>
+
+                        <td>{{ instructor.celular_inst}}</td>
+
+                        <td>{{ instructor.fijo_inst}}</td>
+
+                        <td>{{ instructor.email_1}}</td>
+
+                        <td>{{ instructor.email_2}}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,116 @@
+<div class="panel panel-primary">
+
+    <div class="panel-heading">
+        {{pageTitle}}
+    </div>
+    
+    <div class="panel-body">
+        <form class="form-horizontal"
+              [formGroup]="instructorForm"
+                    novalidate
+                    (ngSubmit)="saveInstructor()" 
+                     >
+            <fieldset>
+
+                <div class="form-group"  >
+                    <label class="col-md-2 control-label" for="id">ID</label>
+                    <div class="col-md-8">
+                        <input class="form-control" 
+                            id="id" 
+                            type="text" 
+                            placeholder="ID (requerido)" 
+                            formControlName="id" />
+                    </div>
+                </div>
+                
+                <div class="form-group" >
+                    <label class="col-md-2 control-label" for="nombre_inst">Nombre Inst</label>
+                    <div class="col-md-8">
+                        <input class="form-control" 
+                            id="nombre_inst" 
+                            type="text" 
+                            placeholder="Nombre Inst (requerido)" 
+                            formControlName="nombre_inst" />
+                    </div>
+                </div>
+
+                <div class="form-group" >
+                    <label class="col-md-2 control-label" for="apellidos_inst">Apellidos Inst</label>
+                    <div class="col-md-8">
+                        <input class="form-control" 
+                            id="apellidos_inst" 
+                            type="text" 
+                            placeholder="Apellidos Inst (requerido)" 
+                            formControlName="apellidos_inst" />
+                    </div>
+                </div>
+
+                <div class="form-group" >
+                        <label class="col-md-2 control-label" for="celular_inst">Celular Inst</label>
+                        <div class="col-md-8">
+                            <input class="form-control" 
+                                id="celular_inst" 
+                                type="text" 
+                                placeholder="Celular Inst (requerido)" 
+                                formControlName="celular_inst" />
+                        </div>
+                    </div>      
+
+                    <div class="form-group" >
+                            <label class="col-md-2 control-label" for="fijo_inst">Fijo Inst</label>
+                            <div class="col-md-8">
+                                <input class="form-control" 
+                                    id="fijo_inst" 
+                                    type="text" 
+                                    placeholder="Fijo Inst (requerido)" 
+                                    formControlName="fijo_inst"/>
+                            </div>
+                    </div>                               
+  
+
+                    <div class="form-group" >
+                        <label class="col-md-2 control-label" for="email_1">Email 1</label>
+                        <div class="col-md-8">
+                            <input class="form-control" 
+                                id="email_1" 
+                                type="text" 
+                                placeholder="Email 1 (requerido)" 
+                                formControlName="email_1"/>
+                        </div>
+                </div>  
+
+                <div class="form-group" >
+                    <label class="col-md-2 control-label" for="email_2">Email 2</label>
+                    <div class="col-md-8">
+                        <input class="form-control" 
+                            id="email_2" 
+                            type="text" 
+                            placeholder="Email 2 (requerido)" 
+                            formControlName="email_2"/>
+                    </div>
+            </div>  
+
+                    <div class="form-group">
+                        <div class="col-md-4 col-md-offset-2">
+                            <span>
+                                <button class="btn btn-primary"
+                                    type="submit"
+                                    style="width:80px;margin-right:10px"
+                                    >
+                                    Guardar
+                                </button>                                
+                            </span>
+                            <span>
+                                <a class="btn btn-default"
+                                   style="width:80px" 
+                                   [routerLink]="['/instructor']">
+                                    Cancelar
+                                </a>
+                            </span>
+                        </div>
+                    </div>                    
+            </fieldset>
+        </form>
+        <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
+    </div>
+</div>
