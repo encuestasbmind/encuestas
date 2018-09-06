@@ -26,7 +26,6 @@ export class EncuestaParcialComponent{
             evento => { 
                     this.evento = evento;
                     if(this.evento.id){
-                        let validador = 1; 
                         let currentDate = new Date();
                         var parts =this.evento.fecha_inicio.split('-');
                         var initialDate = new Date(+parts[0], +parts[1] - 1, +parts[2]); 
