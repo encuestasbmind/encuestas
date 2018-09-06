@@ -22,8 +22,28 @@ export class EncuestaParcialComponent{
 
     validarRealizarEncuesta(): void{
         this.errorMessage = '';
-        console.log('Iniciar validación de la encuesta con parametros ' + this.eventoId + ' ' + this.identificacion );
-        this.getEventoEstudiante(this.eventoId);
+        this.eventoService.getOneEvento(+this.eventoId).subscribe(
+            evento => { 
+                    this.evento = evento;
+                    if(this.evento.id){
+                        let validador = 1; 
+                        let currentDate = new Date();
+                        var parts =this.evento.fecha_inicio.split('-');
+                        var initialDate = new Date(+parts[0], +parts[1] - 1, +parts[2]); 
+                        var timeDiff = Math.abs(currentDate.getTime() - initialDate.getTime());
+                        var daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+                        if(this.evento.estado_evento==='1'|| daysDiff===2){
+                                this.router.navigate(['/detalleencuestaparcial/'+this.evento.id]);
+                        }else{
+                            this.errorMessage = 'El evento no se encuentra habilitado o no se encuentra en el segundo día';
+                        }
+                    }else{
+                        this.errorMessage = 'El evento ingresado no existe';
+                    };
+            },
+            error => this.errorMessage = <any>error);
+
+        
     }
 
     getEventoEstudiante(eventoId: string): void{
@@ -42,6 +62,10 @@ export class EncuestaParcialComponent{
                 error => this.errorMessage = <any>error);
     }
 
-
+    onEventoRetrieved(evento: IEvento): void{
+        this.evento = evento; 
+        console.log("Espacio para validaciones. Evento recibido " + JSON.stringify(this.evento) );
+        this.getEventoEstudiante(this.eventoId);
+    }
 
 }
