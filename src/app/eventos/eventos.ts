@@ -9,4 +9,5 @@ export interface IEvento  {
     estado_id: string;
     ciudad_id: string;
     pais_id: string;
+    estado_evento: string 
 }
