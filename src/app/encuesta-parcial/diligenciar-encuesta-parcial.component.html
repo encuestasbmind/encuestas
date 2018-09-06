@@ -3,6 +3,38 @@
         Diligenciar Encuesta parcial
     </div>
     <div class='card-body'>
+        
+        <div>
+                <p>Como parte de nuestro proceso de mejora continua, Bmind hace llegar a ustedes esta encuesta de satisfacción. Elija de la lista las respuestas correspondientes. </p>
+                <p></p>
+                <p>Los resultados de la evaluación son confidenciales y son revisados por nuestro Departamento de Calidad, en aras de un mejor servicio</p>
+        </div>
+        <p></p>
+        <div class='row'>
+                <div class='col-md-2'>Curso:</div>
+                <div class='col-md-3'>
+                    <input type='text' [(ngModel)]='curso' />
+                </div>
+        </div>
+        <div class='row'>
+                <div class='col-md-2'>Id:</div>
+                <div class='col-md-3'>
+                    <input type='text' [(ngModel)]='eventoId' />
+                </div>
+        </div>
+        <div class='row'>
+                <div class='col-md-2'>Instructor:</div>
+                <div class='col-md-3'>
+                    <input type='text' [(ngModel)]='instructor' />
+                </div>
+        </div>
+        <div class='row'>
+                <div class='col-md-2'>Fecha:</div>
+                <div class='col-md-3'>
+                    <input type='text' [(ngModel)]='fecha' />
+                </div>
+        </div>
+        <p></p>
         <form novalidate
               autocomplete="off"
               (ngSubmit)="guardarEncuesta()" 

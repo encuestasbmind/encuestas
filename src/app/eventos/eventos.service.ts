@@ -80,4 +80,8 @@ export class EventosService{
                         catchError(this.handleError)
                     );
     }
+
+    public getDescriptoresEvento(){
+        
+    }
 }

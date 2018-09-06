@@ -17,6 +17,13 @@ export class DiligenciarEncuestaParcialComponent implements OnInit{
     errorMessage: string;
     encuestaParcialForm: FormGroup;
 
+    //Valores para encabezado 
+    curso: string; 
+    eventoId: string; 
+    instructor: string;
+    fecha: string; 
+
+
     private sub: Subscription;
 
     constructor(private fb: FormBuilder, 
@@ -47,6 +54,13 @@ export class DiligenciarEncuestaParcialComponent implements OnInit{
                 this.encuestaEditada = id;
             }
         );
+
+        
+        this.eventoId = '1';
+        this.curso = 'BASE DE DATOS';
+        this.instructor = 'JOHAN'; 
+        this.fecha = '2018-09-06';
+
     }
 
     guardarEncuesta(): void {
