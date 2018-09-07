@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { IEvento} from "./eventos";
-
 import { Subscription } from "rxjs";
 import { ActivatedRoute, Router } from "@angular/router";
 import { EventosService } from './eventos.service';
@@ -44,7 +43,8 @@ export class EditareventoComponent implements OnInit{
             tipo_delivery_id: '',
             estado_id: '',
             ciudad_id:'',
-            pais_id: ''
+            pais_id: '',
+            estado_evento:''
 
         });
 
@@ -86,7 +86,8 @@ export class EditareventoComponent implements OnInit{
                 tipo_delivery_id: this.evento.tipo_delivery_id ,
                 estado_id:this.evento.estado_id ,
                 ciudad_id:this.evento.ciudad_id ,
-                pais_id: this.evento.pais_id ,
+                pais_id: this.evento.pais_id , 
+                estado_evento: this.evento.estado_evento ,   
             });
         }
 
