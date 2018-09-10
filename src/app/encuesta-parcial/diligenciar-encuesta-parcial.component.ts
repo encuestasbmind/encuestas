@@ -79,6 +79,6 @@ export class DiligenciarEncuestaParcialComponent implements OnInit{
 
     onSaveComplete(): void {
         this.encuestaParcialForm.reset();
-        this.router.navigate(['/welcome']);
+        this.router.navigate(['/finalizarencuestaparcial']);
     }
 }
