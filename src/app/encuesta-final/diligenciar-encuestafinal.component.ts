@@ -3,36 +3,41 @@ import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn, FormA
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Observable, Subscription, fromEvent, merge, of } from 'rxjs';
-import { EncuestaParcialService } from "./encuesta-parcial.service";
+import { EncuestaFinalService } from "./encuesta-final.service";
 
 @Component({
-    selector: 'diligenciar-encuestas-encuestaparcial', 
-    templateUrl: './diligenciar-encuesta-parcial.component.html'
+    selector: 'diligenciar-encuestas-encuestafinal', 
+    templateUrl: './diligenciar-encuestafinal.component.html'
 }) 
-export class DiligenciarEncuestaParcialComponent implements OnInit{
+export class DiligenciarEncuestaFinalComponent implements OnInit{
 
     respuestaSiNo = [{'id':1, 'name':'Si'},
                      {'id':2, 'name':'No'}];
-    encuestaEditadas: any; 
+    encuestaEditada: any; 
     errorMessage: string;
-    encuestaParcialForm: FormGroup;
+    encuestaFinalForm: FormGroup;
 
     //Valores para encabezado 
     curso: string; 
-    eventoId: string; 
     instructor: string;
-    fecha: string; 
-
+    empresa: string;
+    cargo:string;
+    email:string;
+    eventoId: string; 
+    fecha:string;
+    quiendiligencia:string;
+    telefono:string;
+    
 
     private sub: Subscription;
 
     constructor(private fb: FormBuilder, 
                 private route: ActivatedRoute,
                 private router: Router,
-                private encuestaParcialService: EncuestaParcialService) { }
+                private encuestaFinalService: EncuestaFinalService) { }
 
     ngOnInit(): void {
-        this.encuestaParcialForm = this.fb.group(
+        this.encuestaFinalForm = this.fb.group(
             {
                 eventoid: '',
                 rtasSiNo_1:'', 
@@ -51,34 +56,38 @@ export class DiligenciarEncuestaParcialComponent implements OnInit{
         this.sub = this.route.params.subscribe(
             params => {
                 const id = +params['eventoid'];
-                this.encuestaEditadas = id;
+                this.encuestaEditada = id;
             }
         );
 
         
         this.eventoId = '1';
-        this.curso = 'BASE DE DATOS';
+        this.curso = 'ANGULAR';
         this.instructor = 'JOHAN'; 
         this.fecha = '2018-09-06';
-    }
+        this.cargo='APRENDIZ';
+        this.empresa='BMIND';
+        this.email='Johan@bmind.com';
+        this.quiendiligencia='Johan Davila';
+        this.telefono='33132131';
 
+    }
     guardarEncuesta(): void {
-        this.encuestaParcialForm.patchValue({
-            eventoid: this.encuestaEditadas
+        this.encuestaFinalForm.patchValue({
+            eventoid: this.encuestaEditada
         });
-        console.log('Saved: ' + JSON.stringify(this.encuestaParcialForm.value));
-        console.log('Encuesta editada ' + this.encuestaEditadas);
-        const p = { ...this.encuestaEditadas, ...this.encuestaParcialForm.value };
+        console.log('Saved: ' + JSON.stringify(this.encuestaFinalForm.value));
+        console.log('Encuesta editada ' + this.encuestaEditada);
+        const p = { ...this.encuestaEditada, ...this.encuestaFinalForm.value };
         console.log( JSON.stringify(p) );
-        this.encuestaParcialService.crearEncuestaParcial(p)
+        this.encuestaFinalService.crearEncuestaFinal(p)
             .subscribe(
                 () => this.onSaveComplete(),
                 (error: any) => this.errorMessage = <any>error
             );        
     }
-
     onSaveComplete(): void {
-        this.encuestaParcialForm.reset();
+        this.encuestaFinalForm.reset();
         this.router.navigate(['/welcome']);
     }
 }

@@ -1,0 +1,218 @@
+<div class='card'>
+    <div class='card-header'>
+        Diligenciar Encuesta Final 
+    </div>
+    <div class='card-body'>
+
+        <div>
+            <p>Como parte de nuestro proceso de mejora continua, Bmind hace llegar a ustedes esta encuesta de
+                satisfacción. Elija de la lista las respuestas correspondientes. </p>
+            <p></p>
+            <p>Los resultados de la evaluación son confidenciales y son revisados por nuestro Departamento de Calidad,
+                en aras de un mejor servicio</p>
+        </div>
+        <p></p>
+        <div class='row'>
+            <div class='col-md-2'>Curso:</div>
+            <div class='col-md-3'>
+                <input type='text'
+                       [(ngModel)]='curso' />
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-md-2'>Id:</div>
+            <div class='col-md-3'>
+                <input type='text'
+                       [(ngModel)]='eventoId' />
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-md-2'>Instructor:</div>
+            <div class='col-md-3'>
+                <input type='text'
+                       [(ngModel)]='instructor' />
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-md-2'>Fecha:</div>
+            <div class='col-md-3'>
+                <input type='text'
+                       [(ngModel)]='fecha' />
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-md-2'>Quien Diligencia:</div>
+            <div class='col-md-3'>
+                <input type='text'
+                       [(ngModel)]='quiendiligencia' />
+            </div>
+        </div>
+    
+        <div class='row'>
+            <div class='col-md-2'>Telefono:</div>
+            <div class='col-md-3'>
+                <input type='text'
+                       [(ngModel)]='telefono' />
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class='col-md-2'>Email:</div>
+            <div class='col-md-3'>
+                <input type='text'
+                       [(ngModel)]='email' />
+            </div>
+        </div>
+        <p></p>
+        <form novalidate
+              autocomplete="off"
+              (ngSubmit)="guardarEncuesta()"
+              [formGroup]="encuestaParcialForm">
+
+            <div class="form-group row">
+                <label for="firstNameId">1. ¿La experiencia con el instructor ha sido positiva hasta
+                    el momento? </label>
+                <select class="form-control"
+                        id="rtaSiNo_1"
+                        formControlName="rtasSiNo_1"
+                        style="width:200px">
+                    <option *ngFor="let rtaSiNo_1 of respuestaSiNo"
+                            [value]="rtaSiNo_1.id">
+                        {{rtaSiNo_1.name}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label"
+                       for="comentarios1">¿Por qué?</label>
+                <div class="col-md-8">
+                    <textarea class="form-control"
+                              id="comentarios1"
+                              placeholder="Comentarios"
+                              rows=3
+                              formControlName="comentarios1">
+
+
+
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="firstNameId">2. ¿El personal que lo atendió desde su llegada fue amable y mostró actitud de
+                    servicio? </label>
+                <select class="form-control"
+                        id="rtaSiNo_2"
+                        formControlName="rtasSiNo_2"
+                        style="width:200px">
+                    <option *ngFor="let rtaSiNo_2 of respuestaSiNo"
+                            [value]="rtaSiNo_2.id">
+                        {{rtaSiNo_2.name}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label"
+                       for="comentarios2">¿Por qué?</label>
+                <div class="col-md-8">
+                    <textarea class="form-control"
+                              id="comentarios2"
+                              placeholder="Comentarios"
+                              rows=3
+                              formControlName="comentarios2">
+
+
+                        </textarea>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="firstNameId">3. ¿El centro educativo es cómodo y apto para el aprendizaje? </label>
+                <select class="form-control"
+                        id="rtaSiNo_3"
+                        formControlName="rtasSiNo_3"
+                        style="width:200px">
+                    <option *ngFor="let rtaSiNo_3 of respuestaSiNo"
+                            [value]="rtaSiNo_3.id">
+                        {{rtaSiNo_3.name}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label"
+                       for="comentarios3">¿Por qué?</label>
+                <div class="col-md-8">
+                    <textarea class="form-control"
+                              id="comentarios3"
+                              placeholder="Comentarios"
+                              rows=3
+                              formControlName="comentarios3">
+                        </textarea>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="firstNameId">4. ¿El ambiente técnico funciona correctamente? </label>
+                <select class="form-control"
+                        id="rtaSiNo_4"
+                        formControlName="rtasSiNo_4"
+                        style="width:200px">
+                    <option *ngFor="let rtaSiNo_4 of respuestaSiNo"
+                            [value]="rtaSiNo_4.id">
+                        {{rtaSiNo_4.name}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label"
+                       for="comentarios4">¿Por qué?</label>
+                <div class="col-md-8">
+                    <textarea class="form-control"
+                              id="comentarios4"
+                              placeholder="Comentarios"
+                              rows=3
+                              formControlName="comentarios4">
+                        </textarea>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="firstNameId">5. ¿Está conforme con nuestro servicio de refrigerio? </label>
+                <select class="form-control"
+                        id="rtaSiNo_5"
+                        formControlName="rtasSiNo_5"
+                        style="width:200px">
+                    <option *ngFor="let rtaSiNo_5 of respuestaSiNo"
+                            [value]="rtaSiNo_5.id">
+                        {{rtaSiNo_5.name}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label"
+                       for="comentarios5">¿Por qué?</label>
+                <div class="col-md-8">
+                    <textarea class="form-control"
+                              id="comentarios5"
+                              placeholder="Comentarios"
+                              rows=3
+                              formControlName="comentarios5">
+                        </textarea>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-1">
+                    <button class="btn btn-primary"
+                            style='width:180px'
+                            type="submit">
+                        Guardar encuesta
+                    </button>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+
+</div>
