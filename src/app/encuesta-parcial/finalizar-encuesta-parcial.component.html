@@ -1,0 +1,17 @@
+<div class='card'>
+    <div class='card-header'>
+            Encuesta parcial
+     </div>
+      <div class='card-body'>
+            <div class='row'>
+    |           <h6>Gracias por sus comentarios. </h6>
+             </div>
+             <p></p>
+             <button class='btn btn-primary' 
+                    (click)='aceptarEncuesta()'
+                    style='width:150px' >
+                Aceptar     
+            </button>      
+    </div>
+    <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
+</div>

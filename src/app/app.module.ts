@@ -21,6 +21,7 @@ import { DetalleCursosComponent } from './cursos/detalle-cursos.component';
 import { EncuestaParcialComponent } from './encuesta-parcial/encuesta-parcial.component';
 import { EncuestaFinalComponent } from './encuesta-final/encuesta-final.component';
 import { DiligenciarEncuestaParcialComponent } from './encuesta-parcial/diligenciar-encuesta-parcial.component';
+import { FinalizarEncuestaParcialComponent } from  './encuesta-parcial/finalizar-encuesta-parcial.component';
 
 
 @NgModule({
@@ -41,8 +42,8 @@ import { DiligenciarEncuestaParcialComponent } from './encuesta-parcial/diligenc
     EncuestaFinalComponent,
     EncuestaParcialComponent,
     DetalleCursosComponent,
-    DiligenciarEncuestaParcialComponent
-
+    DiligenciarEncuestaParcialComponent, 
+    FinalizarEncuestaParcialComponent
   ],
   imports: [
     BrowserModule, 
@@ -57,6 +58,7 @@ import { DiligenciarEncuestaParcialComponent } from './encuesta-parcial/diligenc
       { path: 'EncuestaFinal', component: EncuestaFinalComponent},
       { path: 'instructor', component: InstructorComponent },
       { path: 'detalleencuestaparcial/:eventoid', component: DiligenciarEncuestaParcialComponent },
+      { path: 'finalizarencuestaparcial', component: FinalizarEncuestaParcialComponent },
       { path: 'usuarios/:id', component: DetalleUsuarioComponent },
       { path: 'eventos/:id', component: DetalleEventosComponent },
       { path: 'cursos/:id', component: DetalleCursosComponent },
