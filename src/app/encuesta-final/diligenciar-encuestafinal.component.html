@@ -1,9 +1,8 @@
 <div class='card'>
     <div class='card-header'>
-        Diligenciar Encuesta Final 
+        Diligenciar Encuesta Final
     </div>
     <div class='card-body'>
-
         <div>
             <p>Como parte de nuestro proceso de mejora continua, Bmind hace llegar a ustedes esta encuesta de
                 satisfacción. Elija de la lista las respuestas correspondientes. </p>
@@ -11,7 +10,7 @@
             <p>Los resultados de la evaluación son confidenciales y son revisados por nuestro Departamento de Calidad,
                 en aras de un mejor servicio</p>
         </div>
-        <p></p>
+        <br>
         <div class='row'>
             <div class='col-md-2'>Curso:</div>
             <div class='col-md-3'>
@@ -47,7 +46,7 @@
                        [(ngModel)]='quiendiligencia' />
             </div>
         </div>
-    
+
         <div class='row'>
             <div class='col-md-2'>Telefono:</div>
             <div class='col-md-3'>
@@ -66,142 +65,286 @@
         <p></p>
         <form novalidate
               autocomplete="off"
-              (ngSubmit)="guardarEncuesta()"
-              [formGroup]="encuestaParcialForm">
+              (ngSubmit)="guardarEncuestas()"
+              [formGroup]="encuestaFinalForm">
+                <fieldset>
+                    <legend><th>1. Instructor</th>
+                        <table>
+                            <tr>
+                                 ¿Demostro el domino del tema?
+                                 <select class="form-control" id="rtas_1" formControlName="rtas_1" style="width:200px" >
+                                        <option *ngFor="let rtas_1 of respuesta" [value]="rtas_1.id">
+                                            {{rtas_1.name}}
+                                        </option>
+                                    </select>
+                        </tr>
+                                <tr>
+                                 ¿Tuvo un adecuado manejo didactivo?
+                                 <select class="form-control" id="rtas_2" formControlName="rtas_2" style="width:200px" >
+                                        <option *ngFor="let rtas_2 of respuesta" [value]="rtas_2.id">
+                                            {{rtas_2.name}}
+                                        </option>
+                                    </select>
+                            </tr>
 
-            <div class="form-group row">
-                <label for="firstNameId">1. ¿La experiencia con el instructor ha sido positiva hasta
-                    el momento? </label>
-                <select class="form-control"
-                        id="rtaSiNo_1"
-                        formControlName="rtasSiNo_1"
-                        style="width:200px">
-                    <option *ngFor="let rtaSiNo_1 of respuestaSiNo"
-                            [value]="rtaSiNo_1.id">
-                        {{rtaSiNo_1.name}}
-                    </option>
-                </select>
-            </div>
-            <div class="form-group row">
-                <label class="col-md-2 col-form-label"
-                       for="comentarios1">¿Por qué?</label>
-                <div class="col-md-8">
-                    <textarea class="form-control"
-                              id="comentarios1"
-                              placeholder="Comentarios"
-                              rows=3
-                              formControlName="comentarios1">
+                            <tr>
+                               ¿Los temas presentados lograron los objetivos del curso?
+                               <select class="form-control" id="rtas_3" formControlName="rtas_3" style="width:200px" >
+                                    <option *ngFor="let rtas_3 of respuesta" [value]="rtas_3.id">
+                                        {{rtas_3.name}}
+                                    </option>
+                                </select>
+                               </tr>
 
+                        </table>
+                    </legend>
+                </fieldset>
 
-
+             <tr>
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label"
+                           for="comentarios1">
+                        Comentarios y Sugerencias
+                    </label>
+                    <div class="col-md-8">
+                        <textarea class="form-control"
+                                  id="comentarios1"
+                                  placeholder="Comentarios"
+                                  rows=3
+                                  formControlName="comentarios1">
                     </textarea>
+                    </div>
                 </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="firstNameId">2. ¿El personal que lo atendió desde su llegada fue amable y mostró actitud de
-                    servicio? </label>
-                <select class="form-control"
-                        id="rtaSiNo_2"
-                        formControlName="rtasSiNo_2"
-                        style="width:200px">
-                    <option *ngFor="let rtaSiNo_2 of respuestaSiNo"
-                            [value]="rtaSiNo_2.id">
-                        {{rtaSiNo_2.name}}
-                    </option>
-                </select>
-            </div>
-            <div class="form-group row">
-                <label class="col-md-2 col-form-label"
-                       for="comentarios2">¿Por qué?</label>
-                <div class="col-md-8">
-                    <textarea class="form-control"
-                              id="comentarios2"
-                              placeholder="Comentarios"
-                              rows=3
-                              formControlName="comentarios2">
+             </tr>
 
 
+             <fieldset>
+                    <legend><th> 2. Centro Educativo</th>
+                        <table>
+                            <tr>
+                                 ¿Las instalaciones se encontraron limpias y en buenas condiciones ?
+                                 <select class="form-control" id="rtas_4" formControlName="rtas_4" style="width:200px" >
+                                        <option *ngFor="let rtas_4 of respuesta" [value]="rtas_4.id">
+                                            {{rtas_4.name}}
+                                        </option>
+                                    </select>
+                        </tr>
+                                <tr>
+                                 ¿El aula de clase es comoda y favorable para el aprendizaje?
+                                 <select class="form-control" id="rtas_5" formControlName="rtas_5" style="width:200px" >
+                                        <option *ngFor="let rtas_5 of respuesta" [value]="rtas_5.id">
+                                            {{rtas_5.name}}
+                                        </option>
+                                    </select>
+                            </tr>
+                        </table>
+                    </legend>
+                </fieldset>
+
+             <tr>
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label"
+                           for="comentarios2">
+                        <th>Comentarios y Sugerencias</th>
+                    </label>
+                    <div class="col-md-8">
+                        <textarea class="form-control"
+                                  id="comentarios2"
+                                  placeholder="Comentarios"
+                                  rows=3
+                                  formControlName="comentarios2">
+                    </textarea>
+                    </div>
+                </div>
+             </tr>
+
+
+
+
+             <fieldset>
+                    <legend><th>3. Ambiente Tecnico (Equipo Soporte Tecnico)</th>
+                        <table>
+                            <tr>
+                                 ¿El ambiente de curso esta configurada de manera adecuada /Laboratorios,Maquina Fisica,Virtual?
+                                 <select class="form-control" id="rtas_6" formControlName="rtas_6" style="width:200px" >
+                                        <option *ngFor="let rtas_6 of respuesta" [value]="rtas_6.id">
+                                            {{rtas_6.name}}
+                                        </option>
+                                    </select>
+                        </tr>
+                                <tr>
+                                 ¿Los problemas tecnicos fueron resueltos oportunamente (si existieron)?
+                                 <select class="form-control" id="rtas_7" formControlName="rtas_7" style="width:200px" >
+                                        <option *ngFor="let rtas_7 of respuesta" [value]="rtas_7.id">
+                                            {{rtas_7.name}}
+                                        </option>
+                                    </select>
+                            </tr>
+
+                        <tr>
+                         ¿El equipo de soporte tecnicos estuvo disponible y fue diligencia?
+                         <select class="form-control" id="rtas_8" formControlName="rtas_8" style="width:200px" >
+                                <option *ngFor="let rtas_8 of respuesta" [value]="rtas_8.id">
+                                    {{rtas_8.name}}
+                                </option>
+                            </select>
+                    </tr>
+                        </table>
+                    </legend>
+                </fieldset>
+
+             <tr>
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label"
+                           for="comentarios3">
+                        Comentarios y Sugerencia
+                    </label>
+                    <div class="col-md-8">
+                        <textarea class="form-control"
+                                  id="comentarios3"
+                                  placeholder="Comentarios"
+                                  rows=3
+                                  formControlName="comentarios3">
+                    </textarea>
+                    </div>
+                </div>
+             </tr>
+
+
+             <fieldset>
+                    <legend><th> 4. Atencion y Servicio al Cliente(Cordinadora de Capacitacion)</th>
+                        <table>
+                            <tr>
+                                 ¿Fue informado de los procesos de capatacion(lista de asistencias, evaluaciones, horario de refrigeria)?
+                                 <select class="form-control" id="rtas_9" formControlName="rtas_9" style="width:200px" >
+                                        <option *ngFor="let rtas_9 of respuesta" [value]="rtas_9.id">
+                                            {{rtas_9.name}}
+                                        </option>
+                                    </select>
+                        </tr>
+                                <tr>
+                                 Sus inquietudes fueron resueltas de forma clara y oportuna
+                                 <select class="form-control" id="rtas_10" formControlName="rtas_10" style="width:200px" >
+                                        <option *ngFor="let rtas_10 of respuesta" [value]="rtas_10.id">
+                                            {{rtas_10.name}}
+                                        </option>
+                                    </select>
+                            </tr>
+
+                        <tr>
+                         ¿la persona que la atendio fue amable y cortes?
+                         <select class="form-control" id="rtas_11" formControlName="rtas_11" style="width:200px" >
+                                <option *ngFor="let rtas_11 of respuesta" [value]="rtas_11.id">
+                                    {{rtas_11.name}}
+                                </option>
+                            </select>
+                    </tr>
+                        </table>
+                    </legend>
+                </fieldset>
+
+             <tr>
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label"
+                           for="comentarios4">
+                        Comentarios y Sugerencias
+                    </label>
+                    <div class="col-md-8">
+                        <textarea class="form-control"
+                                  id="comentarios4"
+                                  placeholder="Comentarios"
+                                  rows=3
+                                  formControlName="comentarios4">
+                    </textarea>
+                    </div>
+                </div>
+             </tr>
+
+             <fieldset>
+                    <legend><th>5. Refrigeraciones</th>
+                        <table>
+                            <tr>
+                                 ¿Los refrigerios que se suministraron fueron agradables variados y de buena calidad?
+                                 <select class="form-control" id="rtas_12" formControlName="rtas_12" style="width:200px" >
+                                        <option *ngFor="let rtas_12 of respuesta" [value]="rtas_12.id">
+                                            {{rtas_12.name}}
+                                        </option>
+                                    </select>
+                        </tr>   
+                        </table>
+                    </legend>
+                </fieldset>
+
+             <tr>
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label"
+                           for="comentarios1">
+                        Comentarios y Sugerencias
+                    </label>
+                    <div class="col-md-8">
+                        <textarea class="form-control"
+                                  id="comentarios5"
+                                  placeholder="Comentarios"
+                                  rows=3
+                                  formControlName="comentarios5">
+                    </textarea>
+                    </div>
+                </div>
+             </tr>
+
+
+             <fieldset>
+                    <legend><th>6. General</th>
+                        <table>
+                            <tr>
+                                 ¿Tomaria otros Cursos en Bmind?
+                                 <select class="form-control" ID="rtas_13" formControlName="rtas_13" style="width:200px" >
+                                        <option *ngFor="let rtas_13 of respuestaSIoNO" [value]="rtas_13.ID">
+                                            {{rtas_13.Name}}
+                                        </option>
+                                    </select>
+                        </tr>
+                              
+                        </table>
+                    </legend>
+                </fieldset>
+
+             <tr>
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label"
+                           for="comentarios1">
+                        ¿Por que?
+                    </label>
+                    <div class="col-md-8">
+                        <textarea class="form-control"
+                                  id="comentarios1"
+                                  placeholder="Comentarios"
+                                  rows=3
+                                  formControlName="comentarios1">
+                    </textarea>
+                    </div>
+                </div>
+             </tr>
+
+             <tr>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label"
+                               for="comentarios1">
+                            Comentarios y Sugerencias
+                        </label>
+                        <div class="col-md-8">
+                            <textarea class="form-control"
+                                      id="comentarios1"
+                                      placeholder="Comentarios"
+                                      rows=3
+                                      formControlName="comentarios1">
                         </textarea>
-                </div>
-            </div>
+                        
+                        </div>
+                    </div>
+                 </tr>
 
-            <div class="form-group row">
-                <label for="firstNameId">3. ¿El centro educativo es cómodo y apto para el aprendizaje? </label>
-                <select class="form-control"
-                        id="rtaSiNo_3"
-                        formControlName="rtasSiNo_3"
-                        style="width:200px">
-                    <option *ngFor="let rtaSiNo_3 of respuestaSiNo"
-                            [value]="rtaSiNo_3.id">
-                        {{rtaSiNo_3.name}}
-                    </option>
-                </select>
-            </div>
-            <div class="form-group row">
-                <label class="col-md-2 col-form-label"
-                       for="comentarios3">¿Por qué?</label>
-                <div class="col-md-8">
-                    <textarea class="form-control"
-                              id="comentarios3"
-                              placeholder="Comentarios"
-                              rows=3
-                              formControlName="comentarios3">
-                        </textarea>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="firstNameId">4. ¿El ambiente técnico funciona correctamente? </label>
-                <select class="form-control"
-                        id="rtaSiNo_4"
-                        formControlName="rtasSiNo_4"
-                        style="width:200px">
-                    <option *ngFor="let rtaSiNo_4 of respuestaSiNo"
-                            [value]="rtaSiNo_4.id">
-                        {{rtaSiNo_4.name}}
-                    </option>
-                </select>
-            </div>
-            <div class="form-group row">
-                <label class="col-md-2 col-form-label"
-                       for="comentarios4">¿Por qué?</label>
-                <div class="col-md-8">
-                    <textarea class="form-control"
-                              id="comentarios4"
-                              placeholder="Comentarios"
-                              rows=3
-                              formControlName="comentarios4">
-                        </textarea>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="firstNameId">5. ¿Está conforme con nuestro servicio de refrigerio? </label>
-                <select class="form-control"
-                        id="rtaSiNo_5"
-                        formControlName="rtasSiNo_5"
-                        style="width:200px">
-                    <option *ngFor="let rtaSiNo_5 of respuestaSiNo"
-                            [value]="rtaSiNo_5.id">
-                        {{rtaSiNo_5.name}}
-                    </option>
-                </select>
-            </div>
-            <div class="form-group row">
-                <label class="col-md-2 col-form-label"
-                       for="comentarios5">¿Por qué?</label>
-                <div class="col-md-8">
-                    <textarea class="form-control"
-                              id="comentarios5"
-                              placeholder="Comentarios"
-                              rows=3
-                              formControlName="comentarios5">
-                        </textarea>
-                </div>
-            </div>
-
-            <div class="form-group row">
+             <div class="form-group row">
                 <div class="col-md-1">
                     <button class="btn btn-primary"
                             style='width:180px'
@@ -210,9 +353,6 @@
                     </button>
                 </div>
             </div>
-
-
         </form>
     </div>
-
 </div>

@@ -11,8 +11,18 @@ import { EncuestaFinalService } from "./encuesta-final.service";
 }) 
 export class DiligenciarEncuestaFinalComponent implements OnInit{
 
-    respuestaSiNo = [{'id':1, 'name':'Si'},
-                     {'id':2, 'name':'No'}];
+    respuesta = [{'id':1, 'name':'Totalmente de Acuerdo'},
+    {'id':2, 'name':'De Acuerdo'},
+    {'id':3, 'name':'Indeciso'},
+    {'id':4, 'name':'Desacuerdo'},
+    {'id':5, 'name':'Totalmente en Desacuerdo'},
+];
+
+    respuestaSIoNO = [{'ID':1, 'Name':'Si'},
+                      {'ID':2, 'Name':'No'},
+                     ];
+                     
+                     
     encuestaEditada: any; 
     errorMessage: string;
     encuestaFinalForm: FormGroup;
@@ -34,21 +44,30 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
     constructor(private fb: FormBuilder, 
                 private route: ActivatedRoute,
                 private router: Router,
-                private encuestaFinalService: EncuestaFinalService) { }
+                private encuestaFinalService: EncuestaFinalService){ }
 
     ngOnInit(): void {
         this.encuestaFinalForm = this.fb.group(
             {
                 eventoid: '',
-                rtasSiNo_1:'', 
+                rtas_1:'', 
+                rtas_2:'', 
+                rtas_3:'', 
+                rtas_4:'',
+                rtas_5:'', 
+                rtas_6:'', 
+                rtas_7:'', 
+                rtas_8:'', 
+                rtas_9:'',
+                rtas_10:'', 
+                rtas_11:'',
+                rtas_12:'', 
+                rtas_13:'', 
+                
                 comentarios1: '',
-                rtasSiNo_2:'', 
                 comentarios2: '',
-                rtasSiNo_3:'', 
                 comentarios3: '',                                
-                rtasSiNo_4:'', 
                 comentarios4: '',
-                rtasSiNo_5:'', 
                 comentarios5: ''                               
             }
         );
@@ -72,12 +91,12 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
         this.telefono='33132131';
 
     }
-    guardarEncuesta(): void {
+    guardarEncuestas(): void {
         this.encuestaFinalForm.patchValue({
             eventoid: this.encuestaEditada
         });
         console.log('Saved: ' + JSON.stringify(this.encuestaFinalForm.value));
-        console.log('Encuesta editada ' + this.encuestaEditada);
+        console.log('Encuesta Editada ' + this.encuestaEditada);
         const p = { ...this.encuestaEditada, ...this.encuestaFinalForm.value };
         console.log( JSON.stringify(p) );
         this.encuestaFinalService.crearEncuestaFinal(p)

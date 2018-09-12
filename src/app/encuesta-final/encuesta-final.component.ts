@@ -58,7 +58,7 @@ export class EncuestaFinalComponent {
                           console.log('Recibido: ' + this.eventoEstudiante.eventoid + this.identificacion)
                           if (this.eventoEstudiante.eventoid) {
                             console.log('Datos validos');
-                            this.router.navigate(['/detalleencuestaFinal/' + this.eventoEstudiante.eventoid]);
+                            this.router.navigate(['/detalleencuestafinal/' + this.eventoEstudiante.eventoid + this.identificacion]);
                         } else {
                             console.log('El evento ingresado no existe');
                             this.errorMessage = 'El evento ingresado no existe';
