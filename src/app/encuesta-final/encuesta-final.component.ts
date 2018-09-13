@@ -36,21 +36,19 @@ export class EncuestaFinalComponent {
                     console.log('Iniciar validación de la encuesta con parametros ' + this.eventoId + ' ' + this.identificacion);
                     this.getEventoEstudiantes(this.eventoId, this.identificacion);
 
-
                 } else {
                     this.errorMessage = 'El evento o estudiante ingresado no existe';
                 }
                 if(!this.evento.id==null){
-                    this.router.navigate(['/detalleencuestafinal/'+this.evento.id ]);
+                    this.router.navigate(['/detalleencuestafinal/'+this.evento.id]);
             }else{
                 this.errorMessage = 'El evento no se encuentra habilitado o no se encuentra en el segundo día';
             }
-
               }
                  );
-                      }
-        
-                  getEventoEstudiantes(eventoId: string, identificacion: string): void {
+                    }
+         
+                       getEventoEstudiantes(eventoId: string, identificacion: string): void {
 
                       this.encuestaFinalService.getEventoEstudiante(eventoId, identificacion).subscribe(
                        eventoEstudiante => {

@@ -1,0 +1,36 @@
+<div class="card-header">
+    {{pageTitle}}
+</div>
+<table>
+    <tr>
+        <button class='btn btn-outline-secondary'> Consultar</button><input type="text">
+
+        <button class='btn btn-outline-secondary'>Exportar en PDF</button>
+    </tr>
+</table>
+<input type="text" >
+
+<div class='card-body'>
+        <div class='row'>
+                <div class='col-md-2'><h4>Reportes:</h4></div>
+                <div class='col-md-4'>
+                    <input type='text' [(ngModel)]='eventoid'/>
+                </div>
+         </div>
+         <p></p>
+         <button class='btn btn-primary' 
+                (click)='getReportes()'
+                style='width:150px' >
+            Realizar Encuesta      
+        </button>      
+</div>
+
+
+<div>
+    <iframe width="70%"
+            height="500"
+            src="http://localhost/encuestas/app/reportes/reporteevento.php?eventoid=1" id="report">
+        </iframe>
+
+        
+</div>

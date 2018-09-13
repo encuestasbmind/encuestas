@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { DetalleUsuarioComponent } from './usuarios/detalle-usuario.component';
 import { DetalleInstructorComponent } from './instructor/detalle-instructor.component';
+import { ReporteComponent} from './reporte/reporte.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { EditarCursosComponent } from './cursos/cursos-editar.component';
 import { EditarUsuarioComponent } from './usuarios/usuario-editar.component';
@@ -23,6 +24,7 @@ import { EncuestaFinalComponent } from './encuesta-final/encuesta-final.componen
 import { DiligenciarEncuestaParcialComponent } from './encuesta-parcial/diligenciar-encuesta-parcial.component';
 import { DiligenciarEncuestaFinalComponent } from './encuesta-final/diligenciar-encuestafinal.component';
 import { FinalizarEncuestaParcialComponent } from  './encuesta-parcial/finalizar-encuesta-parcial.component';
+
 
 
 @NgModule({
@@ -45,7 +47,8 @@ import { FinalizarEncuestaParcialComponent } from  './encuesta-parcial/finalizar
     DetalleCursosComponent,
     DiligenciarEncuestaParcialComponent, 
     DiligenciarEncuestaFinalComponent,
-    FinalizarEncuestaParcialComponent
+    FinalizarEncuestaParcialComponent,
+    ReporteComponent
 
   ],
   imports: [
@@ -54,12 +57,13 @@ import { FinalizarEncuestaParcialComponent } from  './encuesta-parcial/finalizar
     ReactiveFormsModule,
     FormsModule, 
     RouterModule.forRoot([
-      { path: 'curso', component: CursosComponent }, 
+      { path: 'curso', component: CursosComponent },
       { path: 'usuarios', component: UsuariosComponent }, 
       { path: 'eventos', component: EventosComponent},
       { path: 'EncuestaParcial', component: EncuestaParcialComponent},
       { path: 'EncuestaFinal', component: EncuestaFinalComponent},
       { path: 'instructor', component: InstructorComponent },
+      { path: 'reporte', component: ReporteComponent },
       { path: 'detalleencuestaparcial/:eventoid', component: DiligenciarEncuestaParcialComponent },
       { path: 'detalleencuestafinal/:eventoid', component: DiligenciarEncuestaFinalComponent },
       { path: 'finalizarencuestaparcial', component: FinalizarEncuestaParcialComponent },
