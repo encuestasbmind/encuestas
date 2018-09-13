@@ -33,4 +33,9 @@ export class DetalleEventosComponent implements OnInit {
     this.router.navigate(['/eventos'])
   }
 
+  onReport(): void{
+    console.log(this.evento.id);
+    window.open("http://localhost/encuestas/app/reportes/reporteevento.php?eventoid=" + this.evento.id); 
+  }
+
 }
