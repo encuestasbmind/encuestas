@@ -40,6 +40,11 @@ export class EncuestaFinalComponent {
                 } else {
                     this.errorMessage = 'El evento o estudiante ingresado no existe';
                 }
+                if(!this.evento.id==null){
+                    this.router.navigate(['/detalleencuestafinal/'+this.evento.id ]);
+            }else{
+                this.errorMessage = 'El evento no se encuentra habilitado o no se encuentra en el segundo día';
+            }
 
               }
                  );
@@ -50,10 +55,10 @@ export class EncuestaFinalComponent {
                       this.encuestaFinalService.getEventoEstudiante(eventoId, identificacion).subscribe(
                        eventoEstudiante => {
                           this.eventoEstudiante = eventoEstudiante;
-                          console.log('Recibido: ' + this.eventoEstudiante)
-                          if (this.eventoEstudiante) {
+                          console.log('Recibido: ' + this.eventoEstudiante.eventoid + this.identificacion)
+                          if (this.eventoEstudiante.eventoid) {
                             console.log('Datos validos');
-                            this.router.navigate(['' + this.eventoEstudiante]);
+                            this.router.navigate(['/detalleencuestafinal/' + this.eventoEstudiante.eventoid + this.identificacion]);
                         } else {
                             console.log('El evento ingresado no existe');
                             this.errorMessage = 'El evento ingresado no existe';

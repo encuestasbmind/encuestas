@@ -13,7 +13,7 @@ export class DiligenciarEncuestaParcialComponent implements OnInit{
 
     respuestaSiNo = [{'id':1, 'name':'Si'},
                      {'id':2, 'name':'No'}];
-    encuestaEditada: any; 
+    encuestaEditadas: any; 
     errorMessage: string;
     encuestaParcialForm: FormGroup;
 
@@ -51,7 +51,7 @@ export class DiligenciarEncuestaParcialComponent implements OnInit{
         this.sub = this.route.params.subscribe(
             params => {
                 const id = +params['eventoid'];
-                this.encuestaEditada = id;
+                this.encuestaEditadas = id;
             }
         );
 
@@ -60,16 +60,15 @@ export class DiligenciarEncuestaParcialComponent implements OnInit{
         this.curso = 'BASE DE DATOS';
         this.instructor = 'JOHAN'; 
         this.fecha = '2018-09-06';
-
     }
 
     guardarEncuesta(): void {
         this.encuestaParcialForm.patchValue({
-            eventoid: this.encuestaEditada
+            eventoid: this.encuestaEditadas
         });
         console.log('Saved: ' + JSON.stringify(this.encuestaParcialForm.value));
-        console.log('Encuesta editada ' + this.encuestaEditada);
-        const p = { ...this.encuestaEditada, ...this.encuestaParcialForm.value };
+        console.log('Encuesta editada ' + this.encuestaEditadas);
+        const p = { ...this.encuestaEditadas, ...this.encuestaParcialForm.value };
         console.log( JSON.stringify(p) );
         this.encuestaParcialService.crearEncuestaParcial(p)
             .subscribe(
@@ -82,5 +81,4 @@ export class DiligenciarEncuestaParcialComponent implements OnInit{
         this.encuestaParcialForm.reset();
         this.router.navigate(['/finalizarencuestaparcial']);
     }
-
 }

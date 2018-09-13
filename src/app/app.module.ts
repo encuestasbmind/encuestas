@@ -21,6 +21,7 @@ import { DetalleCursosComponent } from './cursos/detalle-cursos.component';
 import { EncuestaParcialComponent } from './encuesta-parcial/encuesta-parcial.component';
 import { EncuestaFinalComponent } from './encuesta-final/encuesta-final.component';
 import { DiligenciarEncuestaParcialComponent } from './encuesta-parcial/diligenciar-encuesta-parcial.component';
+import { DiligenciarEncuestaFinalComponent } from './encuesta-final/diligenciar-encuestafinal.component';
 import { FinalizarEncuestaParcialComponent } from  './encuesta-parcial/finalizar-encuesta-parcial.component';
 
 
@@ -43,7 +44,9 @@ import { FinalizarEncuestaParcialComponent } from  './encuesta-parcial/finalizar
     EncuestaParcialComponent,
     DetalleCursosComponent,
     DiligenciarEncuestaParcialComponent, 
+    DiligenciarEncuestaFinalComponent,
     FinalizarEncuestaParcialComponent
+
   ],
   imports: [
     BrowserModule, 
@@ -58,6 +61,7 @@ import { FinalizarEncuestaParcialComponent } from  './encuesta-parcial/finalizar
       { path: 'EncuestaFinal', component: EncuestaFinalComponent},
       { path: 'instructor', component: InstructorComponent },
       { path: 'detalleencuestaparcial/:eventoid', component: DiligenciarEncuestaParcialComponent },
+      { path: 'detalleencuestafinal/:eventoid', component: DiligenciarEncuestaFinalComponent },
       { path: 'finalizarencuestaparcial', component: FinalizarEncuestaParcialComponent },
       { path: 'usuarios/:id', component: DetalleUsuarioComponent },
       { path: 'eventos/:id', component: DetalleEventosComponent },
