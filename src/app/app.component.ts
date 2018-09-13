@@ -14,6 +14,8 @@ import { Component } from '@angular/core';
           <li><a class='nav-link' [routerLink]="['/EncuestaFinal']">Encuesta Final</a></li>  
           <li><a class='nav-link' [routerLink]="['/EncuestaParcial']">Encuesta Parcial</a></li>
           <li><a class='nav-link' [routerLink]="['/reporte']">Reportes</a></li>
+          <li><a class='nav-link' [routerLink]="['/carga']">Carga</a></li>
+
         </ul>
       </nav>
       <div class='container'>

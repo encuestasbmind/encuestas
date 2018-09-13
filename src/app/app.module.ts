@@ -24,6 +24,7 @@ import { EncuestaFinalComponent } from './encuesta-final/encuesta-final.componen
 import { DiligenciarEncuestaParcialComponent } from './encuesta-parcial/diligenciar-encuesta-parcial.component';
 import { DiligenciarEncuestaFinalComponent } from './encuesta-final/diligenciar-encuestafinal.component';
 import { FinalizarEncuestaParcialComponent } from  './encuesta-parcial/finalizar-encuesta-parcial.component';
+import { CargaComponent } from './carga/carga.component';
 
 
 
@@ -48,7 +49,8 @@ import { FinalizarEncuestaParcialComponent } from  './encuesta-parcial/finalizar
     DiligenciarEncuestaParcialComponent, 
     DiligenciarEncuestaFinalComponent,
     FinalizarEncuestaParcialComponent,
-    ReporteComponent
+    ReporteComponent,
+    CargaComponent
 
   ],
   imports: [
@@ -64,6 +66,7 @@ import { FinalizarEncuestaParcialComponent } from  './encuesta-parcial/finalizar
       { path: 'EncuestaFinal', component: EncuestaFinalComponent},
       { path: 'instructor', component: InstructorComponent },
       { path: 'reporte', component: ReporteComponent },
+      { path: 'carga', component: CargaComponent },
       { path: 'detalleencuestaparcial/:eventoid', component: DiligenciarEncuestaParcialComponent },
       { path: 'detalleencuestafinal/:eventoid', component: DiligenciarEncuestaFinalComponent },
       { path: 'finalizarencuestaparcial', component: FinalizarEncuestaParcialComponent },

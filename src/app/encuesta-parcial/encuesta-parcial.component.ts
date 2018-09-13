@@ -2,24 +2,19 @@ import { Component } from "@angular/core";
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventosService } from "../eventos/eventos.service";
 import { IEvento } from "../eventos/eventos";
-
 @Component({
     selector: 'encuestas-encuestaparcial', 
     templateUrl: './encuesta-parcial.component.html'
 }) 
 export class EncuestaParcialComponent{
-
     eventoId: string;
     identificacion: string;
     errorMessage = '';
     evento: IEvento;
-
     constructor(private route: ActivatedRoute, 
                 private router: Router,
                 private eventoService: EventosService){
-
     }
-
     validarRealizarEncuesta(): void{
         this.errorMessage = '';
         this.eventoService.getOneEvento(+this.eventoId).subscribe(
@@ -40,11 +35,8 @@ export class EncuestaParcialComponent{
                         this.errorMessage = 'El evento ingresado no existe';
                     };
             },
-            error => this.errorMessage = <any>error);
-
-        
+            error => this.errorMessage = <any>error); 
     }
-
     getEventoEstudiante(eventoId: string): void{
         this.eventoService.getOneEvento(+eventoId).subscribe(
                 evento => { 
@@ -60,7 +52,6 @@ export class EncuestaParcialComponent{
                 },
                 error => this.errorMessage = <any>error);
     }
-
     onEventoRetrieved(evento: IEvento): void{
         this.evento = evento; 
         console.log("Espacio para validaciones. Evento recibido " + JSON.stringify(this.evento) );
