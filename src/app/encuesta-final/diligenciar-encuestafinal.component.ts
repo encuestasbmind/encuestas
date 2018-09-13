@@ -34,6 +34,7 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
     cargo:string;
     email:string;
     eventoId: string; 
+    identificacion:string;
     fecha:string;
     quiendiligencia:string;
     telefono:string;
@@ -75,7 +76,9 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
         this.sub = this.route.params.subscribe(
             params => {
                 const id = +params['eventoid'];
+                const id2 = +params['identificacion']
                 this.encuestaEditada = id;
+                this.encuestaEditada= id2;
             }
         );
 
