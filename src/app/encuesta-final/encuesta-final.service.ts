@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 import { IEventoEstudiante } from '../encuesta-parcial/eventoestuadiante'
-import { IEncuetafinal } from "./encuestafinal";
+import { IEncuestaFinal} from "./encuestafinal";
 @Injectable({
     providedIn: 'root'
 })
@@ -22,10 +22,10 @@ export class EncuestaFinalService{
     }
 
     
-    getEventodesfinal(eventoId: string, identificacion: string): Observable<IEncuetafinal> {
-        const url = 'http://localhost/encuestas/api/evento/readdescdatafinal.php?eventoid=' + eventoId + '&estudianteid=' + identificacion;
+    getEventodesfinal(eventoId: string, identificacion: string): Observable<IEncuestaFinal> {
+        const url = 'http://localhost/encuestas/api/evento/readdescdatafinal.php?id=' + eventoId + '&estudiante_id=' + identificacion;
         console.log(url);
-        return this.http.get<IEncuetafinal>(url)
+        return this.http.get<IEncuestaFinal>(url)
                 .pipe(
                     tap(data => console.log('get datos' + JSON.stringify(data))),
                     catchError(this.handleError)

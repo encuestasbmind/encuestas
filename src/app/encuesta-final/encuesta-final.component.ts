@@ -6,6 +6,7 @@ import { EstudianteService } from "../estudiante/estudiante.service";
 import { IEstudiante } from "../estudiante/estudiante";
 import { IEvento } from "../eventos/eventos";
 import { IEventoEstudiante } from "../encuesta-parcial/eventoestuadiante";
+import { IEncuestaFinal } from "./encuestafinal";
 
 @Component({
     selector: 'encuestas-encuestafinal',
@@ -19,6 +20,7 @@ export class EncuestaFinalComponent {
     evento: IEvento;
     estudiante: IEstudiante;
     eventoEstudiante: IEventoEstudiante;
+    descEncuestaFinal: IEncuestaFinal;
 
     constructor(private route: ActivatedRoute,
         private router: Router,
@@ -63,4 +65,21 @@ export class EncuestaFinalComponent {
                     },
                     error => this.errorMessage = <any>error);
             }
+
+            getDescriptorEncuestaFinal (eventoId: string, identificacion: string): void {
+
+                this.encuestaFinalService.getEventodesfinal(eventoId , identificacion).subscribe(
+
+                    descEncuestaFinal => {
+                        this.descEncuestaFinal = descEncuestaFinal;
+
+                console.log( this.descEncuestaFinal);
+                    },
+                    error => this.errorMessage = <any>error 
+                )
+                
+            }
+
+
+          
 }

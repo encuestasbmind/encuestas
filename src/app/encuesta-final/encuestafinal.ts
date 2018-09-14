@@ -1,4 +1,4 @@
-export interface IEncuetafinal {
+export interface IEncuestaFinal {
     id: string;
     instructor: string;
     estudiante_id: string,
