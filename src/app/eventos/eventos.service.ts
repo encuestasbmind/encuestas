@@ -58,7 +58,7 @@ export class EventosService{
     }
 
     private createEvento(evento: IEvento): Observable<IEvento>{
-        const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json'})
         const url = 'http://localhost/encuestas/api/evento/create.php';
         console.log('Crear: ' + JSON.stringify(evento));
         return this.http.post<IEvento>(url, JSON.stringify(evento), { headers: headers })
@@ -66,11 +66,10 @@ export class EventosService{
                 tap(data => console.log('Crear Evento: ' + JSON.stringify(data) )),
                 catchError(this.handleError)
             );
-
     }
 
     private actualizarEvento(evento: IEvento): Observable<IEvento>{
-        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        let headers = new HttpHeaders({'Content-Type': 'application/json'});
         const url = 'http://localhost/encuestas/api/evento/update.php';
         console.log('Enviando ' + JSON.stringify(evento));
         return this.http.post<IEvento>(url, JSON.stringify(evento), { headers: headers })

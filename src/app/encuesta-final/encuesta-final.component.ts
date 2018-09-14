@@ -35,7 +35,6 @@ export class EncuestaFinalComponent {
                 if (this.eventoEstudiante) {
                     console.log('Iniciar validación de la encuesta con parametros ' + this.eventoId + ' ' + this.identificacion);
                     this.getEventoEstudiantes(this.eventoId, this.identificacion);
-
                 } else {
                     this.errorMessage = 'El evento o estudiante ingresado no existe';
                 }
@@ -54,7 +53,7 @@ export class EncuestaFinalComponent {
                        eventoEstudiante => {
                           this.eventoEstudiante = eventoEstudiante;
                           console.log('Recibido: ' + this.eventoEstudiante.eventoid + this.eventoEstudiante.estudianteid)
-                          if (this.eventoEstudiante.eventoid && this.eventoEstudiante.estudianteid) {
+                          if (this.eventoEstudiante.eventoid && this.eventoEstudiante.estudianteid){
                             console.log('Datos validos');
                             this.router.navigate(['/detalleencuestafinal/' + this.eventoEstudiante.eventoid + '/' +this.eventoEstudiante.estudianteid]);
                         } else {
