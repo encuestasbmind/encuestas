@@ -12,11 +12,11 @@ export class ReporteComponent {
 
   getReportes(): void {
 
-    console.log('Recibido: ' + this.eventoid);
-    var el = document.getElementById('report');
-    
-    //el.src = "http://localhost/encuestas/app/reportes/reporteevento.php?eventoid=1";
-    }
+      console.log('Recibido: ' + this.eventoid);
+      var el = document.getElementById('report');
+      el.setAttribute("src","http://localhost/encuestas/app/reportes/reporteevento.php?eventoid=" + this.eventoid);
+  
+  }
   
  
 
