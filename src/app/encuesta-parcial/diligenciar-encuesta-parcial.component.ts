@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn, FormArray } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import { Observable, Subscription, fromEvent, merge, of } from 'rxjs';
 import { EncuestaParcialService } from "./encuesta-parcial.service";
 
@@ -22,7 +21,6 @@ export class DiligenciarEncuestaParcialComponent implements OnInit{
     eventoId: string; 
     instructor: string;
     fecha: string; 
-
 
     private sub: Subscription;
 
@@ -54,7 +52,6 @@ export class DiligenciarEncuestaParcialComponent implements OnInit{
                 this.encuestaEditadas = id;
             }
         );
-
         
         this.eventoId = '1';
         this.curso = 'BASE DE DATOS';

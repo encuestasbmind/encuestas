@@ -11,19 +11,15 @@ import { IEncuestaFinal } from "./encuestafinal";
     templateUrl: './diligenciar-encuestafinal.component.html'
 }) 
 export class DiligenciarEncuestaFinalComponent implements OnInit{
-
     respuesta = [{'id':1, 'name':'Totalmente de Acuerdo'},
     {'id':2, 'name':'De Acuerdo'},
     {'id':3, 'name':'Indeciso'},
     {'id':4, 'name':'Desacuerdo'},
     {'id':5, 'name':'Totalmente en Desacuerdo'},
 ];
-
     respuestaSIoNO = [{'ID':1, 'Name':'Si'},
                       {'ID':2, 'Name':'No'},
                      ];
-                     
-                     
     encuestaEditada: any; 
     errorMessage: string;
     encuestaFinalForm: FormGroup;
@@ -40,19 +36,15 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
     email: string;
     estudiante: string;
     curso: string;
-    
-   
-    
-
     constructor(private fb: FormBuilder, 
                 private route: ActivatedRoute,
                 private router: Router,
                 private encuestaFinalService: EncuestaFinalService){ }
 
-    ngOnInit(): void {
+     ngOnInit(): void {
         this.encuestaFinalForm = this.fb.group(
             {
-                eventoid: '',
+                eventoid:'',
                 rtas_1:'', 
                 rtas_2:'', 
                 rtas_3:'', 
@@ -66,7 +58,6 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
                 rtas_11:'',
                 rtas_12:'', 
                 rtas_13:'', 
-                
                 comentarios1: '',
                 comentarios2: '',
                 comentarios3: '',                                
@@ -79,21 +70,14 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
             params => {
                 const id = +params['eventoid'];
                 const id2 = params['identificacion'];
-                
-         
 
                 this.encuestaEditada = id;
                 this.estudiante = id2;
-               
-
-
             }
         );
 
         this.getDescriptorEncuestaFinal(this.encuestaEditada,this.estudiante);
         this.curso=this.descEncuestaFinal.email; 
-        
-
     }
     guardarEncuestas(): void {
         this.encuestaFinalForm.patchValue({
