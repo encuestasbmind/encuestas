@@ -10,8 +10,7 @@ import { IEventoEstudiante } from './eventoestuadiante'
 })
 export class EncuestaParcialService{
 
-    constructor(private http: HttpClient) { }
-    
+    constructor(private http: HttpClient){} 
     getEventoEstudiante(eventoId: string, identificacion: string): Observable<IEventoEstudiante> {
         const url = 'http://localhost/encuestas/api/eventoestudiante/readeventoxestudiante.php?eventoid=' + eventoId + '&estudianteid=' + identificacion;
         console.log(url);
@@ -23,7 +22,7 @@ export class EncuestaParcialService{
     }
 
     crearEncuestaParcial(p: any): Observable<any>{
-        const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
+        const headers = new HttpHeaders({ 'Content-Type':'application/json' })
         const url = 'http://localhost/encuestas/api/respuestas/createparcial.php';
         console.log('Crear: ' + JSON.stringify(p));
         return this.http.post(url, JSON.stringify(p), { headers: headers })

@@ -9,7 +9,6 @@ import { EncuestaParcialService } from "./encuesta-parcial.service";
     templateUrl: './diligenciar-encuesta-parcial.component.html'
 }) 
 export class DiligenciarEncuestaParcialComponent implements OnInit{
-
     respuestaSiNo = [{'id':1, 'name':'Si'},
                      {'id':2, 'name':'No'}];
     encuestaEditadas: any; 
@@ -28,7 +27,6 @@ export class DiligenciarEncuestaParcialComponent implements OnInit{
                 private route: ActivatedRoute,
                 private router: Router,
                 private encuestaParcialService: EncuestaParcialService) { }
-
     ngOnInit(): void {
         this.encuestaParcialForm = this.fb.group(
             {
@@ -65,7 +63,7 @@ export class DiligenciarEncuestaParcialComponent implements OnInit{
         });
         console.log('Saved: ' + JSON.stringify(this.encuestaParcialForm.value));
         console.log('Encuesta editada ' + this.encuestaEditadas);
-        const p = { ...this.encuestaEditadas, ...this.encuestaParcialForm.value };
+        const p = { ...this.encuestaEditadas,...this.encuestaParcialForm.value};
         console.log( JSON.stringify(p) );
         this.encuestaParcialService.crearEncuestaParcial(p)
             .subscribe(
