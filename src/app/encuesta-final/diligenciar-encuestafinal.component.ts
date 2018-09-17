@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Observable, Subscription, fromEvent, merge, of } from 'rxjs';
 import { EncuestaFinalService } from "./encuesta-final.service";
+import { IEncuestaFinal } from "./encuestafinal";
 
 @Component({
     selector: 'diligenciar-encuestas-encuestafinal', 
@@ -28,19 +29,20 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
     encuestaFinalForm: FormGroup;
 
     //Valores para encabezado 
-    curso: string; 
-    instructor: string;
-    empresa: string;
-    cargo:string;
-    email:string;
-    eventoId: string; 
-    identificacion:string;
-    fecha:string;
-    quiendiligencia:string;
-    telefono:string;
-    
 
+    descEncuestaFinal: IEncuestaFinal;
+    
     private sub: Subscription;
+    apellidos: string;
+    nombres: string;
+    estudiante_id: string;
+    instructor: string;
+    email: string;
+    estudiante: string;
+    curso: string;
+    
+   
+    
 
     constructor(private fb: FormBuilder, 
                 private route: ActivatedRoute,
@@ -76,22 +78,21 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
         this.sub = this.route.params.subscribe(
             params => {
                 const id = +params['eventoid'];
-                const id2 = +params['identificacion']
+                const id2 = params['identificacion'];
+                
+         
+
                 this.encuestaEditada = id;
-                this.encuestaEditada= id2;
+                this.estudiante = id2;
+               
+
+
             }
         );
 
+        this.getDescriptorEncuestaFinal(this.encuestaEditada,this.estudiante);
+        this.curso=this.descEncuestaFinal.email; 
         
-        this.eventoId = '1';
-        this.curso = 'ANGULAR';
-        this.instructor = 'JOHAN'; 
-        this.fecha = '2018-09-06';
-        this.cargo='APRENDIZ';
-        this.empresa='BMIND';
-        this.email='Johan@bmind.com';
-        this.quiendiligencia='Johan Davila';
-        this.telefono='33132131';
 
     }
     guardarEncuestas(): void {
@@ -111,5 +112,20 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
     onSaveComplete(): void {
         this.encuestaFinalForm.reset();
         this.router.navigate(['/welcome']);
+    }
+
+
+    getDescriptorEncuestaFinal (eventoId: string, identificacion: string): void {
+
+        this.encuestaFinalService.getEventodesfinal(eventoId , identificacion).subscribe(
+
+            descEncuestaFinal => {
+                this.descEncuestaFinal = descEncuestaFinal;
+
+        console.log( this.descEncuestaFinal);
+            },
+            error => this.errorMessage = <any>error 
+        )
+        
     }
 }

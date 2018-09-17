@@ -5,7 +5,6 @@ import { Component } from '@angular/core';
 })
 export class CargaComponent {
   public pageTitle = 'Reporte';
-
   cargaid:string;
 
   getCarga(): void {
