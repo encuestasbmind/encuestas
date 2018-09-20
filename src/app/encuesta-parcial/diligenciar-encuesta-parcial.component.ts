@@ -26,7 +26,7 @@ export class DiligenciarEncuestaParcialComponent implements OnInit{
     constructor(private fb: FormBuilder, 
                 private route: ActivatedRoute,
                 private router: Router,
-                private encuestaParcialService: EncuestaParcialService) { }
+                private encuestaParcialService: EncuestaParcialService) {}
     ngOnInit(): void {
         this.encuestaParcialForm = this.fb.group(
             {

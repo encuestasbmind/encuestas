@@ -7,10 +7,12 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 })
 export class ReporteComponent implements OnInit{
   public pageTitle = 'Reporte';
-  tipoReporte = [{ 'id': 1, 'name': 'Encuesta Parcial' }, {'id': 2, 'name': 'Encuesta Final'},];
 
-  encuestaEditadas: any; 
+  tipoReporte = [
+    { 'id': 1, 'name': 'Encuesta Parcial' },
+    {'id': 2, 'name': 'Encuesta Final'},];
 
+  encuesta: string; 
   reporteForm: FormGroup;
   eventoid: string;
   reporte: Ireporte;
@@ -20,7 +22,7 @@ export class ReporteComponent implements OnInit{
   ngOnInit(): void {
     this.reporteForm = this.fb.group(
       {
-        encuesta_Inicio: '',
+        encuesta: '',
       }
     );
   }
@@ -28,14 +30,15 @@ export class ReporteComponent implements OnInit{
   getReportes(): void {
 
     this.reporteForm.patchValue({
-      eventoid: this.encuestaEditadas
+      eventoid: this.eventoid,
+      encuesta: this.encuesta
   });
     console.log('Recibido: ' + this.eventoid );
-    const p = {...this.encuestaEditadas,...this.reporteForm.value};
+    console.log('Encuesta: ' + this.encuesta );
+    const p = {...this.reporteForm.value};
     console.log( JSON.stringify(p));
     var el = document.getElementById('report');
-    el.setAttribute("src", "http://localhost/encuestas/app/reportes/reporteevento.php?eventoid=" + this.eventoid);
-
+    el.setAttribute("src", "http://localhost/encuestas/app/reportes/reporteevento.php?eventoid=" + this.eventoid+"&?tipo_encuesta="+ this.encuesta);
   }
 
 }

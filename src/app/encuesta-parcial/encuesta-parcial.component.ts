@@ -54,7 +54,7 @@ export class EncuestaParcialComponent{
     }
     onEventoRetrieved(evento: IEvento): void{
         this.evento = evento; 
-        console.log("Espacio para validaciones. Evento recibido " + JSON.stringify(this.evento) );
+        console.log("Espacio para validaciones. Evento recibido " + JSON.stringify(this.evento));
         this.getEventoEstudiante(this.eventoId);
     }
 
