@@ -22,7 +22,6 @@
         <h5> ¿Por que desea consultar?</h5>
         <select class="form-control"
                 id="encuesta"
-                formControlName="encuesta"
                 style="width:200px" [(ngModel)]='encuesta'>
             <option *ngFor="let encuesta  of tipoReporte"
                     [value]="encuesta.id">

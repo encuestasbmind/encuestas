@@ -10,7 +10,7 @@ export class ReporteComponent implements OnInit{
 
   tipoReporte = [
     { 'id': 1, 'name': 'Encuesta Parcial' },
-    {'id': 2, 'name': 'Encuesta Final'},];
+    {'id': 2, 'name': 'Encuesta Final'}];
 
   encuesta: string; 
   reporteForm: FormGroup;
@@ -38,7 +38,9 @@ export class ReporteComponent implements OnInit{
     const p = {...this.reporteForm.value};
     console.log( JSON.stringify(p));
     var el = document.getElementById('report');
-    el.setAttribute("src", "http://localhost/encuestas/app/reportes/reporteevento.php?eventoid=" + this.eventoid+"&?tipo_encuesta="+ this.encuesta);
+    let urlReporte = "http://localhost/encuestas/app/reportes/reporteevento.php?eventoid=" + this.eventoid+"&?tipo_encuesta="+ this.encuesta;
+    console.log(urlReporte);
+    el.setAttribute("src", urlReporte);
   }
 
 }
