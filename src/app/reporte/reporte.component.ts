@@ -38,7 +38,7 @@ export class ReporteComponent implements OnInit{
     const p = {...this.reporteForm.value};
     console.log( JSON.stringify(p));
     var el = document.getElementById('report');
-    let urlReporte = "http://localhost/encuestas/app/reportes/reporteevento.php?eventoid=" + this.eventoid+"&?tipo_encuesta="+ this.encuesta;
+    let urlReporte = "http://localhost/encuestas/app/reportes/reporteevento.php?eventoid=" + this.eventoid+"&tipo_encuesta="+ this.encuesta;
     console.log(urlReporte);
     el.setAttribute("src", urlReporte);
   }
