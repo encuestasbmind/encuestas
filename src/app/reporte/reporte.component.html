@@ -8,29 +8,58 @@
         <button class='btn btn-outline-secondary'>Exportar en PDF</button>
     </tr>
 </table>
-<input type="text" >
+<input type="text">
 
 <div class='card-body'>
-        <div class='row'>
-                <div class='col-md-2'><h4>Reportes:</h4></div>
-                <div class='col-md-4'>
-                    <input type='text' [(ngModel)]='eventoid'/>
-                </div>
-         </div>
-         <p></p>
-         <button class='btn btn-primary' 
-                (click)='getReportes()'
-                style='width:150px' >
-            Realizar Encuesta      
-        </button>      
-</div>
+    <div class='row'>
+        <div class='col-md-2'>
+            <h4>ID Evento:</h4>
+        </div>
+        <div class='col-md-4'>
+            <input type='text'
+                   [(ngModel)]='eventoid' />
+        </div>
+        <h5> ¿Por que desea consultar?</h5>
+        <select class="form-control"
+                id="encuesta"
+                formControlName="encuesta"
+                style="width:200px" [(ngModel)]='encuesta'>
+            <option *ngFor="let encuesta  of tipoReporte"
+                    [value]="encuesta.id">
+                {{encuesta.name}}
+            </option>
+        </select>
+    </div>
+<p></p>
+    <div class='row'>
+        <div class='col-md-2'>
+            <h4>Fecha Inicio:</h4>
+        </div>
+        <div class='col-md-4'>
+            <input type='text' />
+        </div>
 
+        <div class='col-md-2'>
+            <h4>Fecha Final:</h4>
+        </div>
+        <div class='col-md-4'>
+            <input type='text' />
+        </div>
+    </div>
+
+    <p></p>
+    <button class='btn btn-primary'
+            (click)='getReportes()'
+            style='width:150px'>
+        Consultar Reporte
+    </button>
+</div>
 
 <div>
     <iframe width="80%"
             height="500"
-            src="" id="report">
-        </iframe>
+            src=""
+            id="report">
+    </iframe>
 
-        
 </div>

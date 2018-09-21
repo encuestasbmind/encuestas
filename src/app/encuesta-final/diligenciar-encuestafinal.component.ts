@@ -7,7 +7,7 @@ import { EncuestaFinalService } from "./encuesta-final.service";
 import { IEncuestaFinal } from "./encuestafinal";
 
 @Component({
-    selector: 'diligenciar-encuestas-encuestafinal', 
+    selector: 'diligenciar-encuestas-encuestafinal',
     templateUrl: './diligenciar-encuestafinal.component.html'
 }) 
 export class DiligenciarEncuestaFinalComponent implements OnInit{
@@ -31,7 +31,7 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
     //Valores para encabezado 
 
     descEncuestaFinal: IEncuestaFinal;
-    
+
     private sub: Subscription;
     apellidos: string;
     nombres: string;
@@ -40,38 +40,33 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
     email: string;
     estudiante: string;
     curso: string;
-    
-   
-    
-
-    constructor(private fb: FormBuilder, 
-                private route: ActivatedRoute,
-                private router: Router,
-                private encuestaFinalService: EncuestaFinalService){ }
+    constructor(private fb: FormBuilder,
+        private route: ActivatedRoute,
+        private router: Router,
+        private encuestaFinalService: EncuestaFinalService) { }
 
     ngOnInit(): void {
         this.encuestaFinalForm = this.fb.group(
             {
                 eventoid: '',
-                rtas_1:'', 
-                rtas_2:'', 
-                rtas_3:'', 
-                rtas_4:'',
-                rtas_5:'', 
-                rtas_6:'', 
-                rtas_7:'', 
-                rtas_8:'', 
-                rtas_9:'',
-                rtas_10:'', 
-                rtas_11:'',
-                rtas_12:'', 
-                rtas_13:'', 
-                
+                rtas_1: '',
+                rtas_2: '',
+                rtas_3: '',
+                rtas_4: '',
+                rtas_5: '',
+                rtas_6: '',
+                rtas_7: '',
+                rtas_8: '',
+                rtas_9: '',
+                rtas_10: '',
+                rtas_11: '',
+                rtas_12: '',
+                rtas_13: '',
                 comentarios1: '',
                 comentarios2: '',
-                comentarios3: '',                                
+                comentarios3: '',
                 comentarios4: '',
-                comentarios5: ''                               
+                comentarios5: ''
             }
         );
 
@@ -79,7 +74,6 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
             params => {
                 const id = +params['eventoid'];
                 const id2 = params['identificacion'];
-                
                 this.encuestaEditada = id;
                 this.estudiante = id2;
                
@@ -90,7 +84,6 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
         console.log('Datos para diligenciar: ' + this.descEncuestaFinal);
         this.curso=this.descEncuestaFinal.email; 
         
-
     }
     guardarEncuestas(): void {
         this.encuestaFinalForm.patchValue({
@@ -99,12 +92,12 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
         console.log('Saved: ' + JSON.stringify(this.encuestaFinalForm.value));
         console.log('Encuesta Editada ' + this.encuestaEditada);
         const p = { ...this.encuestaEditada, ...this.encuestaFinalForm.value };
-        console.log( JSON.stringify(p) );
+        console.log(JSON.stringify(p));
         this.encuestaFinalService.crearEncuestaFinal(p)
             .subscribe(
                 () => this.onSaveComplete(),
                 (error: any) => this.errorMessage = <any>error
-            );        
+            );
     }
     onSaveComplete(): void {
         this.encuestaFinalForm.reset();
@@ -112,7 +105,7 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
     }
 
 
-    getDescriptorEncuestaFinal (eventoId: string, identificacion: string): void {
+    getDescriptorEncuestaFinal(eventoId: string, identificacion: string): void {
 
         console.log('EventoId ' + eventoId);
         this.encuestaFinalService.getEventodesfinal(eventoId , identificacion).subscribe(
@@ -122,8 +115,12 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
 
                 console.log( this.descEncuestaFinal);
             },
-            error => this.errorMessage = <any>error 
+            error => this.errorMessage = <any>error
         )
-        
+
     }
 }
+
+
+
+

@@ -78,8 +78,5 @@ export class EncuestaFinalComponent {
                     error => this.errorMessage = <any>error 
                 )
                 
-            }
-
-
-          
+            }       
 }

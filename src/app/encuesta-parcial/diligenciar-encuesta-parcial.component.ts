@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn, FormArray } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import { Observable, Subscription, fromEvent, merge, of } from 'rxjs';
 import { EncuestaParcialService } from "./encuesta-parcial.service";
 
@@ -10,7 +9,6 @@ import { EncuestaParcialService } from "./encuesta-parcial.service";
     templateUrl: './diligenciar-encuesta-parcial.component.html'
 }) 
 export class DiligenciarEncuestaParcialComponent implements OnInit{
-
     respuestaSiNo = [{'id':1, 'name':'Si'},
                      {'id':2, 'name':'No'}];
     encuestaEditadas: any; 
@@ -23,14 +21,12 @@ export class DiligenciarEncuestaParcialComponent implements OnInit{
     instructor: string;
     fecha: string; 
 
-
     private sub: Subscription;
 
     constructor(private fb: FormBuilder, 
                 private route: ActivatedRoute,
                 private router: Router,
-                private encuestaParcialService: EncuestaParcialService) { }
-
+                private encuestaParcialService: EncuestaParcialService) {}
     ngOnInit(): void {
         this.encuestaParcialForm = this.fb.group(
             {
@@ -54,7 +50,6 @@ export class DiligenciarEncuestaParcialComponent implements OnInit{
                 this.encuestaEditadas = id;
             }
         );
-
         
         this.eventoId = '1';
         this.curso = 'BASE DE DATOS';
@@ -68,7 +63,7 @@ export class DiligenciarEncuestaParcialComponent implements OnInit{
         });
         console.log('Saved: ' + JSON.stringify(this.encuestaParcialForm.value));
         console.log('Encuesta editada ' + this.encuestaEditadas);
-        const p = { ...this.encuestaEditadas, ...this.encuestaParcialForm.value };
+        const p = { ...this.encuestaEditadas,...this.encuestaParcialForm.value};
         console.log( JSON.stringify(p) );
         this.encuestaParcialService.crearEncuestaParcial(p)
             .subscribe(
