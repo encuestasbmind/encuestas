@@ -68,7 +68,7 @@ import { CargaComponent } from './carga/carga.component';
       { path: 'reporte', component: ReporteComponent },
       { path: 'carga', component: CargaComponent },
       { path: 'detalleencuestaparcial/:eventoid', component: DiligenciarEncuestaParcialComponent },
-      { path: 'detalleencuestafinal/:eventoid /:identificacion', component: DiligenciarEncuestaFinalComponent },
+      { path: 'detalleencuestafinal/:eventoid/:identificacion', component: DiligenciarEncuestaFinalComponent },
       { path: 'finalizarencuestaparcial', component: FinalizarEncuestaParcialComponent },
       { path: 'usuarios/:id', component: DetalleUsuarioComponent },
       { path: 'eventos/:id', component: DetalleEventosComponent },

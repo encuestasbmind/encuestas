@@ -12,11 +12,11 @@ import { IEncuestaFinal } from "./encuestafinal";
 }) 
 export class DiligenciarEncuestaFinalComponent implements OnInit{
 
-    respuesta = [{'id':1, 'name':'Totalmente de Acuerdo'},
-    {'id':2, 'name':'De Acuerdo'},
+    respuesta = [{'id':5, 'name':'Totalmente de Acuerdo'},
+    {'id':4, 'name':'De Acuerdo'},
     {'id':3, 'name':'Indeciso'},
-    {'id':4, 'name':'Desacuerdo'},
-    {'id':5, 'name':'Totalmente en Desacuerdo'},
+    {'id':2, 'name':'Desacuerdo'},
+    {'id':1, 'name':'Totalmente en Desacuerdo'},
 ];
 
     respuestaSIoNO = [{'ID':1, 'Name':'Si'},
@@ -80,17 +80,14 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
                 const id = +params['eventoid'];
                 const id2 = params['identificacion'];
                 
-         
-
                 this.encuestaEditada = id;
                 this.estudiante = id2;
                
-
-
             }
         );
 
         this.getDescriptorEncuestaFinal(this.encuestaEditada,this.estudiante);
+        console.log('Datos para diligenciar: ' + this.descEncuestaFinal);
         this.curso=this.descEncuestaFinal.email; 
         
 
@@ -117,12 +114,13 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
 
     getDescriptorEncuestaFinal (eventoId: string, identificacion: string): void {
 
+        console.log('EventoId ' + eventoId);
         this.encuestaFinalService.getEventodesfinal(eventoId , identificacion).subscribe(
 
             descEncuestaFinal => {
                 this.descEncuestaFinal = descEncuestaFinal;
 
-        console.log( this.descEncuestaFinal);
+                console.log( this.descEncuestaFinal);
             },
             error => this.errorMessage = <any>error 
         )
