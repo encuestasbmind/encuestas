@@ -9,10 +9,10 @@
          <button class='btn btn-primary' 
                 (click)='getCarga()'
                 style='width:150px' >
-            Realizar Encuesta      
+            Realizar Carga      
         </button> 
         
-        <input type="file" file-reader="fileContent" />
+        <input type="file" file-reader="fileContent" (change)="changeListener($event)" #fileInput >
         <div ng-if="fileContent" class="content">
           {{fileContent}}
         </div>

@@ -40,6 +40,11 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
     email: string;
     estudiante: string;
     curso: string;
+    eventoId: string;
+    fecha: string;
+    quiendiligencia: string;
+    telefono: string; 
+
     constructor(private fb: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
@@ -66,7 +71,9 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
                 comentarios2: '',
                 comentarios3: '',
                 comentarios4: '',
-                comentarios5: ''
+                comentarios5: '', 
+                comentarios6: '', 
+                comentarios7: '', 
             }
         );
 
@@ -82,7 +89,7 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
 
         this.getDescriptorEncuestaFinal(this.encuestaEditada,this.estudiante);
         console.log('Datos para diligenciar: ' + this.descEncuestaFinal);
-        this.curso=this.descEncuestaFinal.email; 
+        //this.curso=this.descEncuestaFinal.email; 
         
     }
     guardarEncuestas(): void {
@@ -101,7 +108,7 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
     }
     onSaveComplete(): void {
         this.encuestaFinalForm.reset();
-        this.router.navigate(['/welcome']);
+        this.router.navigate(['/finalizarencuestaparcial']);
     }
 
 
@@ -113,7 +120,17 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
             descEncuestaFinal => {
                 this.descEncuestaFinal = descEncuestaFinal;
 
-                console.log( this.descEncuestaFinal);
+                console.log('Datos resultantes ' + JSON.stringify(this.descEncuestaFinal));
+                this.curso = this.descEncuestaFinal.curso;
+                this.eventoId = this.descEncuestaFinal.id;
+                this.instructor = this.descEncuestaFinal.instructor;
+
+                let dateFormat = require('dateformat');
+                let now = new Date();
+                this.fecha = dateFormat(now, "mmm dd, yyyy");
+                this.quiendiligencia = this.descEncuestaFinal.nombres + ' ' + this.descEncuestaFinal.apellidos; 
+                this.email=this.descEncuestaFinal.email; 
+
             },
             error => this.errorMessage = <any>error
         )

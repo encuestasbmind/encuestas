@@ -34,7 +34,7 @@ export class EncuestaFinalService{
 
     crearEncuestaFinal(p: any): Observable<any>{
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
-        const url = 'http://localhost/encuestas/api/respuestas/createparcial.php';
+        const url = 'http://localhost/encuestas/api/respuestas/createfinal.php';
         console.log('Crear: ' + JSON.stringify(p));
         return this.http.post(url, JSON.stringify(p), { headers: headers })
             .pipe(

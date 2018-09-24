@@ -40,21 +40,16 @@ export class EncuestaFinalComponent {
                 } else {
                     this.errorMessage = 'El evento o estudiante ingresado no existe';
                 }
-                if(this.evento.id==null ){
-                    this.router.navigate(['/detalleencuestafinal/'+this.evento.id +this.estudiante.id]);
-            }else{
-                this.errorMessage = 'El evento no se encuentra habilitado o no se encuentra en el segundo día';
-            }
               }
-                 );
-                    }
+        );
+    }
          
-                       getEventoEstudiantes(eventoId: string, identificacion: string): void {
+    getEventoEstudiantes(eventoId: string, identificacion: string): void {
 
-                      this.encuestaFinalService.getEventoEstudiante(eventoId, identificacion).subscribe(
-                       eventoEstudiante => {
-                          this.eventoEstudiante = eventoEstudiante;
-                          console.log('Recibido: ' + this.eventoEstudiante.eventoid + this.eventoEstudiante.estudianteid)
+        this.encuestaFinalService.getEventoEstudiante(eventoId, identificacion).subscribe(
+                eventoEstudiante => {
+                    this.eventoEstudiante = eventoEstudiante;
+                    console.log('Recibido: ' + this.eventoEstudiante.eventoid + this.eventoEstudiante.estudianteid)
                           if (this.eventoEstudiante.eventoid && this.eventoEstudiante.estudianteid){
                             console.log('Datos validos');
                             this.router.navigate(['/detalleencuestafinal/' + this.eventoEstudiante.eventoid + '/' +this.eventoEstudiante.estudianteid]);
