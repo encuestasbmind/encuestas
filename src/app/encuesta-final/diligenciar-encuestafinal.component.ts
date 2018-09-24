@@ -6,6 +6,8 @@ import { Observable, Subscription, fromEvent, merge, of } from 'rxjs';
 import { EncuestaFinalService } from "./encuesta-final.service";
 import { IEncuestaFinal } from "./encuestafinal";
 
+declare var require: any;
+
 @Component({
     selector: 'diligenciar-encuestas-encuestafinal',
     templateUrl: './diligenciar-encuestafinal.component.html'
@@ -22,8 +24,7 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
     respuestaSIoNO = [{'ID':1, 'Name':'Si'},
                       {'ID':2, 'Name':'No'},
                      ];
-                     
-                     
+                                    
     encuestaEditada: any; 
     errorMessage: string;
     encuestaFinalForm: FormGroup;
