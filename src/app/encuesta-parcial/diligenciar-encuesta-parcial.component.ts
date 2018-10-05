@@ -3,9 +3,7 @@ import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn, FormA
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription, fromEvent, merge, of } from 'rxjs';
 import { EncuestaParcialService } from "./encuesta-parcial.service";
-import { IencuestaParcial } from "./encuesta-parcial";
 
-declare var require: any;
 @Component({
     selector: 'diligenciar-encuestas-encuestaparcial', 
     templateUrl: './diligenciar-encuesta-parcial.component.html'
@@ -13,15 +11,11 @@ declare var require: any;
 export class DiligenciarEncuestaParcialComponent implements OnInit{
     respuestaSiNo = [{'id':1, 'name':'Si'},
                      {'id':2, 'name':'No'}];
-
-
-
     encuestaEditadas: any; 
     errorMessage: string;
     encuestaParcialForm: FormGroup;
 
     //Valores para encabezado 
-    descEncuestaParcial: IencuestaParcial;
     curso: string; 
     eventoId: string; 
     instructor: string;
@@ -37,7 +31,7 @@ export class DiligenciarEncuestaParcialComponent implements OnInit{
         this.encuestaParcialForm = this.fb.group(
             {
                 eventoid: '',
-                rtasSiNo_1:'', 
+                rtasSiNo_1: ['' || null, [Validators.required, Validators.minLength(1)]], 
                 comentarios1: '',
                 rtasSiNo_2:'', 
                 comentarios2: '',
@@ -57,8 +51,10 @@ export class DiligenciarEncuestaParcialComponent implements OnInit{
             }
         );
         
-        this.getdescEncuestaParcial(this.encuestaEditadas);
-        console.log('Datos para diligenciar: ' + this.descEncuestaParcial);
+        this.eventoId = '1';
+        this.curso = 'BASE DE DATOS';
+        this.instructor = 'JOHAN'; 
+        this.fecha = '2018-09-06';
     }
 
     guardarEncuesta(): void {
@@ -80,28 +76,4 @@ export class DiligenciarEncuestaParcialComponent implements OnInit{
         this.encuestaParcialForm.reset();
         this.router.navigate(['/finalizarencuestaparcial']);
     }
-
-    getdescEncuestaParcial(eventoId: string): void {
-
-        console.log('EventoId ' + eventoId);
-        this.encuestaParcialService.getEncuestaParcial(eventoId).subscribe(
-
-            descEncuestaParcial => {
-                this.descEncuestaParcial = descEncuestaParcial;
-
-                console.log('Datos resultantes ' + JSON.stringify(this.descEncuestaParcial));
-                this.curso = this.descEncuestaParcial.curso;
-                this.eventoId = this.descEncuestaParcial.id;
-                this.instructor = this.descEncuestaParcial.instructor;
-                let dateFormat = require('dateformat');
-                let now = new Date();
-                this.fecha = dateFormat(now, "mmm dd, yyyy");
-
-            },
-            error => this.errorMessage = <any>error
-        )
-
-    }
-
-
 }
