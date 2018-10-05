@@ -5,42 +5,42 @@ import { Observable, Subscription, fromEvent, merge, of } from 'rxjs';
 import { EncuestaParcialService } from "./encuesta-parcial.service";
 
 @Component({
-    selector: 'diligenciar-encuestas-encuestaparcial', 
+    selector: 'diligenciar-encuestas-encuestaparcial',
     templateUrl: './diligenciar-encuesta-parcial.component.html'
-}) 
-export class DiligenciarEncuestaParcialComponent implements OnInit{
-    respuestaSiNo = [{'id':1, 'name':'Si'},
-                     {'id':2, 'name':'No'}];
-    encuestaEditadas: any; 
+})
+export class DiligenciarEncuestaParcialComponent implements OnInit {
+    respuestaSiNo = [{ 'id': 1, 'name': 'Si' },
+    { 'id': 2, 'name': 'No' }];
+    encuestaEditadas: any;
     errorMessage: string;
     encuestaParcialForm: FormGroup;
 
     //Valores para encabezado 
-    curso: string; 
-    eventoId: string; 
+    curso: string;
+    eventoId: string;
     instructor: string;
-    fecha: string; 
+    fecha: string;
 
     private sub: Subscription;
 
-    constructor(private fb: FormBuilder, 
-                private route: ActivatedRoute,
-                private router: Router,
-                private encuestaParcialService: EncuestaParcialService) {}
+    constructor(private fb: FormBuilder,
+        private route: ActivatedRoute,
+        private router: Router,
+        private encuestaParcialService: EncuestaParcialService) { }
     ngOnInit(): void {
         this.encuestaParcialForm = this.fb.group(
             {
                 eventoid: '',
-                rtasSiNo_1: ['' || null, [Validators.required, Validators.minLength(1)]], 
-                comentarios1: '',
-                rtasSiNo_2:'', 
-                comentarios2: '',
-                rtasSiNo_3:'', 
-                comentarios3: '',                                
-                rtasSiNo_4:'', 
-                comentarios4: '',
-                rtasSiNo_5:'', 
-                comentarios5: ''                               
+                rtasSiNo_1: ['' || null, [Validators.required, Validators.minLength(1)]],
+                comentarios1: ['' || null, [Validators.required, Validators.minLength(15)]],
+                rtasSiNo_2: ['' || null, [Validators.required, Validators.minLength(1)]],
+                comentarios2: ['' || null, [Validators.required, Validators.minLength(15)]],
+                rtasSiNo_3: ['' || null, [Validators.required, Validators.minLength(1)]],
+                comentarios3: ['' || null, [Validators.required, Validators.minLength(15)]],
+                rtasSiNo_4: ['' || null, [Validators.required, Validators.minLength(1)]],
+                comentarios4: ['' || null, [Validators.required, Validators.minLength(15)]],
+                rtasSiNo_5: ['' || null, [Validators.required, Validators.minLength(1)]],
+                comentarios5: ['' || null, [Validators.required, Validators.minLength(15)]]
             }
         );
 
@@ -50,10 +50,9 @@ export class DiligenciarEncuestaParcialComponent implements OnInit{
                 this.encuestaEditadas = id;
             }
         );
-        
         this.eventoId = '1';
         this.curso = 'BASE DE DATOS';
-        this.instructor = 'JOHAN'; 
+        this.instructor = 'JOHAN';
         this.fecha = '2018-09-06';
     }
 
@@ -63,13 +62,13 @@ export class DiligenciarEncuestaParcialComponent implements OnInit{
         });
         console.log('Saved: ' + JSON.stringify(this.encuestaParcialForm.value));
         console.log('Encuesta editada ' + this.encuestaEditadas);
-        const p = { ...this.encuestaEditadas,...this.encuestaParcialForm.value};
-        console.log( JSON.stringify(p) );
+        const p = { ...this.encuestaEditadas, ...this.encuestaParcialForm.value };
+        console.log(JSON.stringify(p));
         this.encuestaParcialService.crearEncuestaParcial(p)
             .subscribe(
                 () => this.onSaveComplete(),
                 (error: any) => this.errorMessage = <any>error
-            );        
+            );
     }
 
     onSaveComplete(): void {

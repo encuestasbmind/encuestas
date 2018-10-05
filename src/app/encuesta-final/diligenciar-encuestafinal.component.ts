@@ -55,7 +55,7 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
         this.encuestaFinalForm = this.fb.group(
             {
                 eventoid: '',
-                rtas_1: '',
+                rtas_1:['' || null, [Validators.required, Validators.minLength(1)]],
                 rtas_2: '',
                 rtas_3: '',
                 rtas_4: '',

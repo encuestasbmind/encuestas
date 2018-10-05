@@ -37,12 +37,11 @@
             <div class='col-md-2'>Fecha:</div>
             <div class='col-md-3'>
                 <input type='text'
-                       [(ngModel)]='fecha'/>
+                       [(ngModel)]='fecha' />
             </div>
         </div>
         <p></p>
-        <form 
-              autocomplete="off"
+        <form autocomplete="off"
               (ngSubmit)="guardarEncuesta()"
               [formGroup]="encuestaParcialForm">
 
@@ -52,10 +51,10 @@
                 <select class="form-control"
                         id="rtaSiNo_1"
                         formControlName="rtasSiNo_1"
-                        style="width:200px"                  
+                        style="width:200px"
                         [ngClass]="{'is-invalid': (encuestaParcialForm.get('rtasSiNo_1').touched || 
                         encuestaParcialForm.get('rtasSiNo_1').dirty) &&
-                        !encuestaParcialForm.get('rtasSiNo_1').valid }" >
+                        !encuestaParcialForm.get('rtasSiNo_1').valid }">
                     <option *ngFor="let rtaSiNo_1 of respuestaSiNo"
                             [value]="rtaSiNo_1.id">
                         {{rtaSiNo_1.name}}
@@ -63,13 +62,14 @@
                 </select>
                 <span class="invalid-feedback">
                     <span *ngIf="encuestaParcialForm.get('rtasSiNo_1').errors?.required">
-                      Por favor responda esta pregunta
+                        Por favor responda esta pregunta
                     </span>
                     <span *ngIf="encuestaParcialForm.get('rtasSiNo_1').errors?.minlength">
                         Por favor responda esta pregunta
                     </span>
-                  </span>
+                </span>
             </div>
+
             <div class="form-group row">
                 <label class="col-md-2 col-form-label"
                        for="comentarios1">¿Por qué?</label>
@@ -78,9 +78,18 @@
                               id="comentarios1"
                               placeholder="Comentarios"
                               rows=3
-                              formControlName="comentarios1">
-
+                              formControlName="comentarios1"
+                              [ngClass]="{'is-invalid': (encuestaParcialForm.get('comentarios1').touched || 
+                        encuestaParcialForm.get('comentarios1').dirty) &&
+                        !encuestaParcialForm.get('comentarios1').valid }">
+                    <option *ngFor="let comentarios1 of encuestaParcialForm"
+                            [value]="comentarios1.id">
                     </textarea>
+                    <span class="invalid-feedback">
+                        <span *ngIf="encuestaParcialForm.get('comentarios1').errors?.required">
+                            Por favor llenar este Comentario
+                        </span>
+                    </span>
                 </div>
             </div>
 
@@ -88,15 +97,27 @@
                 <label for="firstNameId">2. ¿El personal que lo atendió desde su llegada fue amable y mostró actitud de
                     servicio? </label>
                 <select class="form-control"
-                        id="rtaSiNo_2"
+                        id="rtasSiNo_2"
                         formControlName="rtasSiNo_2"
-                        style="width:200px">
-                    <option *ngFor="let rtaSiNo_2 of respuestaSiNo"
-                            [value]="rtaSiNo_2.id">
-                        {{rtaSiNo_2.name}}
+                        style="width:200px"
+                        [ngClass]="{'is-invalid': (encuestaParcialForm.get('rtasSiNo_2').touched || 
+                        encuestaParcialForm.get('rtasSiNo_2').dirty) &&
+                        !encuestaParcialForm.get('rtasSiNo_2').valid }">
+                    <option *ngFor="let rtasSiNo_2 of respuestaSiNo"
+                            [value]="rtasSiNo_2.id">
+                        {{rtasSiNo_2.name}}
                     </option>
                 </select>
+                <span class="invalid-feedback">
+                    <span *ngIf="encuestaParcialForm.get('rtasSiNo_2').errors?.required">
+                        Por favor responda esta pregunta
+                    </span>
+                    <span *ngIf="encuestaParcialForm.get('rtasSiNo_2').errors?.minlength">
+                        Por favor responda esta pregunta
+                    </span>
+                </span>
             </div>
+
             <div class="form-group row">
                 <label class="col-md-2 col-form-label"
                        for="comentarios2">¿Por qué?</label>
@@ -105,9 +126,18 @@
                               id="comentarios2"
                               placeholder="Comentarios"
                               rows=3
-                              formControlName="comentarios2">
-
-                        </textarea>
+                              formControlName="comentarios2"
+                              [ngClass]="{'is-invalid': (encuestaParcialForm.get('comentarios2').touched || 
+                              encuestaParcialForm.get('comentarios2').dirty) &&
+                              !encuestaParcialForm.get('comentarios2').valid }">
+                          <option *ngFor="let comentarios2 of encuestaParcialForm"
+                                  [value]="comentarios2.id">
+                          </textarea>
+                    <span class="invalid-feedback">
+                        <span *ngIf="encuestaParcialForm.get('comentarios2').errors?.required">
+                            Por favor llenar este Comentario
+                        </span>
+                    </span>
                 </div>
             </div>
 
@@ -116,13 +146,26 @@
                 <select class="form-control"
                         id="rtaSiNo_3"
                         formControlName="rtasSiNo_3"
-                        style="width:200px">
+                        style="width:200px"
+                        [ngClass]="{'is-invalid': (encuestaParcialForm.get('rtasSiNo_3').touched || 
+                        encuestaParcialForm.get('rtasSiNo_3').dirty) &&
+                        !encuestaParcialForm.get('rtasSiNo_3').valid }">
                     <option *ngFor="let rtaSiNo_3 of respuestaSiNo"
                             [value]="rtaSiNo_3.id">
                         {{rtaSiNo_3.name}}
                     </option>
                 </select>
+
+                <span class="invalid-feedback">
+                    <span *ngIf="encuestaParcialForm.get('rtasSiNo_3').errors?.required">
+                        Por favor responda esta pregunta
+                    </span>
+                    <span *ngIf="encuestaParcialForm.get('rtasSiNo_3').errors?.minlength">
+                        Por favor responda esta pregunta
+                    </span>
+                </span>
             </div>
+
             <div class="form-group row">
                 <label class="col-md-2 col-form-label"
                        for="comentarios3">¿Por qué?</label>
@@ -131,9 +174,18 @@
                               id="comentarios3"
                               placeholder="Comentarios"
                               rows=3
-                              formControlName="comentarios3">
-
-                        </textarea>
+                              formControlName="comentarios3"
+                              [ngClass]="{'is-invalid': (encuestaParcialForm.get('comentarios3').touched || 
+                              encuestaParcialForm.get('comentarios3').dirty) &&
+                              !encuestaParcialForm.get('comentarios3').valid }">
+                              <option *ngFor="let comentarios3 of encuestaParcialForm"
+                              [value]="comentarios3.id">
+                      </textarea>
+                    <span class="invalid-feedback">
+                        <span *ngIf="encuestaParcialForm.get('comentarios3').errors?.required">
+                            Por favor llenar este Comentario
+                        </span>
+                    </span>
                 </div>
             </div>
 
@@ -142,12 +194,26 @@
                 <select class="form-control"
                         id="rtaSiNo_4"
                         formControlName="rtasSiNo_4"
-                        style="width:200px">
+                        style="width:200px"
+                        [ngClass]="{'is-invalid': (encuestaParcialForm.get('rtasSiNo_4').touched || 
+                        encuestaParcialForm.get('rtasSiNo_4').dirty) &&
+                        !encuestaParcialForm.get('rtasSiNo_4').valid }">
                     <option *ngFor="let rtaSiNo_4 of respuestaSiNo"
                             [value]="rtaSiNo_4.id">
                         {{rtaSiNo_4.name}}
                     </option>
+
                 </select>
+
+                <span class="invalid-feedback">
+                    <span *ngIf="encuestaParcialForm.get('rtasSiNo_4').errors?.required">
+                        Por favor responda esta pregunta
+                    </span>
+                    <span *ngIf="encuestaParcialForm.get('rtasSiNo_4').errors?.minlength">
+                        Por favor responda esta pregunta
+                    </span>
+                </span>
+
             </div>
             <div class="form-group row">
                 <label class="col-md-2 col-form-label"
@@ -157,9 +223,18 @@
                               id="comentarios4"
                               placeholder="Comentarios"
                               rows=3
-                              formControlName="comentarios4">
-
+                              formControlName="comentarios4"
+                              [ngClass]="{'is-invalid': (encuestaParcialForm.get('comentarios4').touched || 
+                              encuestaParcialForm.get('comentarios4').dirty) &&
+                              !encuestaParcialForm.get('comentarios4').valid }">
+                              <option *ngFor="let comentarios4 of encuestaParcialForm"
+                              [value]="comentarios4.id">
                         </textarea>
+                    <span class="invalid-feedback">
+                        <span *ngIf="encuestaParcialForm.get('comentarios4').errors?.required">
+                            Por favor llenar este Comentario
+                        </span>
+                    </span>
                 </div>
             </div>
 
@@ -168,13 +243,26 @@
                 <select class="form-control"
                         id="rtaSiNo_5"
                         formControlName="rtasSiNo_5"
-                        style="width:200px">
+                        style="width:200px"
+                        [ngClass]="{'is-invalid': (encuestaParcialForm.get('rtasSiNo_5').touched || 
+                        encuestaParcialForm.get('rtasSiNo_5').dirty) &&
+                        !encuestaParcialForm.get('rtasSiNo_5').valid }">
+
                     <option *ngFor="let rtaSiNo_5 of respuestaSiNo"
                             [value]="rtaSiNo_5.id">
                         {{rtaSiNo_5.name}}
                     </option>
                 </select>
+                <span class="invalid-feedback">
+                    <span *ngIf="encuestaParcialForm.get('rtasSiNo_5').errors?.required">
+                        Por favor responda esta pregunta
+                    </span>
+                    <span *ngIf="encuestaParcialForm.get('rtasSiNo_5').errors?.minlength">
+                        Por favor responda esta pregunta
+                    </span>
+                </span>
             </div>
+
             <div class="form-group row">
                 <label class="col-md-2 col-form-label"
                        for="comentarios5">¿Por qué?</label>
@@ -183,9 +271,18 @@
                               id="comentarios5"
                               placeholder="Comentarios"
                               rows=3
-                              formControlName="comentarios5">
-
+                              formControlName="comentarios5"
+                              [ngClass]="{'is-invalid': (encuestaParcialForm.get('comentarios5').touched || 
+                              encuestaParcialForm.get('comentarios5').dirty) &&
+                              !encuestaParcialForm.get('comentarios5').valid }">
+                              <option *ngFor="let comentarios5 of encuestaParcialForm"
+                              [value]="comentarios5.id">
                         </textarea>
+                    <span class="invalid-feedback">
+                        <span *ngIf="encuestaParcialForm.get('comentarios5').errors?.required">
+                            Por favor llenar este Comentario
+                        </span>
+                    </span>
                 </div>
             </div>
 
@@ -194,7 +291,7 @@
                     <button class="btn btn-primary"
                             style='width:180px'
                             type="submit"
-                            [disabled]="!encuestaParcialForm.valid" >
+                            [disabled]="!encuestaParcialForm.valid">
                         Guardar encuesta
                     </button>
                 </div>
