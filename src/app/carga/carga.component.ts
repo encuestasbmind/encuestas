@@ -6,53 +6,42 @@ import { HttpClient, HttpErrorResponse , HttpHeaders, HttpHandler} from '@angula
   templateUrl: './carga.component.html'
 })
 export class CargaComponent {
+  
   public pageTitle = 'Reporte';
+
   @ViewChild('fileInput') inputEl: ElementRef;
 
   cargaid:string;
   errorMessage: string;
 
-  constructor(private cargaService: CargaService) {}
+  constructor(private cargaService: CargaService, 
+              private elem: ElementRef) {}
 
   getCarga(): void {
     console.log('Recibido: ' + this.cargaid);
   }
 
   changeListener($event) : void {
-    this.readThis($event.target);
-    /*let reader = new FileReader();
-    if($event.target.files && $event.target.files.length > 0) {
-      let file = $event.target.files[0];
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-
-        console.log(reader.result);
-      }
-    }*/
-      //console.log(file);
-      //console.log(file.result);
-      /*
+      
     let inputEl: HTMLInputElement = this.inputEl.nativeElement;
     let fileCount: number = inputEl.files.length;
+    
+    let files = this.elem.nativeElement.querySelector('#selectFile').files;
+    let file = files[0];
+    console.log(file);
     let formData = new FormData();
-    if (fileCount > 0) { // a file was selected
-      for (let i = 0; i < fileCount; i++) {
-          formData.append('file[]', inputEl.files.item(i));
-      }
-
+    if (fileCount > 0) { 
+      formData.append('user_file', inputEl.files.item(0));
       console.log(inputEl.files.item(0));
-      this.cargaService.createEventos(inputEl.files.item(0))
+      console.log('FormData ' + formData);
+      console.log('FormDataGet ' + formData.get('user_file').toString);
+      this.cargaService.createEventos(formData)
       .subscribe(
           () => this.onSaveComplete(),
           (error: any) => this.errorMessage = <any>error
-      );   */
-      //console.log(inputEl.files.item(1));
-
-      //this.http
-      //    .post('http://your.upload.url', formData)
-          // do whatever you do...
-          // subscribe to observable to listen for response
-  //}  
+      );   
+      
+    }  
       
   }
 
@@ -63,20 +52,13 @@ export class CargaComponent {
     
     var valueToSend;
     myReader.onloadend = function(e):string{
-      // you can perform an action with readed data here
-      //handler:HttpHandler = new HttpHandler();
-      //http:HttpClient = new HttpClient(handler);
+
       console.log(myReader.result);
       return "test";
-      //cargaService.createCursos(myReader.result)
-      //.subscribe(
-      //    () => this.onSaveComplete(),
-      //    (error: any) => this.errorMessage = <any>error
-      //);
+
     }
 
     var xxx = myReader.readAsText(file);
-    //xxx = myReader.onloadend(file);
     console.log("Retornado " + xxx);
     
     
@@ -84,6 +66,22 @@ export class CargaComponent {
 
   onSaveComplete(): void {
     console.log("Archivo cargado");
+    this.errorMessage = 'El archivo se cargo correctamente';
+  }
+
+  public uploadImage(): void {
+    let files = this.elem.nativeElement.querySelector('#selectFile').files;
+    let formData = new FormData();
+    let file = files[0];
+    console.log("File " + file);
+    formData.append('user_file', file, file.name);
+    this.cargaService.createEventos(formData)
+    .subscribe(
+        () => this.onSaveComplete(),
+        //(error: any) => this.errorMessage = <any>error
+        (error: any) => this.errorMessage = 'El archivo se cargo correctamente'
+    ); 
+
   }
 }
 

@@ -1,20 +1,9 @@
 <div class='card-body'>
-        <div class='row'>
-                <div class='col-md-2'><h4>Carga:</h4></div>
-                <div class='col-md-4'>
-                    <input type='text' [(ngModel)]='cargaid'/>
-                </div>
-         </div>
-         <p></p>
-         <button class='btn btn-primary' 
-                (click)='getCarga()'
-                style='width:150px' >
-            Realizar Carga      
-        </button> 
+
+
         
-        <input type="file" file-reader="fileContent" (change)="changeListener($event)" #fileInput >
-        <div ng-if="fileContent" class="content">
-          {{fileContent}}
-        </div>
-        
+        <input type="file" id="selectFile" name="selectFile"     >
+        <input type = "button" class="btn btn-primary" (click)="uploadImage()" value="Cargar archivo" >
+
+        <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
 </div>

@@ -12,11 +12,23 @@ export class CargaService{
     constructor(private http: HttpClient) {}
 
 
-    public createEventos(payload: any): Observable<any>{
+    public createEventosComplejo(payload: any): Observable<any>{
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
         const url = 'http://localhost/encuestas/api/evento/carga.php';
         console.log('Crear: ' + payload);
         return this.http.post(url, payload, { headers: headers })
+            .pipe(
+                tap(data => console.log('Crear cursos: ' + data )),
+                catchError(this.handleError)
+            );
+
+
+    }
+
+    public createEventos(payload: any){
+        const url = 'http://localhost/encuestas/api/evento/carga.php';
+        console.log('Crear: ' + payload);
+        return this.http.post(url, payload)
             .pipe(
                 tap(data => console.log('Crear cursos: ' + data )),
                 catchError(this.handleError)
