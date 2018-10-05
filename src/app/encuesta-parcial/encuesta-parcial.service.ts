@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 import { IEventoEstudiante } from './eventoestuadiante'
+import { IencuestaParcial } from "./encuesta-parcial";
 
 @Injectable({
     providedIn: 'root'
@@ -32,6 +33,17 @@ export class EncuestaParcialService{
             );
 
     }
+
+    getEncuestaParcial(eventoId: string): Observable<IencuestaParcial> {
+        const url = 'http://localhost/encuestas/api/evento/readdescdata.php?id=' + eventoId ;
+        console.log(url);
+        return this.http.get<IencuestaParcial>(url)
+                .pipe(
+                    tap(data => console.log('get datos' + JSON.stringify(data))),
+                    catchError(this.handleError)
+                );
+    }
+
 
     private handleError(err) {
 
