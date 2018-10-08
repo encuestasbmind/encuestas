@@ -1,20 +1,23 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Inject } from "@angular/core";
 import { IEvento} from "./eventos";
 import { HttpClient, HttpErrorResponse , HttpHeaders} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs'; 
 import { catchError, tap, map } from 'rxjs/operators';
+import { APP_CONFIG, IAppConfig } from "../app.config";
  
 @Injectable({
     providedIn: 'root'
 })
 export class EventosService{
 
-   //private usuarioUrl = 'https://devencuestas.000webhostapp.com/api/eventos/read.php';
-    private eventoUrl = 'http://localhost/encuestas/api/evento/read.php';
-    constructor(private http: HttpClient) {}
+    //private usuarioUrl = 'https://devencuestas.000webhostapp.com/api/eventos/read.php';
+    //private eventoUrl = 'http://localhost/encuestas/api/evento/read.php';
+    
+    constructor(private http: HttpClient, 
+                @Inject(APP_CONFIG) public config: IAppConfig) {}
 
     getEventos(): Observable<IEvento[]> {
-        return this.http.get<IEvento[]>(this.eventoUrl).pipe(
+        return this.http.get<IEvento[]>(this.config.apiEndpoint + 'evento/read.php').pipe(
           tap(data => console.log('All: ' + JSON.stringify(data))),
           catchError(this.handleError)  
         );
@@ -27,7 +30,7 @@ export class EventosService{
     }
 
     getOneEvento(id: number): Observable<IEvento>{
-        const url = 'http://localhost/encuestas/api/evento/read_one.php?id='+id;
+        const url = this.config.apiEndpoint + 'evento/read_one.php?id='+id;
         
         return this.http.get<IEvento>(url)
             .pipe(
@@ -59,7 +62,7 @@ export class EventosService{
 
     private createEvento(evento: IEvento): Observable<IEvento>{
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
-        const url = 'http://localhost/encuestas/api/evento/create.php';
+        const url = this.config.apiEndpoint + 'evento/create.php';
         console.log('Crear: ' + JSON.stringify(evento));
         return this.http.post<IEvento>(url, JSON.stringify(evento), { headers: headers })
             .pipe(
@@ -71,7 +74,7 @@ export class EventosService{
 
     private actualizarEvento(evento: IEvento): Observable<IEvento>{
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-        const url = 'http://localhost/encuestas/api/evento/update.php';
+        const url = this.config.apiEndpoint + 'evento/update.php';
         console.log('Enviando ' + JSON.stringify(evento));
         return this.http.post<IEvento>(url, JSON.stringify(evento), { headers: headers })
                     .pipe(
