@@ -1,7 +1,8 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Inject } from "@angular/core";
 import { HttpClient, HttpErrorResponse , HttpHeaders} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs'; 
 import { catchError, tap, map } from 'rxjs/operators';
+import { APP_CONFIG, IAppConfig } from "../app.config";
 
 
 @Injectable({
@@ -9,12 +10,12 @@ import { catchError, tap, map } from 'rxjs/operators';
 })
 export class CargaService{
 
-    constructor(private http: HttpClient) {}
-
+    constructor(private http: HttpClient, 
+                @Inject(APP_CONFIG) public config: IAppConfig) {}
 
     public createEventosComplejo(payload: any): Observable<any>{
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
-        const url = 'http://localhost/encuestas/api/evento/carga.php';
+        const url = this.config.apiEndpoint + 'evento/carga.php';
         console.log('Crear: ' + payload);
         return this.http.post(url, payload, { headers: headers })
             .pipe(
@@ -26,7 +27,7 @@ export class CargaService{
     }
 
     public createEventos(payload: any){
-        const url = 'http://localhost/encuestas/api/evento/carga.php';
+        const url = this.config.apiEndpoint + 'evento/carga.php';
         console.log('Crear: ' + payload);
         return this.http.post(url, payload)
             .pipe(

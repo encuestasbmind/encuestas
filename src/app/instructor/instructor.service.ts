@@ -1,8 +1,9 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Inject } from "@angular/core";
 import { IInstructor} from "./instructor";
 import { HttpClient, HttpErrorResponse , HttpHeaders} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs'; 
 import { catchError, tap, map } from 'rxjs/operators';
+import { IAppConfig, APP_CONFIG } from "../app.config";
  
 @Injectable({
     providedIn: 'root'
@@ -10,11 +11,13 @@ import { catchError, tap, map } from 'rxjs/operators';
 export class InstructorService{
 
  
-    private instructorUrl = 'http://localhost/encuestas/api/instructor/read.php';
-    constructor(private http: HttpClient) {}
+    //private instructorUrl = 'http://localhost/encuestas/api/instructor/read.php';
+
+    constructor(private http: HttpClient, 
+                @Inject(APP_CONFIG) public config: IAppConfig) {}
 
     getInstructores(): Observable<IInstructor[]> {
-        return this.http.get<IInstructor[]>(this.instructorUrl).pipe(
+        return this.http.get<IInstructor[]>(this.config.apiEndpoint + 'instructor/read.php').pipe(
           tap(data => console.log('All: ' + JSON.stringify(data))),
           catchError(this.handleError)  
         );
@@ -27,7 +30,7 @@ export class InstructorService{
     }
 
     getOneInstructor(id: number): Observable<IInstructor>{
-        const url = 'http://localhost/encuestas/api/instructor/read_one.php?id='+id;
+        const url = this.config.apiEndpoint + 'instructor/read_one.php?id='+id;
         
         return this.http.get<IInstructor>(url)
             .pipe(
@@ -59,7 +62,7 @@ export class InstructorService{
 
     private createInstructor(instructor: IInstructor): Observable<IInstructor>{
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
-        const url = 'http://localhost/encuestas/api/instructor/create.php';
+        const url = this.config.apiEndpoint + 'instructor/create.php';
         console.log('Crear: ' + JSON.stringify(instructor));
         return this.http.post<IInstructor>(url, JSON.stringify(instructor), { headers: headers })
             .pipe(
@@ -71,7 +74,7 @@ export class InstructorService{
 
     private actualizarInstructor(instructor: IInstructor): Observable<IInstructor>{
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-        const url = 'http://localhost/encuestas/api/instructor/update.php';
+        const url = this.config.apiEndpoint + 'instructor/update.php';
         console.log('Enviando ' + JSON.stringify(instructor));
         return this.http.post<IInstructor>(url, JSON.stringify(instructor), { headers: headers })
                     .pipe(

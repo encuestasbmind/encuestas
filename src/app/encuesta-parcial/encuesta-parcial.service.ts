@@ -1,19 +1,22 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Inject } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 import { IEventoEstudiante } from './eventoestuadiante'
 import { IencuestaParcial } from "./encuesta-parcial";
+import { IAppConfig, APP_CONFIG } from "../app.config";
 
 @Injectable({
     providedIn: 'root'
 })
 export class EncuestaParcialService{
 
-    constructor(private http: HttpClient){} 
+    constructor(private http: HttpClient, 
+                @Inject(APP_CONFIG) public config: IAppConfig){} 
+
     getEventoEstudiante(eventoId: string, identificacion: string): Observable<IEventoEstudiante> {
-        const url = 'http://localhost/encuestas/api/eventoestudiante/readeventoxestudiante.php?eventoid=' + eventoId + '&estudianteid=' + identificacion;
+        const url = this.config.apiEndpoint + 'eventoestudiante/readeventoxestudiante.php?eventoid=' + eventoId + '&estudianteid=' + identificacion;
         console.log(url);
         return this.http.get<IEventoEstudiante>(url)
                 .pipe(
@@ -24,7 +27,7 @@ export class EncuestaParcialService{
 
     crearEncuestaParcial(p: any): Observable<any>{
         const headers = new HttpHeaders({ 'Content-Type':'application/json' })
-        const url = 'http://localhost/encuestas/api/respuestas/createparcial.php';
+        const url = this.config.apiEndpoint + 'respuestas/createparcial.php';
         console.log('Crear: ' + JSON.stringify(p));
         return this.http.post(url, JSON.stringify(p), { headers: headers })
             .pipe(
@@ -35,7 +38,7 @@ export class EncuestaParcialService{
     }
 
     getEncuestaParcial(eventoId: string): Observable<IencuestaParcial> {
-        const url = 'http://localhost/encuestas/api/evento/readdescdata.php?id=' + eventoId ;
+        const url = this.config.apiEndpoint + 'evento/readdescdata.php?id=' + eventoId ;
         console.log(url);
         return this.http.get<IencuestaParcial>(url)
                 .pipe(

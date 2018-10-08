@@ -4,8 +4,11 @@ export let APP_CONFIG = new InjectionToken("app.config");
 
 export interface IAppConfig {
     apiEndpoint: string;
+    reporteEndpoint: string;
 }
 
 export const AppConfig: IAppConfig = {    
-    apiEndpoint: "http://localhost/encuestas/api/"    
+    apiEndpoint: "http://localhost/encuestas/api/",
+    reporteEndpoint: "http://localhost/encuestas/app/"
 };
+

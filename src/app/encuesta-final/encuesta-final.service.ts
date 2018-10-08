@@ -1,18 +1,20 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Inject } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 import { IEventoEstudiante } from '../encuesta-parcial/eventoestuadiante'
 import { IEncuestaFinal} from "./encuestafinal";
+import { IAppConfig, APP_CONFIG } from "../app.config";
 @Injectable({
     providedIn: 'root'
 })
 export class EncuestaFinalService{
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient,
+                @Inject(APP_CONFIG) public config: IAppConfig) { }
     
     getEventoEstudiante(eventoId: string, identificacion: string): Observable<IEventoEstudiante> {
-        const url = 'http://localhost/encuestas/api/eventoestudiante/readeventoxestudiante.php?eventoid=' + eventoId + '&estudianteid=' + identificacion;
+        const url = this.config.apiEndpoint + 'eventoestudiante/readeventoxestudiante.php?eventoid=' + eventoId + '&estudianteid=' + identificacion;
         console.log(url);
         return this.http.get<IEventoEstudiante>(url)
                 .pipe(
@@ -23,7 +25,7 @@ export class EncuestaFinalService{
 
     
     getEventodesfinal(eventoId: string, identificacion: string): Observable<IEncuestaFinal> {
-        const url = 'http://localhost/encuestas/api/evento/readdescdatafinal.php?id=' + eventoId + '&estudiante_id=' + identificacion;
+        const url = this.config.apiEndpoint + 'evento/readdescdatafinal.php?id=' + eventoId + '&estudiante_id=' + identificacion;
         console.log(url);
         return this.http.get<IEncuestaFinal>(url)
                 .pipe(
@@ -34,7 +36,7 @@ export class EncuestaFinalService{
 
     crearEncuestaFinal(p: any): Observable<any>{
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
-        const url = 'http://localhost/encuestas/api/respuestas/createfinal.php';
+        const url = this.config.apiEndpoint + 'respuestas/createfinal.php';
         console.log('Crear: ' + JSON.stringify(p));
         return this.http.post(url, JSON.stringify(p), { headers: headers })
             .pipe(

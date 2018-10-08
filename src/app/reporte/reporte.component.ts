@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Ireporte } from './reporte';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { APP_CONFIG, IAppConfig } from '../app.config';
 
 @Component({
   templateUrl: './reporte.component.html'
@@ -19,7 +20,8 @@ export class ReporteComponent implements OnInit{
   fechaFinal: string; 
   reporte: Ireporte;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, 
+              @Inject(APP_CONFIG) public config: IAppConfig ) { }
 
   ngOnInit(): void {
     this.reporteForm = this.fb.group(
@@ -40,7 +42,7 @@ export class ReporteComponent implements OnInit{
     const p = {...this.reporteForm.value};
     console.log( JSON.stringify(p));
     var el = document.getElementById('report');
-    let urlReporte = "http://localhost/encuestas/app/reportes/reporteevento.php?" + 
+    let urlReporte =  this.config.reporteEndpoint + "reportes/reporteevento.php?" + 
                       "eventoid=" + this.eventoid + 
                       "&tipo_encuesta="+ this.encuesta +
                       "&fecha_inicial="+ this.fechaInicial + 
