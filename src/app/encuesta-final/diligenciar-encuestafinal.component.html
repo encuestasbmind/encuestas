@@ -57,6 +57,8 @@
             </div>
         </div>
         <p></p>
+
+        
         <form novalidate
               autocomplete="off"
               (ngSubmit)="guardarEncuestas()"
@@ -71,12 +73,26 @@
                             <select class="form-control"
                                     id="rtas_1"
                                     formControlName="rtas_1"
-                                    style="width:200px">
+                                    style="width:200px"
+                                    [ngClass]="{'is-invalid': (encuestaFinalForm.get('rtas_1').touched || 
+                                    encuestaFinalForm.get('rtas_1').dirty) &&
+                                    !encuestaFinalForm.get('rtas_1').valid }">
+
                                 <option *ngFor="let rtas_1 of respuesta"
                                         [value]="rtas_1.id">
                                     {{rtas_1.name}}
                                 </option>
                             </select>
+
+                            <span class="invalid-feedback">
+                                <span *ngIf="encuestaFinalForm.get('rtas_1').errors?.required">
+                                    Por favor responda esta pregunta
+                                </span>
+                                <span *ngIf="encuestaFinalForm.get('rtas_1').errors?.minlength">
+                                    Por favor responda esta pregunta
+                                </span>
+                            </span>
+
                         </tr>
 
                         <tr>
@@ -84,12 +100,24 @@
                             <select class="form-control"
                                     id="rtas_2"
                                     formControlName="rtas_2"
-                                    style="width:200px">
+                                    style="width:200px"
+                                    [ngClass]="{'is-invalid': (encuestaFinalForm.get('rtas_2').touched || 
+                                    encuestaFinalForm.get('rtas_2').dirty) &&
+                                    !encuestaFinalForm.get('rtas_2').valid }">
+
                                 <option *ngFor="let rtas_2 of respuesta"
                                         [value]="rtas_2.id">
                                     {{rtas_2.name}}
                                 </option>
                             </select>
+                            <span class="invalid-feedback">
+                                <span *ngIf="encuestaFinalForm.get('rtas_2').errors?.required">
+                                    Por favor responda esta pregunta
+                                </span>
+                                <span *ngIf="encuestaFinalForm.get('rtas_2').errors?.minlength">
+                                    Por favor responda esta pregunta
+                                </span>
+                            </span>
                         </tr>
 
                         <tr>
@@ -97,12 +125,25 @@
                             <select class="form-control"
                                     id="rtas_3"
                                     formControlName="rtas_3"
-                                    style="width:200px">
+                                    style="width:200px"
+                                    [ngClass]="{'is-invalid': (encuestaFinalForm.get('rtas_3').touched || 
+                                    encuestaFinalForm.get('rtas_3').dirty) &&
+                                    !encuestaFinalForm.get('rtas_3').valid }"
+                                    >
                                 <option *ngFor="let rtas_3 of respuesta"
                                         [value]="rtas_3.id">
                                     {{rtas_3.name}}
                                 </option>
                             </select>
+
+                            <span class="invalid-feedback">
+                                <span *ngIf="encuestaFinalForm.get('rtas_3').errors?.required">
+                                    Por favor responda esta pregunta
+                                </span>
+                                <span *ngIf="encuestaFinalForm.get('rtas_3').errors?.minlength">
+                                    Por favor responda esta pregunta
+                                </span>
+                            </span>                            
                         </tr>
 
                     </table>
@@ -127,6 +168,7 @@
                 </div>
             </tr>
 
+            
             <fieldset>
                 <legend>
                     <th> 2. Centro Educativo</th>
@@ -136,12 +178,24 @@
                             <select class="form-control"
                                     id="rtas_4"
                                     formControlName="rtas_4"
-                                    style="width:200px">
+                                    style="width:200px"
+                                    [ngClass]="{'is-invalid': (encuestaFinalForm.get('rtas_4').touched || 
+                                    encuestaFinalForm.get('rtas_4').dirty) &&
+                                    !encuestaFinalForm.get('rtas_4').valid }"
+                                    >
                                 <option *ngFor="let rtas_4 of respuesta"
                                         [value]="rtas_4.id">
                                     {{rtas_4.name}}
                                 </option>
                             </select>
+                            <span class="invalid-feedback">
+                                    <span *ngIf="encuestaFinalForm.get('rtas_4').errors?.required">
+                                        Por favor responda esta pregunta
+                                    </span>
+                                    <span *ngIf="encuestaFinalForm.get('rtas_4').errors?.minlength">
+                                        Por favor responda esta pregunta
+                                    </span>
+                                </span>            
                         </tr>
 
                         <tr>
@@ -149,12 +203,24 @@
                             <select class="form-control"
                                     id="rtas_5"
                                     formControlName="rtas_5"
-                                    style="width:200px">
+                                    style="width:200px"
+                                    [ngClass]="{'is-invalid': (encuestaFinalForm.get('rtas_5').touched || 
+                                    encuestaFinalForm.get('rtas_5').dirty) &&
+                                    !encuestaFinalForm.get('rtas_5').valid}"
+                                    >
                                 <option *ngFor="let rtas_5 of respuesta"
                                         [value]="rtas_5.id">
                                     {{rtas_5.name}}
                                 </option>
                             </select>
+                            <span class="invalid-feedback">
+                                    <span *ngIf="encuestaFinalForm.get('rtas_5').errors?.required">
+                                        Por favor responda esta pregunta
+                                    </span>
+                                    <span *ngIf="encuestaFinalForm.get('rtas_5').errors?.minlength">
+                                        Por favor responda esta pregunta
+                                    </span>
+                                </span>  
                         </tr>
                     </table>
                 </legend>
@@ -181,7 +247,7 @@
 
 
 
-            
+
             <fieldset>
                 <legend>
                     <th>3. Ambiente Tecnico (Equipo Soporte Tecnico)</th>
@@ -192,24 +258,50 @@
                             <select class="form-control"
                                     id="rtas_6"
                                     formControlName="rtas_6"
-                                    style="width:200px">
+                                    style="width:200px"
+                                    [ngClass]="{'is-invalid': (encuestaFinalForm.get('rtas_6').touched || 
+                                    encuestaFinalForm.get('rtas_6').dirty) &&
+                                    !encuestaFinalForm.get('rtas_6').valid }"
+                                    >
                                 <option *ngFor="let rtas_6 of respuesta"
                                         [value]="rtas_6.id">
                                     {{rtas_6.name}}
                                 </option>
                             </select>
+                            <span class="invalid-feedback">
+                                    <span *ngIf="encuestaFinalForm.get('rtas_6').errors?.required">
+                                        Por favor responda esta pregunta
+                                    </span>
+                                    <span *ngIf="encuestaFinalForm.get('rtas_6').errors?.minlength">
+                                        Por favor responda esta pregunta
+                                    </span>
+                                </span>  
                         </tr>
                         <tr>
                             ¿Los problemas tecnicos fueron resueltos oportunamente (si existieron)?
                             <select class="form-control"
                                     id="rtas_7"
                                     formControlName="rtas_7"
-                                    style="width:200px">
+                                    style="width:200px"
+                                    [ngClass]="{'is-invalid': (encuestaFinalForm.get('rtas_7').touched || 
+                                    encuestaFinalForm.get('rtas_7').dirty) &&
+                                    !encuestaFinalForm.get('rtas_7').valid }"
+                                    >
                                 <option *ngFor="let rtas_7 of respuesta"
                                         [value]="rtas_7.id">
                                     {{rtas_7.name}}
                                 </option>
                             </select>
+
+                            <span class="invalid-feedback">
+                                    <span *ngIf="encuestaFinalForm.get('rtas_7').errors?.required">
+                                        Por favor responda esta pregunta
+                                    </span>
+                                    <span *ngIf="encuestaFinalForm.get('rtas_7').errors?.minlength">
+                                        Por favor responda esta pregunta
+                                    </span>
+                                </span>  
+
                         </tr>
 
                         <tr>
@@ -217,12 +309,26 @@
                             <select class="form-control"
                                     id="rtas_8"
                                     formControlName="rtas_8"
-                                    style="width:200px">
+                                    style="width:200px"
+                                    [ngClass]="{'is-invalid': (encuestaFinalForm.get('rtas_8').touched || 
+                                    encuestaFinalForm.get('rtas_8').dirty) &&
+                                    !encuestaFinalForm.get('rtas_8').valid }"
+                                    >
                                 <option *ngFor="let rtas_8 of respuesta"
                                         [value]="rtas_8.id">
                                     {{rtas_8.name}}
                                 </option>
                             </select>
+
+                            <span class="invalid-feedback">
+                                    <span *ngIf="encuestaFinalForm.get('rtas_8').errors?.required">
+                                        Por favor responda esta pregunta
+                                    </span>
+                                    <span *ngIf="encuestaFinalForm.get('rtas_8').errors?.minlength">
+                                        Por favor responda esta pregunta
+                                    </span>
+                                </span>  
+
                         </tr>
                     </table>
                 </legend>
@@ -257,37 +363,79 @@
                             <select class="form-control"
                                     id="rtas_9"
                                     formControlName="rtas_9"
-                                    style="width:200px">
+                                    style="width:200px"
+                                    [ngClass]="{'is-invalid': (encuestaFinalForm.get('rtas_9').touched || 
+                                        encuestaFinalForm.get('rtas_9').dirty) &&
+                                        !encuestaFinalForm.get('rtas_9').valid}"
+                                    >
                                 <option *ngFor="let rtas_9 of respuesta"
                                         [value]="rtas_9.id">
                                     {{rtas_9.name}}
                                 </option>
                             </select>
+                            <span class="invalid-feedback">
+                                    <span *ngIf="encuestaFinalForm.get('rtas_9').errors?.required">
+                                        Por favor responda esta pregunta
+                                    </span>
+                                    <span *ngIf="encuestaFinalForm.get('rtas_9').errors?.minlength">
+                                        Por favor responda esta pregunta
+                                    </span>
+                                </span>  
+
                         </tr>
                         <tr>
                             Sus inquietudes fueron resueltas de forma clara y oportuna
                             <select class="form-control"
                                     id="rtas_10"
                                     formControlName="rtas_10"
-                                    style="width:200px">
+                                    style="width:200px"
+                                    [ngClass]="{'is-invalid': (encuestaFinalForm.get('rtas_10').touched || 
+                                        encuestaFinalForm.get('rtas_10').dirty) &&
+                                        !encuestaFinalForm.get('rtas_10').valid}"
+                                    >
                                 <option *ngFor="let rtas_10 of respuesta"
                                         [value]="rtas_10.id">
                                     {{rtas_10.name}}
                                 </option>
                             </select>
+                            <span class="invalid-feedback">
+                                    <span *ngIf="encuestaFinalForm.get('rtas_10').errors?.required">
+                                        Por favor responda esta pregunta
+                                    </span>
+                                    <span *ngIf="encuestaFinalForm.get('rtas_10').errors?.minlength">
+                                        Por favor responda esta pregunta
+                                    </span>
+                                </span> 
                         </tr>
+
+
+
 
                         <tr>
                             ¿la persona que la atendio fue amable y cortes?
                             <select class="form-control"
                                     id="rtas_11"
                                     formControlName="rtas_11"
-                                    style="width:200px">
+                                    style="width:200px"
+                                    [ngClass]="{'is-invalid': (encuestaFinalForm.get('rtas_11').touched || 
+                                    encuestaFinalForm.get('rtas_11').dirty) &&
+                                    !encuestaFinalForm.get('rtas_11').valid}">
+
                                 <option *ngFor="let rtas_11 of respuesta"
                                         [value]="rtas_11.id">
                                     {{rtas_11.name}}
                                 </option>
                             </select>
+                            <span class="invalid-feedback">
+                                    <span *ngIf="encuestaFinalForm.get('rtas_11').errors?.required">
+                                        Por favor responda esta pregunta
+                                    </span>
+                                    <span *ngIf="encuestaFinalForm.get('rtas_11').errors?.minlength">
+                                        Por favor responda esta pregunta
+                                    </span>
+                                </span> 
+
+
                         </tr>
                     </table>
                 </legend>
@@ -320,12 +468,24 @@
                             <select class="form-control"
                                     id="rtas_12"
                                     formControlName="rtas_12"
-                                    style="width:200px">
+                                    style="width:200px"
+                                    [ngClass]="{'is-invalid': (encuestaFinalForm.get('rtas_12').touched || 
+                                    encuestaFinalForm.get('rtas_12').dirty) &&
+                                    !encuestaFinalForm.get('rtas_12').valid}"
+                                    >
                                 <option *ngFor="let rtas_12 of respuesta"
                                         [value]="rtas_12.id">
                                     {{rtas_12.name}}
                                 </option>
                             </select>
+                            <span class="invalid-feedback">
+                                    <span *ngIf="encuestaFinalForm.get('rtas_12').errors?.required">
+                                        Por favor responda esta pregunta
+                                    </span>
+                                    <span *ngIf="encuestaFinalForm.get('rtas_12').errors?.minlength">
+                                        Por favor responda esta pregunta
+                                    </span>
+                                </span> 
                         </tr>
                     </table>
                 </legend>
@@ -359,12 +519,27 @@
                             <select class="form-control"
                                     ID="rtas_13"
                                     formControlName="rtas_13"
-                                    style="width:200px">
+                                    style="width:200px"
+                                    [ngClass]="{'is-invalid': (encuestaFinalForm.get('rtas_13').touched || 
+                                    encuestaFinalForm.get('rtas_13').dirty) &&
+                                    !encuestaFinalForm.get('rtas_13').valid}"
+                                    >
                                 <option *ngFor="let rtas_13 of respuestaSIoNO"
                                         [value]="rtas_13.ID">
                                     {{rtas_13.Name}}
                                 </option>
                             </select>
+
+                            <span class="invalid-feedback">
+                                    <span *ngIf="encuestaFinalForm.get('rtas_13').errors?.required">
+                                        Por favor responda esta pregunta
+                                    </span>
+                                    <span *ngIf="encuestaFinalForm.get('rtas_13').errors?.minlength">
+                                        Por favor responda esta pregunta
+                                    </span>
+                                </span> 
+
+
                         </tr>
 
                     </table>
@@ -382,9 +557,18 @@
                                   id="comentarios6"
                                   placeholder="Comentarios"
                                   rows=3
-                                  formControlName="comentarios6">
-
+                                  formControlName="comentarios6"
+                                  [ngClass]="{'is-invalid': (encuestaFinalForm.get('comentarios6').touched || 
+                                  encuestaFinalForm.get('comentarios6').dirty) &&
+                                  !encuestaFinalForm.get('comentarios6').valid }">
+                                  <option *ngFor="let comentarios6 of encuestaFinalForm"
+                                  [value]="comentarios6.id">
                     </textarea>
+                    <span class="invalid-feedback">
+                            <span *ngIf="encuestaFinalForm.get('comentarios6').errors?.required">
+                                Por favor llenar este Comentario
+                            </span>
+                        </span>
                     </div>
                 </div>
             </tr>
@@ -412,8 +596,9 @@
                 <div class="col-md-1">
                     <button class="btn btn-primary"
                             style='width:180px'
-                            type="submit">
-                        Guardar encuesta
+                            type="submit"
+                            [disabled]="!encuestaFinalForm.valid">
+                        Guardar Encuesta
                     </button>
                 </div>
             </div>

@@ -11,21 +11,21 @@ declare var require: any;
 @Component({
     selector: 'diligenciar-encuestas-encuestafinal',
     templateUrl: './diligenciar-encuestafinal.component.html'
-}) 
-export class DiligenciarEncuestaFinalComponent implements OnInit{
+})
+export class DiligenciarEncuestaFinalComponent implements OnInit {
 
-    respuesta = [{'id':5, 'name':'Totalmente de Acuerdo'},
-    {'id':4, 'name':'De Acuerdo'},
-    {'id':3, 'name':'Indeciso'},
-    {'id':2, 'name':'Desacuerdo'},
-    {'id':1, 'name':'Totalmente en Desacuerdo'},
-];
+    respuesta = [{ 'id': 5, 'name': 'Totalmente de Acuerdo' },
+    { 'id': 4, 'name': 'De Acuerdo' },
+    { 'id': 3, 'name': 'Indeciso' },
+    { 'id': 2, 'name': 'Desacuerdo' },
+    { 'id': 1, 'name': 'Totalmente en Desacuerdo' },
+    ];
 
-    respuestaSIoNO = [{'ID':1, 'Name':'Si'},
-                      {'ID':2, 'Name':'No'},
-                     ];
-                                    
-    encuestaEditada: any; 
+    respuestaSIoNO = [{ 'ID': 1, 'Name': 'Si' },
+    { 'ID': 2, 'Name': 'No' },
+    ];
+
+    encuestaEditada: any;
     errorMessage: string;
     encuestaFinalForm: FormGroup;
 
@@ -44,7 +44,7 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
     eventoId: string;
     fecha: string;
     quiendiligencia: string;
-    telefono: string; 
+    telefono: string;
 
     constructor(private fb: FormBuilder,
         private route: ActivatedRoute,
@@ -55,26 +55,26 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
         this.encuestaFinalForm = this.fb.group(
             {
                 eventoid: '',
-                rtas_1:['' || null, [Validators.required, Validators.minLength(1)]],
-                rtas_2: '',
-                rtas_3: '',
-                rtas_4: '',
-                rtas_5: '',
-                rtas_6: '',
-                rtas_7: '',
-                rtas_8: '',
-                rtas_9: '',
-                rtas_10: '',
-                rtas_11: '',
-                rtas_12: '',
-                rtas_13: '',
+                rtas_1: ['' || null, [Validators.required, Validators.minLength(1)]],
+                rtas_2: ['' || null, [Validators.required, Validators.minLength(1)]],
+                rtas_3: ['' || null, [Validators.required, Validators.minLength(1)]],
+                rtas_4: ['' || null, [Validators.required, Validators.minLength(1)]],
+                rtas_5: ['' || null, [Validators.required, Validators.minLength(1)]],
+                rtas_6: ['' || null, [Validators.required, Validators.minLength(1)]],
+                rtas_7: ['' || null, [Validators.required, Validators.minLength(1)]],
+                rtas_8: ['' || null, [Validators.required, Validators.minLength(1)]],
+                rtas_9: ['' || null, [Validators.required, Validators.minLength(1)]],
+                rtas_10: ['' || null, [Validators.required, Validators.minLength(1)]],
+                rtas_11: ['' || null, [Validators.required, Validators.minLength(1)]],
+                rtas_12: ['' || null, [Validators.required, Validators.minLength(1)]],
+                rtas_13: ['' || null, [Validators.required, Validators.minLength(1)]],
                 comentarios1: '',
                 comentarios2: '',
                 comentarios3: '',
                 comentarios4: '',
-                comentarios5: '', 
-                comentarios6: '', 
-                comentarios7: '', 
+                comentarios5: '',
+                comentarios6: ['' || null, [Validators.required, Validators.minLength(11)]],
+                comentarios7: '',
             }
         );
 
@@ -84,14 +84,14 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
                 const id2 = params['identificacion'];
                 this.encuestaEditada = id;
                 this.estudiante = id2;
-               
+
             }
         );
 
-        this.getDescriptorEncuestaFinal(this.encuestaEditada,this.estudiante);
+        this.getDescriptorEncuestaFinal(this.encuestaEditada, this.estudiante);
         console.log('Datos para diligenciar: ' + this.descEncuestaFinal);
         //this.curso=this.descEncuestaFinal.email; 
-        
+
     }
     guardarEncuestas(): void {
         this.encuestaFinalForm.patchValue({
@@ -116,7 +116,7 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
     getDescriptorEncuestaFinal(eventoId: string, identificacion: string): void {
 
         console.log('EventoId ' + eventoId);
-        this.encuestaFinalService.getEventodesfinal(eventoId , identificacion).subscribe(
+        this.encuestaFinalService.getEventodesfinal(eventoId, identificacion).subscribe(
 
             descEncuestaFinal => {
                 this.descEncuestaFinal = descEncuestaFinal;
@@ -129,8 +129,8 @@ export class DiligenciarEncuestaFinalComponent implements OnInit{
                 let dateFormat = require('dateformat');
                 let now = new Date();
                 this.fecha = dateFormat(now, "mmm dd, yyyy");
-                this.quiendiligencia = this.descEncuestaFinal.nombres + ' ' + this.descEncuestaFinal.apellidos; 
-                this.email=this.descEncuestaFinal.email; 
+                this.quiendiligencia = this.descEncuestaFinal.nombres + ' ' + this.descEncuestaFinal.apellidos;
+                this.email = this.descEncuestaFinal.email;
 
             },
             error => this.errorMessage = <any>error
