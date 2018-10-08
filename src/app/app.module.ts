@@ -25,6 +25,7 @@ import { DiligenciarEncuestaParcialComponent } from './encuesta-parcial/diligenc
 import { DiligenciarEncuestaFinalComponent } from './encuesta-final/diligenciar-encuestafinal.component';
 import { FinalizarEncuestaParcialComponent } from  './encuesta-parcial/finalizar-encuesta-parcial.component';
 import { CargaComponent } from './carga/carga.component';
+import { APP_CONFIG, AppConfig } from './app.config';
 
 
 
@@ -83,6 +84,9 @@ import { CargaComponent } from './carga/carga.component';
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
     ]) 
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent], 
+  providers: [
+    { provide: APP_CONFIG, useValue: AppConfig }
+  ]
 })
 export class AppModule {}
