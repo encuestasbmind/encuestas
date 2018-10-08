@@ -1,18 +1,21 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Inject } from "@angular/core";
 import { ICursos} from "./cursos";
 import { HttpClient, HttpErrorResponse , HttpHeaders} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs'; 
 import { catchError, tap, map } from 'rxjs/operators';
+import { APP_CONFIG, IAppConfig } from "../app.config";
  
 @Injectable({
     providedIn: 'root'
 })
 export class CursosService{
-    private cursosUrl = 'http://localhost/encuestas/api/curso/read.php';
-    constructor(private http: HttpClient) {}
+    //private cursosUrl = 'http://localhost/encuestas/api/curso/read.php';
+    
+    constructor(private http: HttpClient, 
+                @Inject(APP_CONFIG) public config: IAppConfig) {}
 
     getCursos(): Observable<ICursos[]> {
-        return this.http.get<ICursos[]>(this.cursosUrl).pipe(
+        return this.http.get<ICursos[]>(this.config.apiEndpoint + 'curso/read.php').pipe(
           tap(data => console.log('All:' + JSON.stringify(data))),
           catchError(this.handleError)  
         );
@@ -25,7 +28,7 @@ export class CursosService{
     }
 
     getOneCurso(id: number): Observable<ICursos>{
-        const url = 'http://localhost/encuestas/api/curso/read_one.php?id='+id;
+        const url = this.config.apiEndpoint + 'curso/read_one.php?id='+id;
         
         return this.http.get<ICursos>(url)
             .pipe(
@@ -58,7 +61,7 @@ export class CursosService{
 
     private createCursos(cursos: ICursos): Observable<ICursos>{
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
-        const url = 'http://localhost/encuestas/api/curso/create.php';
+        const url = this.config.apiEndpoint + 'curso/create.php';
         console.log('Crear: ' + JSON.stringify(cursos));
         return this.http.post<ICursos>(url, JSON.stringify(cursos), { headers: headers })
             .pipe(
@@ -69,7 +72,7 @@ export class CursosService{
 
     private actualizarCursos(cursos: ICursos): Observable<ICursos>{
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-        const url = 'http://localhost/encuestas/api/curso/update.php';
+        const url = this.config.apiEndpoint + 'curso/update.php';
         console.log('Enviando ' + JSON.stringify(cursos));
         return this.http.post<ICursos>(url, JSON.stringify(cursos), { headers: headers })
                     .pipe(
