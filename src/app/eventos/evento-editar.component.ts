@@ -60,7 +60,7 @@ export class EditareventoComponent implements OnInit{
     getEvento(id: number): void{
         console.log('Id Recibido ' + id );
         this.idRecibido = id;
-        console.log('getEvento Id Recibido ' + this.idRecibido );
+        console.log('getEvento Id Recibido ' + this.idRecibido);
         this.eventosService.getEvento(id)
             .subscribe(
                 (evento: IEvento) => this.onEventoRetrieved(evento), 
@@ -70,24 +70,24 @@ export class EditareventoComponent implements OnInit{
 
     onEventoRetrieved(evento: IEvento): void{
         this.evento = evento; 
-        console.log("Evento para post " + this.evento );
+        console.log("Evento para post " + this.evento);
         if(!evento){
             this.pageTitle = 'Agregar evento';
         }else{
             this.pageTitle = `Editar evento: ${this.evento.fecha_inicio}`;
 
             this.eventoForm.patchValue({
-                id: this.evento.id , 
-                fecha_inicio: this.evento.fecha_inicio ,
-                fecha_final: this.evento.fecha_final , 
-                ev_obs: this.evento.ev_obs , 
-                cursos_id: this.evento.cursos_id ,
+                id: this.evento.id, 
+                fecha_inicio: this.evento.fecha_inicio,
+                fecha_final: this.evento.fecha_final, 
+                ev_obs: this.evento.ev_obs, 
+                cursos_id: this.evento.cursos_id,
                 instructor_id: this.evento.instructor_id ,
-                tipo_delivery_id: this.evento.tipo_delivery_id ,
+                tipo_delivery_id: this.evento.tipo_delivery_id,
                 estado_id:this.evento.estado_id ,
                 ciudad_id:this.evento.ciudad_id ,
                 pais_id: this.evento.pais_id , 
-                estado_evento: this.evento.estado_evento ,   
+                estado_evento: this.evento.estado_evento,   
             });
         }
 
@@ -103,7 +103,7 @@ export class EditareventoComponent implements OnInit{
                 (error: any) => this.errorMessage = <any>error
             );
     }
-
+    
     onSaveComplete(): void {
         this.eventoForm.reset();
         this.router.navigate(['/eventos']);

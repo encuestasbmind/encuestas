@@ -31,7 +31,7 @@ export class EncuestaParcialService{
         console.log('Crear: ' + JSON.stringify(p));
         return this.http.post(url, JSON.stringify(p), { headers: headers })
             .pipe(
-                tap(data => console.log('Crear Encuesta Parcial: ' + JSON.stringify(data) )),
+                tap(data => console.log('Crear Encuesta Parcial: ' + JSON.stringify(data))),
                 catchError(this.handleError)
             );
 

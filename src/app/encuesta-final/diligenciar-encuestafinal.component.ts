@@ -64,10 +64,10 @@ export class DiligenciarEncuestaFinalComponent implements OnInit {
                 rtas_7: ['' || null, [Validators.required, Validators.minLength(1)]],
                 rtas_8: ['' || null, [Validators.required, Validators.minLength(1)]],
                 rtas_9: ['' || null, [Validators.required, Validators.minLength(1)]],
-                rtas_10: ['' || null, [Validators.required, Validators.minLength(1)]],
-                rtas_11: ['' || null, [Validators.required, Validators.minLength(1)]],
-                rtas_12: ['' || null, [Validators.required, Validators.minLength(1)]],
-                rtas_13: ['' || null, [Validators.required, Validators.minLength(1)]],
+                rtas_10: ['' || null,[Validators.required, Validators.minLength(1)]],
+                rtas_11: ['' || null,[Validators.required, Validators.minLength(1)]],
+                rtas_12: ['' || null,[Validators.required, Validators.minLength(1)]],
+                rtas_13: ['' || null,[Validators.required, Validators.minLength(1)]],
                 comentarios1: '',
                 comentarios2: '',
                 comentarios3: '',
@@ -126,9 +126,10 @@ export class DiligenciarEncuestaFinalComponent implements OnInit {
                 this.eventoId = this.descEncuestaFinal.id;
                 this.instructor = this.descEncuestaFinal.instructor;
 
+
                 let dateFormat = require('dateformat');
                 let now = new Date();
-                this.fecha = dateFormat(now, "mmm dd, yyyy");
+                this.fecha = dateFormat(now, "mm dd, yyyy");
                 this.quiendiligencia = this.descEncuestaFinal.nombres + ' ' + this.descEncuestaFinal.apellidos;
                 this.email = this.descEncuestaFinal.email;
 
