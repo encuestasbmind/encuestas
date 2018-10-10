@@ -3,5 +3,5 @@ export interface ICursos  {
     nombre_cur: string;
     horas:string;
     fabricante_id:string;
-    Categorias_id:string;
+    categorias_id:string;
 }

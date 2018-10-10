@@ -75,7 +75,7 @@ export class EditarCursosComponent implements OnInit {
                 nombre_cur: this.curso.nombre_cur,
                 horas: this.curso.horas,
                 fabricante_id: this.curso.fabricante_id,
-                Categorias_id: this.curso.Categorias_id,
+                categorias_id: this.curso.categorias_id,
             });
         }
     }
