@@ -30,7 +30,7 @@ export class DetalleCursosComponent implements OnInit {
   }
 
   onBack(): void{
-    this.router.navigate(['/cursos'])
+    this.router.navigate(['/curso'])
   }
 
 }
