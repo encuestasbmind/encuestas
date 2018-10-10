@@ -64,10 +64,10 @@ export class DiligenciarEncuestaFinalComponent implements OnInit {
                 rtas_7: ['' || null, [Validators.required, Validators.minLength(1)]],
                 rtas_8: ['' || null, [Validators.required, Validators.minLength(1)]],
                 rtas_9: ['' || null, [Validators.required, Validators.minLength(1)]],
-                rtas_10: ['' || null,[Validators.required, Validators.minLength(1)]],
-                rtas_11: ['' || null,[Validators.required, Validators.minLength(1)]],
-                rtas_12: ['' || null,[Validators.required, Validators.minLength(1)]],
-                rtas_13: ['' || null,[Validators.required, Validators.minLength(1)]],
+                rtas_10: ['' || null, [Validators.required, Validators.minLength(1)]],
+                rtas_11: ['' || null, [Validators.required, Validators.minLength(1)]],
+                rtas_12: ['' || null, [Validators.required, Validators.minLength(1)]],
+                rtas_13: ['' || null, [Validators.required, Validators.minLength(1)]],
                 comentarios1: '',
                 comentarios2: '',
                 comentarios3: '',
@@ -85,12 +85,10 @@ export class DiligenciarEncuestaFinalComponent implements OnInit {
                 this.encuestaEditada = id;
                 this.estudiante = id2;
 
-            }
-        );
-
+            });
         this.getDescriptorEncuestaFinal(this.encuestaEditada, this.estudiante);
         console.log('Datos para diligenciar: ' + this.descEncuestaFinal);
-        //this.curso=this.descEncuestaFinal.email; 
+
 
     }
     guardarEncuestas(): void {
@@ -122,9 +120,11 @@ export class DiligenciarEncuestaFinalComponent implements OnInit {
                 this.descEncuestaFinal = descEncuestaFinal;
 
                 console.log('Datos resultantes ' + JSON.stringify(this.descEncuestaFinal));
+                this.estudiante_id = this.descEncuestaFinal.estudiante_id;
+                this.instructor = this.descEncuestaFinal.instructor;
                 this.curso = this.descEncuestaFinal.curso;
                 this.eventoId = this.descEncuestaFinal.id;
-                this.instructor = this.descEncuestaFinal.instructor;
+
 
 
                 let dateFormat = require('dateformat');

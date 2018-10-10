@@ -55,7 +55,7 @@ export class DiligenciarEncuestaParcialComponent implements OnInit {
             }
         );
         this.getdescEncuestaParcial(this.encuestaEditadas);
-        +        console.log('Datos para diligenciar: ' + this.descEncuestaParcial);
+        +  console.log('Datos para diligenciar: ' + this.descEncuestaParcial);
     }
 
     guardarEncuesta(): void {
