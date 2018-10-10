@@ -81,7 +81,7 @@ export class EditareventoComponent implements OnInit{
                 fecha_inicio: this.evento.fecha_inicio,
                 fecha_final: this.evento.fecha_final, 
                 ev_obs: this.evento.ev_obs, 
-                cursos_id: this.evento.cursos_id,
+                curso_id: this.evento.curso_id,
                 instructor_id: this.evento.instructor_id ,
                 tipo_delivery_id: this.evento.tipo_delivery_id,
                 estado_id:this.evento.estado_id ,

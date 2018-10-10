@@ -3,7 +3,7 @@ export interface IEvento  {
     fecha_inicio: string; 
     fecha_final: string; 
     ev_obs: string; 
-    cursos_id: string;
+    curso_id: string;
     instructor_id: string;
     tipo_delivery_id: string;
     estado_id: string;
