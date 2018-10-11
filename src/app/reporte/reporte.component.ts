@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Ireporte } from './reporte';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder , Validators } from '@angular/forms';
 import { APP_CONFIG, IAppConfig } from '../app.config';
 
 @Component({
@@ -26,7 +26,7 @@ export class ReporteComponent implements OnInit{
   ngOnInit(): void {
     this.reporteForm = this.fb.group(
       {
-        encuesta: '',
+        encuesta:['' || null, [Validators.required]],
       }
     );
   }

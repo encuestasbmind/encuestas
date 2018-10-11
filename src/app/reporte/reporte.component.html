@@ -13,7 +13,9 @@
         <h5> Tipo encuesta</h5>
         <select class="form-control"
                 id="encuesta"
-                style="width:200px" [(ngModel)]='encuesta'>
+                style="width:200px" [(ngModel)]='encuesta'
+                
+                >
             <option *ngFor="let encuesta  of tipoReporte"
                     [value]="encuesta.id">
                 {{encuesta.name}}
@@ -40,6 +42,7 @@
     <p></p>
     <button class='btn btn-primary'
             (click)='getReportes()'
+            [disabled]="!encuesta.valid"
             style='width:150px'>
         Consultar Reporte
     </button>
