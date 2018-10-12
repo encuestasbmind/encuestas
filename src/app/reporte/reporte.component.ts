@@ -27,15 +27,23 @@ export class ReporteComponent implements OnInit{
     this.reporteForm = this.fb.group(
       {
         encuesta:['' || null, [Validators.required]],
+        eventoid:['' || null, [Validators.required]]
       }
     );
+    
+   
+      this.encuesta = '-1'  ; 
+    
+   
+    
+
   }
 
   getReportes(): void {
 
     this.reporteForm.patchValue({
       eventoid: this.eventoid,
-      encuesta: this.encuesta
+    
   });
     console.log('Recibido: ' + this.eventoid );
     console.log('Encuesta: ' + this.encuesta );
@@ -49,6 +57,9 @@ export class ReporteComponent implements OnInit{
                       "&fecha_final="+ this.fechaFinal;
     console.log(urlReporte);
     el.setAttribute("src", urlReporte);
+
+
   }
+
 
 }

@@ -10,7 +10,7 @@
             <input type='text'
                    [(ngModel)]='eventoid' />
         </div>
-        <h5> Tipo encuesta</h5>
+        <h5>*Tipo encuesta</h5>
         <select class="form-control"
                 id="encuesta"
                 style="width:200px" [(ngModel)]='encuesta'
@@ -42,7 +42,7 @@
     <p></p>
     <button class='btn btn-primary'
             (click)='getReportes()'
-            [disabled]="!encuesta.valid"
+            [disabled]="encuesta === '-1'"
             style='width:150px'>
         Consultar Reporte
     </button>
