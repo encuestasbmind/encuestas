@@ -27,15 +27,15 @@ export class ReporteComponent implements OnInit{
     this.reporteForm = this.fb.group(
       {
         encuesta:['' || null, [Validators.required]],
-        eventoid:['' || null, [Validators.required]]
+        eventoid:['' || null, [Validators.required]],
+        fechaInicial:['' || null, [Validators.required]],
+
       }
     );
-    
-   
-      this.encuesta = '-1'  ; 
-    
-   
-    
+
+      this.eventoid = ''; 
+      this.fechaInicial = 'undefined';
+      this.encuesta ='-1';
 
   }
 
