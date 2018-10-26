@@ -5,7 +5,9 @@ import { Observable, Subscription, fromEvent, merge, of } from 'rxjs';
 import { EncuestaParcialService } from "./encuesta-parcial.service";
 import { IencuestaParcial } from "./encuesta-parcial";
 
+
 declare var require: any;
+
 
 @Component({
     selector: 'diligenciar-encuestas-encuestaparcial',
@@ -99,6 +101,6 @@ export class DiligenciarEncuestaParcialComponent implements OnInit {
                 )
         
             }
-        
-
+            
+            
 }
