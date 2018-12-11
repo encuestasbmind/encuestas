@@ -8,7 +8,9 @@ export interface IAppConfig {
 }
 
 export const AppConfig: IAppConfig = {    
-    apiEndpoint: "http://localhost/encuestas/api/",
-    reporteEndpoint: "http://localhost.com/encuestas/app/"
+
+    apiEndpoint: "https://bmind.com/encuestas/api/",
+    reporteEndpoint: "https://bmind.com/encuestas/app/"
+
 };
 
