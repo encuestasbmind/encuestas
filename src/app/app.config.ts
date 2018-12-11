@@ -9,6 +9,6 @@ export interface IAppConfig {
 
 export const AppConfig: IAppConfig = {    
     apiEndpoint: "http://localhost/encuestas/api/",
-    reporteEndpoint: "http://localhost/encuestas/app/"
+    reporteEndpoint: "http://localhost.com/encuestas/app/"
 };
 
