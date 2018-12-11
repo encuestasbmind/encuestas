@@ -7,6 +7,7 @@ export interface IAppConfig {
     reporteEndpoint: string;
 }
 
+
 export const AppConfig: IAppConfig = {    
 
     apiEndpoint: "https://bmind.com/encuestas/api/",
